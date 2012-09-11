@@ -1,0 +1,22 @@
+[user]
+    name = Roderick Schaefer
+    email = roderick@wehandle.it
+[core]
+    excludesfile = /Users/roderick/.gitignore
+[push]
+    default = tracking
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[diff]
+    tool = diffmerge
+[difftool "diffmerge"]
+    cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[merge]
+    tool = diffmerge
+[mergetool "diffmerge"]
+    cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+    trustExitCode = true
