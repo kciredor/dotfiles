@@ -16,11 +16,17 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 " Status bar pimp
 Bundle 'Lokaltog/vim-powerline'
+" Tabular aligning
+Bundle 'godlygeek/tabular'
 " Better  Yank
-Bundle 'vim-scripts/YankRing.vim'
-" Code snippets / completion
-"Bundle 'vim-scripts/vim-addon-mw-utils'
-"Bundle 'garbas/vim-snipmate'
+"Bundle 'vim-scripts/YankRing.vim'
+" Code snippets
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/snipmate-snippets'
+Bundle 'garbas/vim-snipmate'
+" Code completion
+"Bundle 'kana/vim-smartinput'
 "Bundle 'Townk/vim-autoclose'
 "Bundle 'tpope/vim-surround'
 " Less CSS syntax
@@ -31,6 +37,8 @@ Bundle 'estin/htmljinja'
 Bundle 'pangloss/vim-javascript'
 " Source listing
 Bundle 'majutsushi/tagbar'
+" PHP Completion
+"Bundle 'EvanDotPro/phpcomplete.vim'
 " PHP-Cs-Fixer
 Bundle 'stephpy/vim-php-cs-fixer'
 " Buffer tab system
@@ -129,14 +137,11 @@ nmap <silent> <Leader>D :Bclose!<CR>
 function! TreeOpenFocus()
     let currentwin = winnr()
     let wnr = bufwinnr("NERD_tree_1")
-        " No nerdtree so toggle it
         if wnr == -1
             :NERDTreeToggle
         else
-            " Cursor is in NERDTree, so jump back one window
             if wnr == currentwin
                 exec "wincmd w"
-            " Cursor is not in NERDTree, so jump there
             else
                 exec wnr."wincmd w"
             endif
@@ -144,13 +149,11 @@ function! TreeOpenFocus()
 endfunction
 let g:NERDTreeWinPos = "right"
 
-"" ctrlp.vim
+"" ctrlp
 nmap <silent> <Leader>o :CtrlP<CR>
-" keep cache between sessions
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_working_path_mode = 'rc'
 let g:ctrlp_max_height = 15
-"let g:ctrlp_open_multi = '1v'
 let g:ctrlp_custom_ignore = {
 \ 'dir':  '\v[\/](\.git|\.hg|\.svn|app/cache|vendor)$'
 \ }
@@ -160,11 +163,13 @@ let g:ctrlp_prompt_mappings = {
   \ }
 
 " snipMate: reload all snippets
-nmap <Leader>r :call ReloadAllSnippets()<CR>
+"nmap <Leader>r :call ReloadAllSnippets()<CR>
 
 " php-cs-fixer
 nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()
+nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()
 let g:php_cs_fixer_path = get(g:, 'php_cs_fixer_path', '/usr/local/bin/php-cs-fixer.phar')
+let g:php_cs_fixer_enable_default_mapping = 0
 
 " powerline
 let g:Powerline_symbols = 'unicode'
@@ -180,8 +185,18 @@ if has('autocmd')
 endif
 
 " yankring
-let g:yankring_history_file = '.yankring_history'
-nmap <leader>y :YRShow<cr>
+"let g:yankring_history_file = '.yankring_history'
+"nmap <leader>y :YRShow<cr>
 
 " buftabs
 let g:buftabs_only_basename = 1
+
+" tabular
+nmap <leader><tab><tab> :Tab /
+vmap <leader><tab> :Tab /
+nmap <leader><tab>= :Tab /=<cr>
+vmap <leader><tab>= :Tab /=<cr>
+nmap <leader><tab>: :Tab /:\zs<cr>
+vmap <leader><tab>: :Tab /:\zs<cr>
+nmap <leader><tab>> :Tab /=><cr>
+vmap <leader><tab>> :Tab /=><cr>

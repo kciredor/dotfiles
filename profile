@@ -1,4 +1,5 @@
 # config
+
 export EDITOR='vim'
 complete -d cd
 set -o vi
@@ -13,6 +14,7 @@ export TERM=xterm-color
 
 
 # autojump
+
 if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
     . /opt/local/etc/profile.d/autojump.sh
 fi
@@ -23,7 +25,7 @@ fi
 if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
- 
+
 function parse_git_dirty {
   git diff --quiet HEAD &>/dev/null
   [[ $? == 1 ]] && echo " *"
@@ -61,6 +63,7 @@ export PATH=/Users/roderick/Apps/android-sdk-macosx/platform-tools:$PATH
 
 
 # aliases
+
 alias ls='ls --color=auto -Fh --group-directories-first'
 alias ll='ls -alh'
 alias l='ls'
