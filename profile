@@ -52,7 +52,7 @@ complete -o default -o nospace -F _git_checkout gco
 
 # exports
 
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/:/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export PATH=/opt/local/libexec/gnubin/:$PATH
 export PATH=/Library/Python/2.6/site-packages/django/bin:$PATH
 export PATH=/Developer/usr/bin:/Developer/usr/sbin:$PATH
@@ -60,7 +60,8 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH
 export PATH=/Users/roderick/Apps/android-sdk-macosx/tools:$PATH
 export PATH=/Users/roderick/Apps/android-sdk-macosx/platform-tools:$PATH
-
+export PATH=/usr/local/cuda/bin:$PATH
+export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
 
 # aliases
 

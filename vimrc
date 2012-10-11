@@ -18,8 +18,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
 " Tabular aligning
 Bundle 'godlygeek/tabular'
-" Better  Yank
-"Bundle 'vim-scripts/YankRing.vim'
+" Better yanking
+Bundle 'vim-scripts/YankRing.vim'
 " Code snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
@@ -185,8 +185,8 @@ if has('autocmd')
 endif
 
 " yankring
-"let g:yankring_history_file = '.yankring_history'
-"nmap <leader>y :YRShow<cr>
+let g:yankring_history_file = '.yankring_history'
+nmap <leader>y :YRShow<cr>
 
 " buftabs
 let g:buftabs_only_basename = 1
