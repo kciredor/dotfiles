@@ -96,6 +96,8 @@ nmap <Right> <C-w>l
 " swap ' and `
 noremap ' `
 noremap ` '
+" f3 clears search marking
+nnoremap <F3> :set hlsearch!<CR>
 
 " Backup dir
 set directory=~/.vim/backup//
