@@ -35,6 +35,8 @@ Bundle 'groenewege/vim-less'
 Bundle 'estin/htmljinja'
 " Javascript support
 Bundle 'pangloss/vim-javascript'
+" Scala support
+Bundle 'derekwyatt/vim-scala'
 " Source listing
 Bundle 'majutsushi/tagbar'
 " PHP Completion
@@ -182,8 +184,7 @@ nmap <silent> <leader>T :TagbarClose<CR>
 
 " jinja
 if has('autocmd')
-  au BufRead,BufNewFile *.twig        setlocal filetype=jinja
-  au BufRead,BufNewFile *.html.twig   setlocal filetype=htmljinja
+  au BufRead,BufNewFile *.twig        setlocal filetype=htmljinja
 endif
 
 " yankring

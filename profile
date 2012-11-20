@@ -1,27 +1,20 @@
 # config
-
 export EDITOR='vim'
 complete -d cd
 set -o vi
 
-
 # mac fixes
-
 COPYFILE_DISABLE=true
 CLICOLOR=1
 LSCOLORS=gxfxcxdxbxegedabagacad
 export TERM=xterm-color
 
-
 # autojump
-
 if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
     . /opt/local/etc/profile.d/autojump.sh
 fi
 
-
 # git
-
 if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
@@ -34,6 +27,7 @@ function parse_git_branch {
   local branch=$(__git_ps1 "%s")
   [[ $branch ]] && echo "[$branch$(parse_git_dirty)]"
 }
+
 export PS1='\[\033[1;33m\]\w\[\033[0m\]$(parse_git_branch)$ '
 
 alias g='git'
@@ -49,12 +43,12 @@ alias gd="git diff"
 complete -o default -o nospace -F _git_branch gb
 complete -o default -o nospace -F _git_checkout gco
 
-
 # exports
-
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/:/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
+export MSF_DATABASE_CONFIG=~/.msf4/config/database.yml
+
+# path-exports
 export PATH=/opt/local/libexec/gnubin/:$PATH
-export PATH=/Library/Python/2.6/site-packages/django/bin:$PATH
 export PATH=/Developer/usr/bin:/Developer/usr/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH
@@ -65,7 +59,6 @@ export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
 export PATH=/Applications/Less.app/Contents/Resources/engines/bin:$PATH
 
 # aliases
-
 alias ls='ls --color=auto -Fh --group-directories-first'
 alias ll='ls -alh'
 alias l='ls'
@@ -78,7 +71,6 @@ alias egrep='egrep --color=auto'
 ..3() { cd "../../../$@"; }
 ..4() { cd "../../../../$@"; }
 ..5() { cd "../../../../../$@"; }
-
 
 # custom aliases
 if [ -f ~/.custom_alias ]; then
