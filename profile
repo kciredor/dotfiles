@@ -7,7 +7,7 @@ set -o vi
 COPYFILE_DISABLE=true
 CLICOLOR=1
 LSCOLORS=gxfxcxdxbxegedabagacad
-export TERM=xterm-color
+export TERM=xterm-256color
 
 # autojump
 if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
@@ -30,6 +30,7 @@ function parse_git_branch {
 
 export PS1='\[\033[1;33m\]\w\[\033[0m\]$(parse_git_branch)$ '
 
+alias git='hub'
 alias g='git'
 alias gs='git status'
 alias gc='git commit'
