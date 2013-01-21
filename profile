@@ -45,7 +45,8 @@ complete -o default -o nospace -F _git_branch gb
 complete -o default -o nospace -F _git_checkout gco
 
 # exports
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/:/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
+# broken in mac os 10.8 (LD / DYLD)
+# export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/:/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export MSF_DATABASE_CONFIG=~/.msf4/config/database.yml
 
 # path-exports

@@ -7,6 +7,8 @@ rm ~/.gitignore
 rm ~/.inputrc
 rm ~/.profile
 rm ~/.vimrc
+rm ~/.muttrc
+rm ~/.mailcap
 
 echo "\n**** Deploying sweetness"
 
@@ -15,9 +17,17 @@ ln -s `pwd`/gitignore ~/.gitignore
 ln -s `pwd`/inputrc ~/.inputrc
 ln -s `pwd`/profile ~/.profile
 ln -s `pwd`/vimrc ~/.vimrc
+ln -s `pwd`/muttrc ~/.muttrc
+ln -s `pwd`/mailcap ~/.mailcap
 
 mkdir -p ~/.vim/backup/
 mkdir -p ~/.vim/bundle/
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+mkdir -p ~/.mutt/cache/headers
+mkdir ~/.mutt/cache/bodies
+touch ~/.mutt/certificates
+git clone https://github.com/altercation/mutt-colors-solarized ~/.mutt/mutt-colors-solarized
+cd ~/.mutt && wget http://filibusta.crema.unimi.it/~gufo/files/view_attachment.sh && chmod 700 view_attachments.sh
 
 echo "\n\n**** Done (now install bundles from within vim)\n\n"
