@@ -54,12 +54,12 @@ bind index G imap-fetch-mail
 # <sync-mailbox> after del?
 bind editor <space> noop
 macro index,pager d "<save-message>=[Gmail]/Prullenbak<enter><enter><refresh>" "Trash Message"
+folder-hook . 'macro index,pager y "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Remove label"'
 folder-hook "INBOX" 'macro index,pager y "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Archive conversation"'
 folder-hook "Gmail./Alle" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
 folder-hook "Gmail./Spam" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
 folder-hook "Gmail./Prullenbak" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
-folder-hook "Gmail./Starred" bind index,pager y flag-message
-folder-hook "Postadres" 'macro index,pager n "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Remove label"'
+folder-hook "Gmail./Met" bind index,pager y flag-message
 
 bind  index,pager c mail
 macro index,pager e "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Archive conversation"
@@ -86,7 +86,7 @@ macro index,pager gt "<change-folder>=[Gmail]/Prullenbak<enter>" "Go to Trash"
 
 # Sync contacts: needs goobook, ~/.goobookrc
 set query_command="goobook query '%s'"
-macro index,pager a "<pipe-message>goobook add<return>" "add sender to google contacts"
+macro index,pager a "<pipe-message>goobook add<return>" "Add sender to google contacts"
 bind editor <Tab> complete-query
 
 # urlview
