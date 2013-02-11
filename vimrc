@@ -68,6 +68,7 @@ set scrolloff=3                                     " nr of lines on the edge to
 set showcmd                                         " show commands during typing
 set pastetoggle=<F10>                               " enable paste
 set hidden                                          " buffer switching without saving
+set vb t_vb=                                        " disable beep / flash
 
 " Editor
 " strip trailing whitespace
