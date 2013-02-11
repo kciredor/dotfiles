@@ -48,7 +48,6 @@ alternative_order text/plain text/html *
 auto_view text/html
 bind editor <Tab> complete-query
 bind editor ^T complete
-bind index G imap-fetch-mail
 
 # Gmail-style keyboard shortcuts
 # <sync-mailbox> after del?
@@ -56,24 +55,24 @@ bind editor <space> noop
 macro index,pager d "<save-message>=[Gmail]/Prullenbak<enter><enter><refresh>" "Trash Message"
 folder-hook . 'macro index,pager y "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Remove label"'
 folder-hook "INBOX" 'macro index,pager y "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Archive conversation"'
-folder-hook "Gmail./Alle" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
+folder-hook "Gmail./Alle.berichten" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
 folder-hook "Gmail./Spam" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
 folder-hook "Gmail./Prullenbak" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
-folder-hook "Gmail./Met" bind index,pager y flag-message
+folder-hook "Gmail./Met.ster" bind index,pager y flag-message
 
 bind  index,pager c mail
-macro index,pager e "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Archive conversation"
+# macro index,pager e "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Archive conversation"
 bind  generic     x tag-entry
 bind  index       x tag-thread
 bind  pager       x tag-message
 bind  index,pager s flag-message
 macro index,pager ! "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
-bind  index,pager a  group-reply
+bind  index,pager a group-reply
 bind  index,pager \# delete-thread
-bind  index,pager l  copy-message
+bind  index,pager l copy-message
 # bind  index,pager v  save-message
-macro index,pager I  <set-flag>O   "Mark as read"
-macro index,pager U  <clear-flag>O "Mark as unread"
+macro index,pager I <clear-flag>O "Mark as read"
+macro index,pager U <set-flag>O "Mark as unread"
 
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/Alle berichten<enter>" "Go to All mail"
