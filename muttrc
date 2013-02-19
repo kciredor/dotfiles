@@ -17,10 +17,11 @@ set hostname = gmail.com
 # set mail_check = 120
 set imap_idle
 # set imap_check_subscribed
-unset imap_passive
+set imap_passive
+# unset imap_passive
 unset imap_peek
 set imap_keepalive = 300
-# set timeout = 300
+set timeout = 5
 set postponed = "+[Gmail]/Concepten"
 set header_cache=~/.mutt/cache/headers
 set message_cachedir=~/.mutt/cache/bodies
@@ -35,7 +36,7 @@ set auto_tag
 set sig_dashes = no
 set sig_on_top
 set fast_reply
-set pager_index_lines = 6
+set pager_index_lines = 15
 set to_chars = ' +>-<L'
 unset beep
 unset resolve
@@ -48,11 +49,14 @@ alternative_order text/plain text/html *
 auto_view text/html
 bind editor <Tab> complete-query
 bind editor ^T complete
+bind  index,pager N search-opposite
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
 # Gmail-style keyboard shortcuts
 # <sync-mailbox> after del?
 bind editor <space> noop
-macro index,pager d "<save-message>=[Gmail]/Prullenbak<enter><enter><refresh>" "Trash Message"
+macro index,pager d "<clear-flag>N<save-message>=[Gmail]/Prullenbak<enter><enter><refresh>" "Trash Message"
+# macro index "<Esc>j" "<enter-command>set resolve=no\n<clear-flag>N<save-message>=spam\n\n<enter-command>set resolve=yes\n"
 folder-hook . 'macro index,pager y "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Remove label"'
 folder-hook "INBOX" 'macro index,pager y "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Archive conversation"'
 folder-hook "Gmail./Alle.berichten" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
@@ -89,9 +93,22 @@ macro index,pager a "<pipe-message>goobook add<return>" "Add sender to google co
 bind editor <Tab> complete-query
 
 # urlview
-macro pager \cu <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro pager \Cu <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 # attachment path prefix
 macro attach s <save-entry><bol>/Users/roderick/Downloads/<eol>
+
+# sidebar patch
+set sidebar_width=25
+set sidebar_visible=yes
+set sidebar_delim='|'
+set sidebar_sort=yes
+color sidebar_new yellow default
+# ctrl-j, ctrl-k to select next, prev folder, ctrl-p to open selected folder
+bind index,pager \Ck sidebar-prev
+bind index,pager \Cj sidebar-next
+bind index,pager \Cp sidebar-open
+macro index,pager b "<enter-command>toggle sidebar_visible<enter>" "Toggle sidebar"
+bind index B bounce-message
 
 # Theme: https://github.com/altercation/mutt-colors-solarized
 #source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
