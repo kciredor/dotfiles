@@ -12,15 +12,14 @@ remoterepository = WeHandleIt-Remote
 [Repository WeHandleIt-Local]
 type = Maildir
 localfolders = ~/.maildir/wehandleit
-sep = .
-nametrans = lambda folder: re.sub('inbox', 'INBOX',
-                           re.sub('spam', '[Gmail].Spam',
-                           re.sub('drafts', '[Gmail].Concepten',
-                           re.sub('sent', '[Gmail].Verzonden berichten',
-                           re.sub('flagged', '[Gmail].Met ster',
-                           re.sub('trash', '[Gmail].Prullenbak',
-                           re.sub('important', '[Gmail].Belangrijk',
-                           re.sub('archive', '[Gmail].Alle berichten', folder))))))))
+nametrans = lambda folder: {'inbox':   'INBOX',
+                            'drafts':  '[Gmail]/Concepten',
+                            'sent':    '[Gmail]/Verzonden berichten',
+                            'flagged': '[Gmail]/Met ster',
+                            'spam':    '[Gmail]/Spam',
+                            'trash':   '[Gmail]/Prullenbak',
+                            'archive': '[Gmail]/Alle berichten',
+                           }.get(folder, folder)
 
 [Repository WeHandleIt-Remote]
 type = Gmail
@@ -28,16 +27,17 @@ cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 remoteusereval = whiUser()
 remotepasseval = whiPass()
 realdelete = yes
+maxconnections = 5
 idlefolders = ['INBOX']
-folderfilter = lambda folder: not re.search('(Belangrijk)', folder)
-nametrans = lambda folder: re.sub('INBOX', 'inbox',
-                           re.sub('.*Spam$', 'spam',
-                           re.sub('.*Concepten$', 'drafts',
-                           re.sub('.*Verzonden berichten$', 'sent',
-                           re.sub('.*Met ster$', 'flagged',
-                           re.sub('.*Prullenbak$', 'trash',
-                           re.sub('.*Belangrijk$', 'important',
-                           re.sub('.*Alle berichten$', 'archive', folder))))))))
+folderfilter = lambda folder: folder not in ['[Gmail]/Belangrijk']
+nametrans = lambda folder: {'INBOX':                       'inbox',
+                            '[Gmail]/Concepten':           'drafts',
+                            '[Gmail]/Verzonden berichten': 'sent',
+                            '[Gmail]/Met ster':            'flagged',
+                            '[Gmail]/Spam':                'spam',
+                            '[Gmail]/Prullenbak':          'trash',
+                            '[Gmail]/Alle berichten':      'archive',
+                           }.get(folder, folder)
 
 # Onmissbaar
 
@@ -48,15 +48,14 @@ remoterepository = Onmissbaar-Remote
 [Repository Onmissbaar-Local]
 type = Maildir
 localfolders = ~/.maildir/onmissbaar
-sep = .
-nametrans = lambda folder: re.sub('inbox', 'INBOX',
-                           re.sub('spam', '[Gmail].Spam',
-                           re.sub('drafts', '[Gmail].Concepten',
-                           re.sub('sent', '[Gmail].Verzonden berichten',
-                           re.sub('flagged', '[Gmail].Met ster',
-                           re.sub('trash', '[Gmail].Prullenbak',
-                           re.sub('important', '[Gmail].Belangrijk',
-                           re.sub('archive', '[Gmail].Alle berichten', folder))))))))
+nametrans = lambda folder: {'inbox':   'INBOX',
+                            'drafts':  '[Gmail]/Concepten',
+                            'sent':    '[Gmail]/Verzonden berichten',
+                            'flagged': '[Gmail]/Met ster',
+                            'spam':    '[Gmail]/Spam',
+                            'trash':   '[Gmail]/Prullenbak',
+                            'archive': '[Gmail]/Alle berichten',
+                           }.get(folder, folder)
 
 [Repository Onmissbaar-Remote]
 type = Gmail
@@ -64,20 +63,21 @@ cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 remoteusereval = onmUser()
 remotepasseval = onmPass()
 realdelete = yes
+maxconnections = 5
 idlefolders = ['INBOX']
-folderfilter = lambda folder: not re.search('(Belangrijk)', folder)
-nametrans = lambda folder: re.sub('INBOX', 'inbox',
-                           re.sub('.*Spam$', 'spam',
-                           re.sub('.*Concepten$', 'drafts',
-                           re.sub('.*Verzonden berichten$', 'sent',
-                           re.sub('.*Met ster$', 'flagged',
-                           re.sub('.*Prullenbak$', 'trash',
-                           re.sub('.*Belangrijk$', 'important',
-                           re.sub('.*Alle berichten$', 'archive', folder))))))))
+folderfilter = lambda folder: folder not in ['[Gmail]/Belangrijk']
+nametrans = lambda folder: {'INBOX':                       'inbox',
+                            '[Gmail]/Concepten':           'drafts',
+                            '[Gmail]/Verzonden berichten': 'sent',
+                            '[Gmail]/Met ster':            'flagged',
+                            '[Gmail]/Spam':                'spam',
+                            '[Gmail]/Prullenbak':          'trash',
+                            '[Gmail]/Alle berichten':      'archive',
+                           }.get(folder, folder)
 
+# autorefresh = 5
 # holdconnectionopen = true
 # keepalive = 60
-# autorefresh = 5
 # http://superuser.com/questions/483006/offlineimap-turn-idle-on
 # http://comments.gmane.org/gmane.mail.imap.offlineimap.general/5728
 # idlefolders = ['INBOX', '[Gmail].All Mail']

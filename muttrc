@@ -1,117 +1,104 @@
-# set imap_user, imap_pass, smtp_url, smtp_pass, from, realname
-# multi-gmail
-source ~/.mutt/accounts/source-cred
-source ~/.mutt/accounts/whi-cred
-folder-hook $my_whi_user 'source ~/.mutt/accounts/whi-cred'
-folder-hook $my_onm_user 'source ~/.mutt/accounts/onm-cred'
-account-hook imaps://$my_whi_user 'set imap_user=$my_whi_user imap_pass=$my_whi_pass'
-account-hook imaps://$my_onm_user 'set imap_user=$my_onm_user imap_pass=$my_onm_pass'
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/whi-cred<enter><change-folder>!<enter>' 
-macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/onm-cred<enter><change-folder>!<enter>'
+# verzenden van email msmtp multiple account
+# offlineimap idle / sync interval
+
+# Accounts
+source ~/.mutt/accounts/whi-settings
+macro index <f2> '<enter-command>source ~/.mutt/accounts/whi-settings<enter><change-folder>+inbox<enter>'
+macro index <f3> '<enter-command>source ~/.mutt/accounts/onm-settings<enter><change-folder>+inbox<enter>'
 
 # Settings
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set imap_check_subscribed
-set hostname = gmail.com
-# set mail_check = 120
-set imap_idle
-# set imap_check_subscribed
-set imap_passive
-# unset imap_passive
-unset imap_peek
-set imap_keepalive = 300
-set timeout = 5
-set postponed = "+[Gmail]/Concepten"
-set header_cache=~/.mutt/cache/headers
-set message_cachedir=~/.mutt/cache/bodies
-set certificate_file=~/.mutt/certificates
-set record = no
-set move = no
-set delete = no
-set include
-set sort = 'reverse-threads'
-set sort_aux = 'last-date-received'
-set auto_tag
-set sig_dashes = no
+set timeout           = 10
+set mail_check        = 5
+set header_cache      = ~/.mutt/cache/headers
+set message_cachedir  = ~/.mutt/cache/bodies
+set certificate_file  = ~/.mutt/certificates
+set sendmail_wait     = 0                     # wait for sending to finish
+unset record                                  # no copy for sent items (gmail/msmtp)
+set quit                                      # no confirm quitting
+unset move                                    # no confirm moving messages
+unset confirmappend                           # no confirm moving messages
+set delete                                    # automatic purge
+set include                                   # include original message in reply
+set sort              = 'reverse-threads'
+set sort_aux          = 'last-date-received'
+set auto_tag                                  # do not require tag prefix when having tagged messages
+set sig_dashes        = no
 set sig_on_top
-set fast_reply
+set fast_reply                                # skip prompts
+set reply_to                                  # use this header
 set pager_index_lines = 15
-set to_chars = ' +>-<L'
+set to_chars          = ' +>-<L'
 unset beep
-unset resolve
-unset copy
+unset resolve                                 # do not move cursor to next message
+set menu_scroll                               # do not clear screen with large menus
+set tilde                                     # vim tilde behaviour
+unset markers                                 # hide + prefix in pager
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
 hdr_order Date From To Cc
 alternative_order text/plain text/html *
 auto_view text/html
-bind editor <Tab> complete-query
-bind editor ^T complete
-bind  index,pager N search-opposite
-macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
-# Gmail-style keyboard shortcuts
-# <sync-mailbox> after del?
-bind editor <space> noop
-macro index,pager d "<clear-flag>N<save-message>=[Gmail]/Prullenbak<enter><enter><refresh>" "Trash Message"
-# macro index "<Esc>j" "<enter-command>set resolve=no\n<clear-flag>N<save-message>=spam\n\n<enter-command>set resolve=yes\n"
-folder-hook . 'macro index,pager y "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Remove label"'
-folder-hook "INBOX" 'macro index,pager y "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Archive conversation"'
-folder-hook "Gmail./Alle.berichten" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
-folder-hook "Gmail./Spam" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
-folder-hook "Gmail./Prullenbak" 'macro index,pager y "<save-message>=INBOX<enter><enter>" "Move to inbox"'
-folder-hook "Gmail./Met.ster" bind index,pager y flag-message
+# Key bindings
+bind  index gg    first-entry
+bind  index G     last-entry
+bind  index <tab> sync-mailbox
+bind  index N     search-opposite
+bind  pager N     search-opposite
+macro index O     "<shell-escape>offlineimap<enter>"                           "run offlineimap to sync all mail"
+macro index o     "<shell-escape>offlineimap -qf INBOX<enter>"                 "run offlineimap to sync inbox"
+macro index \Cr   "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
-bind  index,pager c mail
-# macro index,pager e "<save-message>=[Gmail]/Alle berichten<enter><enter>" "Archive conversation"
-bind  generic     x tag-entry
-bind  index       x tag-thread
-bind  pager       x tag-message
-bind  index,pager s flag-message
-macro index,pager ! "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
-bind  index,pager a group-reply
-bind  index,pager \# delete-thread
-bind  index,pager l copy-message
-# bind  index,pager v  save-message
-macro index,pager I <clear-flag>O "Mark as read"
-macro index,pager U <set-flag>O "Mark as unread"
-
-macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index,pager ga "<change-folder>=[Gmail]/Alle berichten<enter>" "Go to All mail"
-macro index,pager gs "<change-folder>=[Gmail]/Spam<enter>" "Go to Spam"
-macro index,pager gm "<change-folder>=[Gmail]/Met ster<enter>" "Go to Starred messages"
-macro index,pager gd "<change-folder>=[Gmail]/Concepten<enter>" "Go to Drafts"
-macro index,pager gv "<change-folder>=[Gmail]/Verzonden berichten<enter>" "Go to Sent Items"
-macro index,pager gp "<change-folder>=Postadres<enter>" "Go to Postadres"
-macro index,pager gt "<change-folder>=[Gmail]/Prullenbak<enter>" "Go to Trash"
+# Gmail-style key bindings
+macro       index,pager d "<clear-flag>N<save-message>+trash<enter><sync-mailbox>" "Trash message"
+folder-hook .           'macro index,pager y "<delete-message><sync-mailbox>"      "Remove label"'
+folder-hook inbox       'macro index,pager y "<delete-message><sync-mailbox>"      "Archive message"'
+folder-hook archive     'macro index,pager y "<save-message>+inbox<enter>"         "Move to inbox"'
+folder-hook spam        'macro index,pager y "<save-message>+inbox<enter>"         "Move to inbox"'
+folder-hook trash       'macro index,pager y "<save-message>+inbox<enter>"         "Move to inbox"'
+folder-hook trash       'macro index,pager d "<delete-message><sync-mailbox>"      "Perm delete"'
+folder-hook flagged     bind   index,pager y flag-message
+#bind  index,pager s flag-message
+#macro index,pager ! "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
+#bind  index,pager a group-reply
+#bind  index,pager \# delete-thread
+#bind  index,pager l copy-message
+#macro index,pager I <clear-flag>O "Mark as read"
+#macro index,pager U <set-flag>O "Mark as unread"
+#macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+#macro index,pager ga "<change-folder>=[Gmail]/Alle berichten<enter>" "Go to All mail"
+#macro index,pager gs "<change-folder>=[Gmail]/Spam<enter>" "Go to Spam"
+#macro index,pager gm "<change-folder>=[Gmail]/Met ster<enter>" "Go to Starred messages"
+#macro index,pager gd "<change-folder>=[Gmail]/Concepten<enter>" "Go to Drafts"
+#macro index,pager gv "<change-folder>=[Gmail]/Verzonden berichten<enter>" "Go to Sent Items"
+#macro index,pager gp "<change-folder>=Postadres<enter>" "Go to Postadres"
+#macro index,pager gt "<change-folder>=[Gmail]/Prullenbak<enter>" "Go to Trash"
 
 # Sync contacts: needs goobook, ~/.goobookrc
-set query_command="goobook query '%s'"
-macro index,pager a "<pipe-message>goobook add<return>" "Add sender to google contacts"
-bind editor <Tab> complete-query
+set query_command = "goobook query '%s'"
+bind  editor <tab> complete-query
+macro index  a     "<pipe-message>goobook add<return>" "Add sender to google contacts"
+macro pager  a     "<pipe-message>goobook add<return>" "Add sender to google contacts"
 
 # urlview
-macro pager \Cu <pipe-entry>'urlview'<enter> 'Follow links with urlview'
-# attachment path prefix
-macro attach s <save-entry><bol>/Users/roderick/Downloads/<eol>
+macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 
-# sidebar patch
-set sidebar_width=25
-set sidebar_visible=yes
-set sidebar_delim='|'
-set sidebar_sort=yes
+# attachment path prefix
+macro attach s     <save-entry><bol>/Users/roderick/Downloads/<eol>
+
+# sidebar
+set sidebar_width   = 20
+set sidebar_visible = yes
+set sidebar_delim   = '|'
+set sidebar_sort    = yes
 color sidebar_new yellow default
-# ctrl-j, ctrl-k to select next, prev folder, ctrl-p to open selected folder
-bind index,pager \Ck sidebar-prev
-bind index,pager \Cj sidebar-next
-bind index,pager \Cp sidebar-open
-macro index,pager b "<enter-command>toggle sidebar_visible<enter>" "Toggle sidebar"
-bind index B bounce-message
+bind  index,pager <down>  sidebar-next
+bind  index,pager <up>    sidebar-prev
+bind  index,pager <right> sidebar-open
+bind  index       B       bounce-message
+macro index,pager b       "<enter-command>toggle sidebar_visible<enter>" "Toggle sidebar"
 
 # Theme: https://github.com/altercation/mutt-colors-solarized
-#source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
-#source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc
-#source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
 source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-light-256.muttrc
+color status white blue # color25

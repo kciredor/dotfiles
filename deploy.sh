@@ -10,6 +10,7 @@ rm ~/.vimrc
 rm ~/.muttrc
 rm ~/.offlineimaprc
 rm ~/.mailcap
+rm ~/.msmtprc
 rm ~/.goobookrc
 
 echo "\n**** Deploying sweetness"
@@ -22,6 +23,7 @@ ln -s `pwd`/vimrc ~/.vimrc
 ln -s `pwd`/muttrc ~/.muttrc
 ln -s `pwd`/offlineimaprc ~/.offlineimaprc
 ln -s `pwd`/mailcap ~/.mailcap
+ln -s `pwd`/msmtprc ~/.msmtprc
 ln -s `pwd`/goobookrc ~/.goobookrc
 
 mkdir -p ~/.vim/backup/
