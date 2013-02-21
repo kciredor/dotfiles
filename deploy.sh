@@ -8,6 +8,7 @@ rm ~/.inputrc
 rm ~/.profile
 rm ~/.vimrc
 rm ~/.muttrc
+rm ~/.offlineimaprc
 rm ~/.mailcap
 rm ~/.goobookrc
 
@@ -19,6 +20,7 @@ ln -s `pwd`/inputrc ~/.inputrc
 ln -s `pwd`/profile ~/.profile
 ln -s `pwd`/vimrc ~/.vimrc
 ln -s `pwd`/muttrc ~/.muttrc
+ln -s `pwd`/offlineimaprc ~/.offlineimaprc
 ln -s `pwd`/mailcap ~/.mailcap
 ln -s `pwd`/goobookrc ~/.goobookrc
 
@@ -32,5 +34,9 @@ mkdir ~/.mutt/accounts
 touch ~/.mutt/certificates
 git clone https://github.com/altercation/mutt-colors-solarized ~/.mutt/mutt-colors-solarized
 cd ~/.mutt && wget http://filibusta.crema.unimi.it/~gufo/files/view_attachment.sh && chmod 700 view_attachment.sh
+
+mkdir ~/.offlineimap && chmod 700 ~/.offlineimap
+ln -s `pwd`/offlineimap-support.py ~/.offlineimap/offlineimap-support.py
+mkdir ~/.maildir && chmod 700 ~/.maildir
 
 echo "\n\n**** Done (now install bundles from within vim)\n\n"

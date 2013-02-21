@@ -1,0 +1,83 @@
+[general]
+ui = ttyui
+accounts = WeHandleIt, Onmissbaar
+pythonfile = ~/.offlineimap/offlineimap-support.py
+
+# We handle IT
+
+[Account WeHandleIt]
+localrepository = WeHandleIt-Local
+remoterepository = WeHandleIt-Remote
+
+[Repository WeHandleIt-Local]
+type = Maildir
+localfolders = ~/.maildir/wehandleit
+sep = .
+nametrans = lambda folder: re.sub('inbox', 'INBOX',
+                           re.sub('spam', '[Gmail].Spam',
+                           re.sub('drafts', '[Gmail].Concepten',
+                           re.sub('sent', '[Gmail].Verzonden berichten',
+                           re.sub('flagged', '[Gmail].Met ster',
+                           re.sub('trash', '[Gmail].Prullenbak',
+                           re.sub('important', '[Gmail].Belangrijk',
+                           re.sub('archive', '[Gmail].Alle berichten', folder))))))))
+
+[Repository WeHandleIt-Remote]
+type = Gmail
+cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
+remoteusereval = whiUser()
+remotepasseval = whiPass()
+realdelete = yes
+idlefolders = ['INBOX']
+folderfilter = lambda folder: not re.search('(Belangrijk)', folder)
+nametrans = lambda folder: re.sub('INBOX', 'inbox',
+                           re.sub('.*Spam$', 'spam',
+                           re.sub('.*Concepten$', 'drafts',
+                           re.sub('.*Verzonden berichten$', 'sent',
+                           re.sub('.*Met ster$', 'flagged',
+                           re.sub('.*Prullenbak$', 'trash',
+                           re.sub('.*Belangrijk$', 'important',
+                           re.sub('.*Alle berichten$', 'archive', folder))))))))
+
+# Onmissbaar
+
+[Account Onmissbaar]
+localrepository = Onmissbaar-Local
+remoterepository = Onmissbaar-Remote
+
+[Repository Onmissbaar-Local]
+type = Maildir
+localfolders = ~/.maildir/onmissbaar
+sep = .
+nametrans = lambda folder: re.sub('inbox', 'INBOX',
+                           re.sub('spam', '[Gmail].Spam',
+                           re.sub('drafts', '[Gmail].Concepten',
+                           re.sub('sent', '[Gmail].Verzonden berichten',
+                           re.sub('flagged', '[Gmail].Met ster',
+                           re.sub('trash', '[Gmail].Prullenbak',
+                           re.sub('important', '[Gmail].Belangrijk',
+                           re.sub('archive', '[Gmail].Alle berichten', folder))))))))
+
+[Repository Onmissbaar-Remote]
+type = Gmail
+cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
+remoteusereval = onmUser()
+remotepasseval = onmPass()
+realdelete = yes
+idlefolders = ['INBOX']
+folderfilter = lambda folder: not re.search('(Belangrijk)', folder)
+nametrans = lambda folder: re.sub('INBOX', 'inbox',
+                           re.sub('.*Spam$', 'spam',
+                           re.sub('.*Concepten$', 'drafts',
+                           re.sub('.*Verzonden berichten$', 'sent',
+                           re.sub('.*Met ster$', 'flagged',
+                           re.sub('.*Prullenbak$', 'trash',
+                           re.sub('.*Belangrijk$', 'important',
+                           re.sub('.*Alle berichten$', 'archive', folder))))))))
+
+# holdconnectionopen = true
+# keepalive = 60
+# autorefresh = 5
+# http://superuser.com/questions/483006/offlineimap-turn-idle-on
+# http://comments.gmane.org/gmane.mail.imap.offlineimap.general/5728
+# idlefolders = ['INBOX', '[Gmail].All Mail']
