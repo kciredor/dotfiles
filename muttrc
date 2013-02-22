@@ -100,5 +100,6 @@ bind  index       B       bounce-message
 macro index,pager b       "<enter-command>toggle sidebar_visible<enter>" "Toggle sidebar"
 
 # Theme: https://github.com/altercation/mutt-colors-solarized
-source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-light-256.muttrc
-color status white blue # color25
+# source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-light-256.muttrc
+# color status white blue # color25
+source ~/.mutt/colors
