@@ -1,6 +1,3 @@
-# verzenden van email msmtp multiple account
-# offlineimap idle / sync interval
-
 # Accounts
 source ~/.mutt/accounts/whi-settings
 macro index <f2> '<enter-command>source ~/.mutt/accounts/whi-settings<enter><change-folder>+inbox<enter>'
@@ -39,6 +36,8 @@ ignore "DKIM-Signature:"
 hdr_order Date From To Cc
 alternative_order text/plain text/html *
 auto_view text/html
+ignore *
+unignore From: To: Date: Subject:
 
 # Key bindings
 bind  index gg    first-entry
@@ -46,12 +45,12 @@ bind  index G     last-entry
 bind  index <tab> sync-mailbox
 bind  index N     search-opposite
 bind  pager N     search-opposite
-macro index O     "<shell-escape>offlineimap<enter>"                           "run offlineimap to sync all mail"
-macro index o     "<shell-escape>offlineimap -qf INBOX<enter>"                 "run offlineimap to sync inbox"
+macro index O     "<shell-escape>offlineimap -o<enter>"                           "run offlineimap to sync all mail"
+macro index o     "<shell-escape>offlineimap -oqf INBOX<enter>"                 "run offlineimap to sync inbox"
 macro index \Cr   "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
 # Gmail-style key bindings
-macro       index,pager d "<clear-flag>N<save-message>+trash<enter><sync-mailbox>" "Trash message"
+folder-hook .           'macro index,pager d "<clear-flag>N<save-message>+trash<enter><sync-mailbox>" "Trash message"'
 folder-hook .           'macro index,pager y "<delete-message><sync-mailbox>"      "Remove label"'
 folder-hook inbox       'macro index,pager y "<delete-message><sync-mailbox>"      "Archive message"'
 folder-hook archive     'macro index,pager y "<save-message>+inbox<enter>"         "Move to inbox"'
@@ -59,27 +58,23 @@ folder-hook spam        'macro index,pager y "<save-message>+inbox<enter>"      
 folder-hook trash       'macro index,pager y "<save-message>+inbox<enter>"         "Move to inbox"'
 folder-hook trash       'macro index,pager d "<delete-message><sync-mailbox>"      "Perm delete"'
 folder-hook flagged     bind   index,pager y flag-message
-#bind  index,pager s flag-message
+bind  index,pager a   group-reply
+macro index,pager gi "<change-folder>+inbox<enter>" "Go to Inbox"
+macro index,pager gs "<change-folder>+sent<enter>" "Go to Sent"
+macro index,pager ga "<change-folder>+archive<enter>" "Go to Archive"
+macro index,pager gt "<change-folder>+trash<enter>" "Go to Trash"
 #macro index,pager ! "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
-#bind  index,pager a group-reply
+#bind  index,pager s flag-message
 #bind  index,pager \# delete-thread
 #bind  index,pager l copy-message
 #macro index,pager I <clear-flag>O "Mark as read"
 #macro index,pager U <set-flag>O "Mark as unread"
-#macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
-#macro index,pager ga "<change-folder>=[Gmail]/Alle berichten<enter>" "Go to All mail"
-#macro index,pager gs "<change-folder>=[Gmail]/Spam<enter>" "Go to Spam"
-#macro index,pager gm "<change-folder>=[Gmail]/Met ster<enter>" "Go to Starred messages"
-#macro index,pager gd "<change-folder>=[Gmail]/Concepten<enter>" "Go to Drafts"
-#macro index,pager gv "<change-folder>=[Gmail]/Verzonden berichten<enter>" "Go to Sent Items"
-#macro index,pager gp "<change-folder>=Postadres<enter>" "Go to Postadres"
-#macro index,pager gt "<change-folder>=[Gmail]/Prullenbak<enter>" "Go to Trash"
 
 # Sync contacts: needs goobook, ~/.goobookrc
 set query_command = "goobook query '%s'"
 bind  editor <tab> complete-query
-macro index  a     "<pipe-message>goobook add<return>" "Add sender to google contacts"
-macro pager  a     "<pipe-message>goobook add<return>" "Add sender to google contacts"
+macro index  n     "<pipe-message>goobook add<return>" "Add sender to google contacts"
+macro pager  n     "<pipe-message>goobook add<return>" "Add sender to google contacts"
 
 # urlview
 macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
@@ -92,7 +87,7 @@ set sidebar_width   = 20
 set sidebar_visible = yes
 set sidebar_delim   = '|'
 set sidebar_sort    = yes
-color sidebar_new yellow default
+#color sidebar_new yellow default
 bind  index,pager <down>  sidebar-next
 bind  index,pager <up>    sidebar-prev
 bind  index,pager <right> sidebar-open
@@ -100,6 +95,4 @@ bind  index       B       bounce-message
 macro index,pager b       "<enter-command>toggle sidebar_visible<enter>" "Toggle sidebar"
 
 # Theme: https://github.com/altercation/mutt-colors-solarized
-# source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-light-256.muttrc
-# color status white blue # color25
-source ~/.mutt/colors
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc

@@ -1,6 +1,8 @@
 [general]
 ui = ttyui
+fsync = false
 accounts = WeHandleIt, Onmissbaar
+maxsyncaccounts = 2
 pythonfile = ~/.offlineimap/offlineimap-support.py
 
 # We handle IT
@@ -8,6 +10,7 @@ pythonfile = ~/.offlineimap/offlineimap-support.py
 [Account WeHandleIt]
 localrepository = WeHandleIt-Local
 remoterepository = WeHandleIt-Remote
+# autorefresh = 5
 
 [Repository WeHandleIt-Local]
 type = Maildir
@@ -27,8 +30,10 @@ cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 remoteusereval = whiUser()
 remotepasseval = whiPass()
 realdelete = yes
-maxconnections = 5
-idlefolders = ['INBOX']
+maxconnections = 3
+# keepconnectionopen = yes
+# keepalive = 60
+# idlefolders = ['INBOX']
 folderfilter = lambda folder: folder not in ['[Gmail]/Belangrijk']
 nametrans = lambda folder: {'INBOX':                       'inbox',
                             '[Gmail]/Concepten':           'drafts',
@@ -44,6 +49,7 @@ nametrans = lambda folder: {'INBOX':                       'inbox',
 [Account Onmissbaar]
 localrepository = Onmissbaar-Local
 remoterepository = Onmissbaar-Remote
+# autorefresh = 5
 
 [Repository Onmissbaar-Local]
 type = Maildir
@@ -63,8 +69,10 @@ cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 remoteusereval = onmUser()
 remotepasseval = onmPass()
 realdelete = yes
-maxconnections = 5
-idlefolders = ['INBOX']
+maxconnections = 3
+# keepconnectionopen = yes
+# keepalive = 60
+# idlefolders = ['INBOX']
 folderfilter = lambda folder: folder not in ['[Gmail]/Belangrijk']
 nametrans = lambda folder: {'INBOX':                       'inbox',
                             '[Gmail]/Concepten':           'drafts',
@@ -74,10 +82,3 @@ nametrans = lambda folder: {'INBOX':                       'inbox',
                             '[Gmail]/Prullenbak':          'trash',
                             '[Gmail]/Alle berichten':      'archive',
                            }.get(folder, folder)
-
-# autorefresh = 5
-# holdconnectionopen = true
-# keepalive = 60
-# http://superuser.com/questions/483006/offlineimap-turn-idle-on
-# http://comments.gmane.org/gmane.mail.imap.offlineimap.general/5728
-# idlefolders = ['INBOX', '[Gmail].All Mail']

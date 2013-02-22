@@ -35,6 +35,7 @@ mkdir ~/.mutt/cache/bodies
 mkdir ~/.mutt/accounts
 touch ~/.mutt/certificates
 git clone https://github.com/altercation/mutt-colors-solarized ~/.mutt/mutt-colors-solarized
+ln -s `pwd`/mailrun.sh ~/.mutt/mailrun.sh
 cd ~/.mutt && wget http://filibusta.crema.unimi.it/~gufo/files/view_attachment.sh && chmod 700 view_attachment.sh
 
 mkdir ~/.offlineimap && chmod 700 ~/.offlineimap
