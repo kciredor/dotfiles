@@ -73,8 +73,8 @@ macro index,pager gt "<change-folder>+trash<enter>" "Go to Trash"
 # Sync contacts: needs goobook, ~/.goobookrc
 set query_command = "goobook query '%s'"
 bind  editor <tab> complete-query
-macro index  n     "<pipe-message>goobook add<return>" "Add sender to google contacts"
-macro pager  n     "<pipe-message>goobook add<return>" "Add sender to google contacts"
+macro index  gA     "<pipe-message>goobook add<return>" "Add sender to google contacts"
+macro pager  gA     "<pipe-message>goobook add<return>" "Add sender to google contacts"
 
 # urlview
 macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'

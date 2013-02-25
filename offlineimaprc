@@ -34,7 +34,7 @@ maxconnections = 3
 # keepconnectionopen = yes
 # keepalive = 60
 # idlefolders = ['INBOX']
-folderfilter = lambda folder: folder not in ['[Gmail]/Belangrijk']
+folderfilter = lambda folder: not re.search('(^[Gmail]/Belangrijk$|Mailbox)', folder)
 nametrans = lambda folder: {'INBOX':                       'inbox',
                             '[Gmail]/Concepten':           'drafts',
                             '[Gmail]/Verzonden berichten': 'sent',
@@ -73,7 +73,7 @@ maxconnections = 3
 # keepconnectionopen = yes
 # keepalive = 60
 # idlefolders = ['INBOX']
-folderfilter = lambda folder: folder not in ['[Gmail]/Belangrijk']
+folderfilter = lambda folder: not re.search('(^[Gmail]/Belangrijk$|Mailbox)', folder)
 nametrans = lambda folder: {'INBOX':                       'inbox',
                             '[Gmail]/Concepten':           'drafts',
                             '[Gmail]/Verzonden berichten': 'sent',
