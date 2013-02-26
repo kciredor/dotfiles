@@ -1,20 +1,37 @@
 # Accounts
-source ~/.mutt/accounts/whi-settings
-macro index <f2> '<enter-command>source ~/.mutt/accounts/whi-settings<enter><change-folder>+inbox<enter>'
-macro index <f3> '<enter-command>source ~/.mutt/accounts/onm-settings<enter><change-folder>+inbox<enter>'
+source ~/.mutt/accounts/source-cred
+source ~/.mutt/accounts/whi-cred
+folder-hook $my_whi_user 'source ~/.mutt/accounts/whi-cred'
+folder-hook $my_onm_user 'source ~/.mutt/accounts/onm-cred'
+account-hook imaps://$my_whi_user 'set imap_user=$my_whi_user imap_pass=$my_whi_pass'
+account-hook imaps://$my_onm_user 'set imap_user=$my_onm_user imap_pass=$my_onm_pass'
+macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/whi-cred<enter><change-folder>!<enter>'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/onm-cred<enter><change-folder>!<enter>'
+
+# IMAP
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Concepten"
+set imap_check_subscribed
+# set mail_check = 120
+# set imap_check_subscribed
+set imap_idle
+unset imap_passive
+# set imap_passive
+# unset imap_peek
+set imap_keepalive = 300
+set timeout = 5
 
 # Settings
-set timeout           = 10
-set mail_check        = 5
 set header_cache      = ~/.mutt/cache/headers
 set message_cachedir  = ~/.mutt/cache/bodies
 set certificate_file  = ~/.mutt/certificates
 set sendmail_wait     = 0                     # wait for sending to finish
-unset record                                  # no copy for sent items (gmail/msmtp)
+unset record                                  # gmail, no copy for sent items
 set quit                                      # no confirm quitting
 unset move                                    # no confirm moving messages
 unset confirmappend                           # no confirm moving messages
-set delete                                    # automatic purge
+set delete=yes                                # auto purge
 set include                                   # include original message in reply
 set sort              = 'reverse-threads'
 set sort_aux          = 'last-date-received'
@@ -45,30 +62,28 @@ bind  index G     last-entry
 bind  index <tab> sync-mailbox
 bind  index N     search-opposite
 bind  pager N     search-opposite
-macro index O     "<shell-escape>offlineimap -o<enter>"                           "run offlineimap to sync all mail"
-macro index o     "<shell-escape>offlineimap -oqf INBOX<enter>"                 "run offlineimap to sync inbox"
 macro index \Cr   "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
 # Gmail-style key bindings
-folder-hook .           'macro index,pager d "<clear-flag>N<save-message>+trash<enter><sync-mailbox>" "Trash message"'
-folder-hook .           'macro index,pager y "<delete-message><sync-mailbox>"      "Remove label"'
-folder-hook inbox       'macro index,pager y "<delete-message><sync-mailbox>"      "Archive message"'
-folder-hook archive     'macro index,pager y "<save-message>+inbox<enter>"         "Move to inbox"'
-folder-hook spam        'macro index,pager y "<save-message>+inbox<enter>"         "Move to inbox"'
-folder-hook trash       'macro index,pager y "<save-message>+inbox<enter>"         "Move to inbox"'
-folder-hook trash       'macro index,pager d "<delete-message><sync-mailbox>"      "Perm delete"'
-folder-hook flagged     bind   index,pager y flag-message
-bind  index,pager a   group-reply
-macro index,pager gi "<change-folder>+inbox<enter>" "Go to Inbox"
-macro index,pager gs "<change-folder>+sent<enter>" "Go to Sent"
-macro index,pager ga "<change-folder>+archive<enter>" "Go to Archive"
-macro index,pager gt "<change-folder>+trash<enter>" "Go to Trash"
-#macro index,pager ! "<save-message>=[Gmail]/Spam<enter><enter>" "Report spam"
-#bind  index,pager s flag-message
-#bind  index,pager \# delete-thread
-#bind  index,pager l copy-message
-#macro index,pager I <clear-flag>O "Mark as read"
-#macro index,pager U <set-flag>O "Mark as unread"
+folder-hook .                       'macro index,pager d "<clear-flag>N<save-message>=[Gmail]/Prullenbak<enter><refresh>"        "Trash message"'
+folder-hook .                       'macro index,pager y "<clear-flag>N<save-message>=[Gmail]/Alle<quote-char> berichten<enter>" "Remove label"'
+folder-hook INBOX                   'macro index,pager y "<clear-flag>N<save-message>=[Gmail]/Alle<quote-char> berichten<enter>" "Archive message"'
+folder-hook "Gmail./Alle.berichten" 'macro index,pager y "<save-message>=INBOX<enter>"                                           "Move to inbox"'
+folder-hook "Gmail./Prullenbak"     'macro index,pager y "<save-message>=INBOX<enter>"                                           "Restore"'
+folder-hook "Gmail./Prullenbak"     'macro index,pager d "<delete-message>"                                                      "Perm delete"'
+folder-hook "Gmail./Spam"           'macro index,pager y "<save-message>=INBOX<enter>"                                           "Not spam"'
+folder-hook "Gmail./Met.ster"        bind  index,pager y  flag-message
+macro                                      index,pager ! "<clear-flag>N<save-message>=[Gmail]/Spam<enter>"                       "Report spam"
+bind                                       index,pager a  group-reply
+macro index,pager gi "<change-folder>=INBOX<enter>"                                   "Go to Inbox"
+macro index,pager ga "<change-folder>=[Gmail]/Alle<quote-char> berichten<enter>"      "Go to Archive"
+macro index,pager gs "<change-folder>=[Gmail]/Verzonden<quote-char> berichten<enter>" "Go to Sent"
+macro index,pager gt "<change-folder>=[Gmail]/Prullenbak<enter>"                      "Go to Trash"
+##bind  index,pager s flag-message
+##bind  index,pager \# delete-thread
+##bind  index,pager l copy-message
+##macro index,pager I <clear-flag>O "Mark as read"
+##macro index,pager U <set-flag>O "Mark as unread"
 
 # Sync contacts: needs goobook, ~/.goobookrc
 set query_command = "goobook query '%s'"
@@ -83,7 +98,7 @@ macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 macro attach s     <save-entry><bol>/Users/roderick/Downloads/<eol>
 
 # sidebar
-set sidebar_width   = 20
+set sidebar_width   = 25
 set sidebar_visible = yes
 set sidebar_delim   = '|'
 set sidebar_sort    = yes
