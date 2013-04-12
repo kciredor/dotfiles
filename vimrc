@@ -30,7 +30,8 @@ Bundle 'garbas/vim-snipmate'
 "Bundle 'kana/vim-smartinput'
 "Bundle 'Townk/vim-autoclose'
 "Bundle 'tpope/vim-surround'
-" Less CSS syntax
+" Syntax checking
+Bundle 'scrooloose/syntastic'
 Bundle 'groenewege/vim-less'
 " Twig / Jinja templating syntax
 Bundle 'estin/htmljinja'
@@ -180,6 +181,9 @@ nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()
 nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()
 let g:php_cs_fixer_path = get(g:, 'php_cs_fixer_path', '/usr/local/bin/php-cs-fixer.phar')
 let g:php_cs_fixer_enable_default_mapping = 0
+
+" syntastic
+let g:syntastic_python_checkers = ['pylint']
 
 " powerline
 let g:Powerline_symbols = 'unicode'
