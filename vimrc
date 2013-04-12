@@ -12,6 +12,7 @@ Bundle 'tomasr/molokai'
 " File lookup
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/mru.vim'
 " Git support
 Bundle 'tpope/vim-fugitive'
 " Status bar pimp
@@ -154,7 +155,7 @@ function! TreeOpenFocus()
 endfunction
 let g:NERDTreeWinPos = "right"
 
-"" ctrlp
+" ctrlp
 nmap <silent> <Leader>o :CtrlP<CR>
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_working_path_mode = 'rc'
@@ -166,6 +167,10 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_prompt_mappings = {
   \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
   \ }
+
+" mru
+nmap <silent> <Leader>r :MRU<CR>
+let MRU_Window_Height = 12
 
 " snipMate: reload all snippets
 "nmap <Leader>r :call ReloadAllSnippets()<CR>
