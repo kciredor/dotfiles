@@ -80,6 +80,13 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " sort css upto }
 noremap <silent> <Leader>s :.,/}/sort<CR>:nohl<CR>
 
+" Extension based tab stops
+autocmd FileType html :setlocal expandtab!
+autocmd FileType css :setlocal expandtab!
+autocmd FileType sass :setlocal expandtab!
+autocmd FileType less :setlocal expandtab!
+autocmd FileType coffee :setlocal sw=2 ts=2
+
 " Key mapping
 " leader
 let mapleader=","
