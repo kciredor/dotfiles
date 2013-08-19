@@ -39,6 +39,8 @@ Bundle 'estin/htmljinja'
 Bundle 'pangloss/vim-javascript'
 " Scala support
 Bundle 'derekwyatt/vim-scala'
+" CoffeeScript support
+Bundle 'kchmck/vim-coffee-script'
 " Source listing
 Bundle 'majutsushi/tagbar'
 " PHP Completion
