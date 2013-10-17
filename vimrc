@@ -24,7 +24,7 @@ Bundle 'vim-scripts/YankRing.vim'
 " Code snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'honza/snipmate-snippets'
+Bundle 'scrooloose/snipmate-snippets'
 Bundle 'garbas/vim-snipmate'
 " Code completion
 "Bundle 'kana/vim-smartinput'
@@ -39,7 +39,7 @@ Bundle 'estin/htmljinja'
 Bundle 'pangloss/vim-javascript'
 " Scala support
 Bundle 'derekwyatt/vim-scala'
-" CoffeeScript support
+" Coffeescript support
 Bundle 'kchmck/vim-coffee-script'
 " Source listing
 Bundle 'majutsushi/tagbar'
@@ -80,12 +80,16 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " sort css upto }
 noremap <silent> <Leader>s :.,/}/sort<CR>:nohl<CR>
 
-" Extension based tab stops
-autocmd FileType html :setlocal expandtab!
-autocmd FileType css :setlocal expandtab!
-autocmd FileType sass :setlocal expandtab!
-autocmd FileType less :setlocal expandtab!
+" Extension based tab stops (home)
+" autocmd FileType html :setlocal expandtab!
+" autocmd FileType css :setlocal expandtab!
+" autocmd FileType sass :setlocal expandtab!
+" autocmd FileType less :setlocal expandtab!
+" autocmd FileType coffee :setlocal sw=2 ts=2
+
+" Extension based tab stops (office)
 autocmd FileType coffee :setlocal sw=2 ts=2
+autocmd FileType less :setlocal sw=2 ts=2
 
 " Key mapping
 " leader
@@ -112,6 +116,9 @@ noremap ' `
 noremap ` '
 " f3 clears search marking
 nnoremap <F3> :set hlsearch!<CR>
+" f7 / f8 paste / nopaste
+nnoremap <F7> :set paste<CR>
+nnoremap <F8> :set nopaste<CR>
 
 " Backup dir
 set directory=~/.vim/backup//

@@ -1,20 +1,32 @@
-# config
+# ssh keychain
+keychain -q ~/.ssh/id_rsa
+. ~/.keychain/$HOSTNAME-sh
+
+# basics
 export EDITOR='vim'
 complete -d cd
 set -o vi
 
-# mac fixes
-COPYFILE_DISABLE=true
-CLICOLOR=1
-LSCOLORS=gxfxcxdxbxegedabagacad
-export TERM=xterm-256color
+# mac fixes: todo: detect Mac env
+if false; then
+    COPYFILE_DISABLE=true
+    CLICOLOR=1
+    LSCOLORS=gxfxcxdxbxegedabagacad
+    export TERM=xterm-256color
+fi
 
 # autojump
+if [ -f /usr/share/autojump/autojump.sh ]; then
+    . /usr/share/autojump/autojump.sh
+fi
 if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
     . /opt/local/etc/profile.d/autojump.sh
 fi
 
 # git
+if [ -f /etc/bash_completion.d/git ]; then
+    . /etc/bash_completion.d/git
+fi
 if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
@@ -49,7 +61,7 @@ complete -o default -o nospace -F _git_checkout gco
 # export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/:/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export MSF_DATABASE_CONFIG=~/.msf4/config/database.yml
 
-# path-exports
+# path-exports: home
 export PATH=/opt/local/libexec/gnubin/:$PATH
 export PATH=/Developer/usr/bin:/Developer/usr/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -59,6 +71,9 @@ export PATH=/opt/local/share/java/android-sdk-macosx/platform-tools:$PATH
 export PATH=/usr/local/cuda/bin:$PATH
 export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
 export PATH=/Applications/Less.app/Contents/Resources/engines/bin:$PATH
+
+# patth-exports: office
+export PATH=/home/kciredor/src/connect/v/bin:$PATH
 
 # aliases
 alias ls='ls --color=auto -Fh --group-directories-first'
