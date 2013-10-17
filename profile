@@ -6,6 +6,7 @@ keychain -q ~/.ssh/id_rsa
 export EDITOR='vim'
 complete -d cd
 set -o vi
+export TERM=screen-256color
 
 # mac fixes: todo: detect Mac env
 if false; then
