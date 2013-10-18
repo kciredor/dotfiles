@@ -1,24 +1,20 @@
 # Accounts
-source ~/.mutt/accounts/source-cred
+# source ~/.mutt/accounts/source-cred
 source ~/.mutt/accounts/whi-cred
-folder-hook $my_whi_user 'source ~/.mutt/accounts/whi-cred'
-folder-hook $my_onm_user 'source ~/.mutt/accounts/onm-cred'
-account-hook imaps://$my_whi_user 'set imap_user=$my_whi_user imap_pass=$my_whi_pass'
-account-hook imaps://$my_onm_user 'set imap_user=$my_onm_user imap_pass=$my_onm_pass'
-macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/whi-cred<enter><change-folder>!<enter>'
-macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/onm-cred<enter><change-folder>!<enter>'
+# folder-hook $my_whi_user 'source ~/.mutt/accounts/whi-cred'
+# folder-hook $my_onm_user 'source ~/.mutt/accounts/onm-cred'
+# account-hook imaps://$my_whi_user 'set imap_user=$my_whi_user imap_pass=$my_whi_pass'
+# account-hook imaps://$my_onm_user 'set imap_user=$my_onm_user imap_pass=$my_onm_pass'
+# macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/whi-cred<enter><change-folder>!<enter>'
+# macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/onm-cred<enter><change-folder>!<enter>'
 
 # IMAP
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Concepten"
 set imap_check_subscribed
-# set mail_check = 120
-# set imap_check_subscribed
 set imap_idle
 unset imap_passive
-# set imap_passive
-# unset imap_peek
 set imap_keepalive = 300
 set timeout = 5
 
@@ -79,11 +75,11 @@ macro index,pager gi "<change-folder>=INBOX<enter>"                             
 macro index,pager ga "<change-folder>=[Gmail]/Alle<quote-char> berichten<enter>"      "Go to Archive"
 macro index,pager gs "<change-folder>=[Gmail]/Verzonden<quote-char> berichten<enter>" "Go to Sent"
 macro index,pager gt "<change-folder>=[Gmail]/Prullenbak<enter>"                      "Go to Trash"
-##bind  index,pager s flag-message
-##bind  index,pager \# delete-thread
-##bind  index,pager l copy-message
-##macro index,pager I <clear-flag>O "Mark as read"
-##macro index,pager U <set-flag>O "Mark as unread"
+bind  index,pager s flag-message
+bind  index,pager \# delete-thread
+bind  index,pager l copy-message
+macro index,pager I <clear-flag>O "Mark as read"
+macro index,pager U <set-flag>O "Mark as unread"
 
 # Sync contacts: needs goobook, ~/.goobookrc
 set query_command = "goobook query '%s'"

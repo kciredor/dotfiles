@@ -7,6 +7,7 @@ export EDITOR='vim'
 complete -d cd
 set -o vi
 export TERM=screen-256color
+unset GNOME_KEYRING_CONTROL
 
 # mac fixes: todo: detect Mac env
 if false; then
