@@ -18,6 +18,9 @@ unset imap_passive
 set imap_keepalive = 300
 set timeout = 5
 
+# PGP
+source ~/.mutt/crypto
+
 # Settings
 set header_cache      = ~/.mutt/cache/headers
 set message_cachedir  = ~/.mutt/cache/bodies
