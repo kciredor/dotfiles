@@ -59,14 +59,11 @@ complete -o default -o nospace -F _git_branch gb
 complete -o default -o nospace -F _git_checkout gco
 
 # exports
-# broken in mac os 10.8 (LD / DYLD)
-# export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/:/usr/local/cuda/lib:$DYLD_LIBRARY_PATH
 export MSF_DATABASE_CONFIG=~/.msf4/config/database.yml
 
 # path-exports: home
-export PATH=/opt/local/libexec/gnubin/:$PATH
+export PATH=/usr/local/bin:$PATH
 export PATH=/Developer/usr/bin:/Developer/usr/sbin:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH
 export PATH=/opt/local/share/java/android-sdk-macosx/tools:$PATH
 export PATH=/opt/local/share/java/android-sdk-macosx/platform-tools:$PATH
@@ -74,7 +71,7 @@ export PATH=/usr/local/cuda/bin:$PATH
 export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
 export PATH=/Applications/Less.app/Contents/Resources/engines/bin:$PATH
 
-# patth-exports: office
+# path-exports: office
 export PATH=/home/kciredor/src/connect/v/bin:$PATH
 
 # aliases
