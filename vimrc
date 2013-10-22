@@ -45,6 +45,8 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'majutsushi/tagbar'
 " PHP Completion
 "Bundle 'EvanDotPro/phpcomplete.vim'
+" Python support
+Bundle 'klen/python-mode'
 " PHP-Cs-Fixer
 Bundle 'stephpy/vim-php-cs-fixer'
 " Buffer tab system
@@ -201,6 +203,12 @@ let g:php_cs_fixer_enable_default_mapping = 0
 
 " syntastic
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checker_args = '--rcfile=~/.pylintrc'
+let g:syntastic_check_on_open=0
+let g:syntastic_enable_signs=1
+let g:syntastic_error_symbol='!'
+let g:syntastic_warning_symbol='?'
+highlight SyntasticErrorLine guibg=#5c0b09
 
 " powerline
 let g:Powerline_symbols = 'unicode'
@@ -230,3 +238,11 @@ nmap <leader><tab>: :Tab /:\zs<cr>
 vmap <leader><tab>: :Tab /:\zs<cr>
 nmap <leader><tab>> :Tab /=><cr>
 vmap <leader><tab>> :Tab /=><cr>
+
+" python-mode
+let g:pymode_folding=0
+let g:pymode_syntax_slow_sync=0
+let g:pymode_rope_guess_project=0
+let g:pymode_paths=['~/src']
+let g:pymode_lint=0
+let g:pymode_lint_config = "$HOME/.pylintrc"
