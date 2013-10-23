@@ -24,7 +24,7 @@ Bundle 'vim-scripts/YankRing.vim'
 " Code snippets
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'scrooloose/snipmate-snippets'
+Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
 " Code completion
 "Bundle 'kana/vim-smartinput'

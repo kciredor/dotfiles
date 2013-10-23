@@ -21,16 +21,15 @@ fi
 if [ -f /usr/share/autojump/autojump.sh ]; then
     . /usr/share/autojump/autojump.sh
 fi
-if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
-    . /opt/local/etc/profile.d/autojump.sh
-fi
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 # git
 if [ -f /etc/bash_completion.d/git ]; then
     . /etc/bash_completion.d/git
 fi
-if [ -f /opt/local/etc/bash_completion ]; then
-    . /opt/local/etc/bash_completion
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    . /usr/local/etc/bash_completion.d/git-completion.bash
+    . /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
 
 function parse_git_dirty {
@@ -62,13 +61,14 @@ complete -o default -o nospace -F _git_checkout gco
 export MSF_DATABASE_CONFIG=~/.msf4/config/database.yml
 
 # path-exports: home
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/opt/ruby/bin:$PATH
 export PATH=/Developer/usr/bin:/Developer/usr/sbin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH
 export PATH=/opt/local/share/java/android-sdk-macosx/tools:$PATH
 export PATH=/opt/local/share/java/android-sdk-macosx/platform-tools:$PATH
 export PATH=/usr/local/cuda/bin:$PATH
-export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
 export PATH=/Applications/Less.app/Contents/Resources/engines/bin:$PATH
 
 # path-exports: office
