@@ -94,7 +94,7 @@ macro pager  gA     "<pipe-message>goobook add<return>" "Add sender to google co
 macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 
 # attachment path prefix
-macro attach s     <save-entry><bol>/Users/roderick/Downloads/<eol>
+macro attach s     <save-entry><bol>~/Downloads/<eol>
 
 # sidebar
 set sidebar_width   = 25

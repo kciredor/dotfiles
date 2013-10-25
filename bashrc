@@ -18,10 +18,8 @@ if false; then
 fi
 
 # autojump
-if [ -f /usr/share/autojump/autojump.sh ]; then
-    . /usr/share/autojump/autojump.sh
-fi
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+[[ -s /usr/share/autojump/autojump.sh ]] && . /usr/share/autojump/autojump.sh
+[[ -s /usr/local/etc/autojump.sh ]] && . /usr/local/etc/autojump.sh
 
 # git
 if [ -f /etc/bash_completion.d/git ]; then
