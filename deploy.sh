@@ -5,9 +5,10 @@ echo "\n\n**** Removing current config files"
 rm ~/.gitconfig
 rm ~/.gitignore
 rm ~/.inputrc
-rm ~/.profile
+rm ~/.bashrc
 rm ~/.vimrc
 rm ~/.muttrc
+rm ~/.mutt
 rm ~/.mailcap
 rm ~/.goobookrc
 
@@ -16,9 +17,10 @@ echo "\n**** Deploying sweetness"
 ln -s `pwd`/gitconfig ~/.gitconfig
 ln -s `pwd`/gitignore ~/.gitignore
 ln -s `pwd`/inputrc ~/.inputrc
-ln -s `pwd`/profile ~/.profile
+ln -s `pwd`/bashrc ~/.bashrc
 ln -s `pwd`/vimrc ~/.vimrc
 ln -s `pwd`/muttrc ~/.muttrc
+ln -s `pwd`/mutt ~/.mutt
 ln -s `pwd`/mailcap ~/.mailcap
 ln -s `pwd`/goobookrc ~/.goobookrc
 

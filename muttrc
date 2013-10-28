@@ -81,8 +81,9 @@ macro index,pager gt "<change-folder>=[Gmail]/Prullenbak<enter>"                
 bind  index,pager s flag-message
 bind  index,pager \# delete-thread
 bind  index,pager l copy-message
-macro index,pager I <clear-flag>O "Mark as read"
-macro index,pager U <set-flag>O "Mark as unread"
+macro index,pager I <clear-flag>O           "Mark as read"
+macro index,pager U <set-flag>O             "Mark as unread"
+macro index \Ce "<change-folder>=[Gmail]/Prullenbak<enter><delete-pattern>~A<enter>" "Empty trash
 
 # Sync contacts: needs goobook, ~/.goobookrc
 set query_command = "goobook query '%s'"
