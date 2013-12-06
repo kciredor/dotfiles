@@ -21,6 +21,7 @@ ln -s `pwd`/bashrc ~/.bashrc
 ln -s `pwd`/vimrc ~/.vimrc
 ln -s `pwd`/muttrc ~/.muttrc
 ln -s `pwd`/mutt ~/.mutt
+ln -s `pwd`/mutt/linux_specific_config `pwd`/mutt/specific_config
 ln -s `pwd`/mailcap ~/.mailcap
 ln -s `pwd`/goobookrc ~/.goobookrc
 

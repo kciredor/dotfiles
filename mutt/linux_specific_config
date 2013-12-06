@@ -1,0 +1,11 @@
+# sidebar
+set sidebar_width   = 25
+set sidebar_visible = yes
+set sidebar_delim   = '|'
+set sidebar_sort    = yes
+color sidebar_new yellow default
+bind  index,pager <down>  sidebar-next
+bind  index,pager <up>    sidebar-prev
+bind  index,pager <right> sidebar-open
+bind  index       B       bounce-message
+macro index,pager b       "<enter-command>toggle sidebar_visible<enter>" "Toggle sidebar"
