@@ -1,5 +1,5 @@
 # ssh keychain
-keychain -q ~/.ssh/id_rsa
+keychain --agents ssh -q ~/.ssh/id_rsa
 . ~/.keychain/$HOSTNAME-sh
 
 # basics
