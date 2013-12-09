@@ -192,6 +192,7 @@ let g:ctrlp_prompt_mappings = {
 " mru
 nmap <silent> <Leader>r :MRU<CR>
 let MRU_Window_Height = 12
+let g:pymode_lint_hold = 0
 
 " snipMate: reload all snippets
 "nmap <Leader>r :call ReloadAllSnippets()<CR>
