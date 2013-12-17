@@ -2,24 +2,7 @@
 source ~/.mutt/specific_config
 
 # Accounts
-# source ~/.mutt/accounts/source-cred
 source ~/.mutt/accounts/whi-cred
-# folder-hook $my_whi_user 'source ~/.mutt/accounts/whi-cred'
-# folder-hook $my_onm_user 'source ~/.mutt/accounts/onm-cred'
-# account-hook imaps://$my_whi_user 'set imap_user=$my_whi_user imap_pass=$my_whi_pass'
-# account-hook imaps://$my_onm_user 'set imap_user=$my_onm_user imap_pass=$my_onm_pass'
-# macro index <f2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/whi-cred<enter><change-folder>!<enter>'
-# macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/onm-cred<enter><change-folder>!<enter>'
-
-# IMAP
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Concepten"
-set imap_check_subscribed
-set imap_idle
-unset imap_passive
-set imap_keepalive = 300
-set timeout = 5
 
 # PGP
 source ~/.mutt/crypto
@@ -28,27 +11,27 @@ source ~/.mutt/crypto
 set header_cache      = ~/.mutt/cache/headers
 set message_cachedir  = ~/.mutt/cache/bodies
 set certificate_file  = ~/.mutt/certificates
-set sendmail_wait     = 0                     # wait for sending to finish
-unset record                                  # gmail, no copy for sent items
-set quit                                      # no confirm quitting
-unset move                                    # no confirm moving messages
-unset confirmappend                           # no confirm moving messages
-set delete=yes                                # auto purge
-set include                                   # include original message in reply
+set sendmail_wait     = 0                                                      # wait for sending to finish
+set quit                                                                       # no confirm quitting
+unset move                                                                     # no confirm moving messages
+unset confirmappend                                                            # no confirm moving messages
+set delete            = yes                                                    # auto purge
+unset record                                                                   # gmail automatically stores sent items
+set include                                                                    # include original message in reply
 set sort              = 'reverse-threads'
 set sort_aux          = 'last-date-received'
-set auto_tag                                  # do not require tag prefix when having tagged messages
+set auto_tag                                                                   # do not require tag prefix when having tagged messages
 set sig_dashes        = no
 set sig_on_top
-set fast_reply                                # skip prompts
-set reply_to                                  # use this header
+set fast_reply                                                                 # skip prompts
+set reply_to                                                                   # use this header
 set pager_index_lines = 15
 set to_chars          = ' +>-<L'
 unset beep
-unset resolve                                 # do not move cursor to next message
-set menu_scroll                               # do not clear screen with large menus
-set tilde                                     # vim tilde behaviour
-unset markers                                 # hide + prefix in pager
+unset resolve                                                                  # do not move cursor to next message
+set menu_scroll                                                                # do not clear screen with large menus
+set tilde                                                                      # vim tilde behaviour
+unset markers                                                                  # hide + prefix in pager
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
@@ -64,53 +47,39 @@ bind  index G     last-entry
 bind  index <tab> sync-mailbox
 bind  index N     search-opposite
 bind  pager N     search-opposite
-macro index \Cr   "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+bind  index B     bounce-message
+macro index \Cr   "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "Mark all messages as read"
 
 # Gmail-style key bindings
-folder-hook .                       'macro index,pager d "<clear-flag>N<save-message>=[Gmail]/Prullenbak<enter><refresh>"        "Trash message"'
-folder-hook .                       'macro index,pager y "<clear-flag>N<save-message>=[Gmail]/Alle<quote-char> berichten<enter>" "Remove label"'
-folder-hook INBOX                   'macro index,pager y "<clear-flag>N<save-message>=[Gmail]/Alle<quote-char> berichten<enter>" "Archive message"'
-folder-hook "Gmail./Alle.berichten" 'macro index,pager y "<save-message>=INBOX<enter>"                                           "Move to inbox"'
-folder-hook "Gmail./Prullenbak"     'macro index,pager y "<save-message>=INBOX<enter>"                                           "Restore"'
-folder-hook "Gmail./Prullenbak"     'macro index,pager d "<delete-message>"                                                      "Perm delete"'
-folder-hook "Gmail./Spam"           'macro index,pager y "<save-message>=INBOX<enter>"                                           "Not spam"'
-folder-hook "Gmail./Met.ster"        bind  index,pager y  flag-message
-macro                                      index,pager ! "<clear-flag>N<save-message>=[Gmail]/Spam<enter>"                       "Report spam"
-bind                                       index,pager a  group-reply
-macro index,pager gi "<change-folder>=INBOX<enter>"                                   "Go to Inbox"
-macro index,pager ga "<change-folder>=[Gmail]/Alle<quote-char> berichten<enter>"      "Go to Archive"
-macro index,pager gs "<change-folder>=[Gmail]/Verzonden<quote-char> berichten<enter>" "Go to Sent"
-macro index,pager gt "<change-folder>=[Gmail]/Prullenbak<enter>"                      "Go to Trash"
-bind  index,pager s flag-message
+bind  index,pager a  group-reply
+bind  index,pager s  flag-message
 bind  index,pager \# delete-thread
-bind  index,pager l copy-message
-macro index,pager I <clear-flag>O           "Mark as read"
-macro index,pager U <set-flag>O             "Mark as unread"
-macro index \Ce "<change-folder>=[Gmail]/Prullenbak<enter><delete-pattern>~A<enter>" "Empty trash
+bind  index,pager l  copy-message
+macro index,pager I  <clear-flag>O                                              "Mark as read"
+macro index,pager U  <set-flag>O                                                "Mark as unread"
 
 # Sync contacts: needs goobook, ~/.goobookrc
-set query_command = "goobook query '%s'"
-bind  editor <tab> complete-query
-macro index  gA     "<pipe-message>goobook add<return>" "Add sender to google contacts"
-macro pager  gA     "<pipe-message>goobook add<return>" "Add sender to google contacts"
+set query_command    = "goobook query '%s'"
+bind  editor <tab>   complete-query
+macro index  gA      "<pipe-message>goobook add<return>"                        "Add sender to google contacts"
+macro pager  gA      "<pipe-message>goobook add<return>"                        "Add sender to google contacts"
 
-# sidebar
+# Sidebar
 set sidebar_width   = 25
 set sidebar_visible = yes
 set sidebar_delim   = '|'
 set sidebar_sort    = yes
-color sidebar_new yellow default
-bind  index,pager <down>  sidebar-next
-bind  index,pager <up>    sidebar-prev
-bind  index,pager <right> sidebar-open
-bind  index       B       bounce-message
-macro index,pager b       "<enter-command>toggle sidebar_visible<enter>" "Toggle sidebar"
+color sidebar_new   yellow default
+bind  index,pager   <down>  sidebar-next
+bind  index,pager   <up>    sidebar-prev
+bind  index,pager   <right> sidebar-open
+macro index,pager   b       "<enter-command>toggle sidebar_visible<enter>"     "Toggle sidebar"
 
-# urlview
+# Urlview
 macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 
-# attachment path prefix
-macro attach s     <save-entry><bol>~/Downloads/<eol>
+# Attachment path prefix
+macro attach s     <save-entry><bol>~/Downloads/<eol>                          "Save attachment to Downloads folder"
 
 # Theme: https://github.com/altercation/mutt-colors-solarized
 source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc

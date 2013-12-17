@@ -1,0 +1,25 @@
+set folder                          = "imaps://imap.gmail.com:993"
+set spoolfile                       = "+INBOX"
+set postponed                       = "+[Gmail]/Concepten"
+set imap_keepalive                  = 300
+set timeout                         = 5
+set imap_check_subscribed
+set imap_idle
+
+unset imap_passive
+
+folder-hook .                       'macro index,pager d "<clear-flag>N<save-message>=[Gmail]/Prullenbak<enter><refresh>"        "Trash message"'
+folder-hook .                       'macro index,pager y "<clear-flag>N<save-message>=[Gmail]/Alle<quote-char> berichten<enter>" "Remove label"'
+folder-hook INBOX                   'macro index,pager y "<clear-flag>N<save-message>=[Gmail]/Alle<quote-char> berichten<enter>" "Archive message"'
+folder-hook "Gmail./Alle.berichten" 'macro index,pager y "<save-message>=INBOX<enter>"                                           "Move to inbox"'
+folder-hook "Gmail./Prullenbak"     'macro index,pager y "<save-message>=INBOX<enter>"                                           "Restore"'
+folder-hook "Gmail./Prullenbak"     'macro index,pager d "<delete-message>"                                                      "Perm delete"'
+folder-hook "Gmail./Spam"           'macro index,pager y "<save-message>=INBOX<enter>"                                           "Not spam"'
+folder-hook "Gmail./Met.ster"        bind  index,pager y  flag-message                                                           "Star message"
+
+macro index,pager !                  "<clear-flag>N<save-message>=[Gmail]/Spam<enter>"                                           "Report spam"
+macro index,pager gi                 "<change-folder>=INBOX<enter>"                                                              "Go to Inbox"
+macro index,pager ga                 "<change-folder>=[Gmail]/Alle<quote-char> berichten<enter>"                                 "Go to Archive"
+macro index,pager gs                 "<change-folder>=[Gmail]/Verzonden<quote-char> berichten<enter>"                            "Go to Sent"
+macro index,pager gt                 "<change-folder>=[Gmail]/Prullenbak<enter>"                                                 "Go to Trash"
+macro index       \Ce                "<change-folder>=[Gmail]/Prullenbak<enter><delete-pattern>~A<enter><sync-mailbox>"          "Empty trash"

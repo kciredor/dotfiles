@@ -7,10 +7,13 @@ rm ~/.gitignore
 rm ~/.inputrc
 rm ~/.bashrc
 rm ~/.vimrc
+rm ~/.goobookrc
 rm ~/.muttrc
 rm ~/.mutt
-rm ~/.mailcap
-rm ~/.goobookrc
+# rm ~/.offlineimaprc
+# rm ~/.mailcap
+# rm ~/.mailrc
+# rm ~/.msmtprc
 
 echo "\n**** Deploying sweetness"
 
@@ -20,10 +23,15 @@ ln -s `pwd`/inputrc ~/.inputrc
 ln -s `pwd`/bashrc ~/.bashrc
 ln -s `pwd`/vimrc ~/.vimrc
 ln -s `pwd`/muttrc ~/.muttrc
-ln -s `pwd`/mutt ~/.mutt
-ln -s `pwd`/mutt/linux_specific_config `pwd`/mutt/specific_config
-ln -s `pwd`/mailcap ~/.mailcap
 ln -s `pwd`/goobookrc ~/.goobookrc
+ln -s `pwd`/mutt ~/.mutt
+ln -s `pwd`/mutt/imap_config `pwd`/mutt/specific_config
+# ln -s `pwd`/offlineimaprc ~/.offlineimaprc
+# ln -s `pwd`/mailcap ~/.mailcap
+# ln -s `pwd`/mailrc ~/.mailrc
+# ln -s `pwd`/msmtprc ~/.msmtprc
+
+# mkdir ~/.maildir && chmod 700 ~/.maildir
 
 mkdir -p ~/.vim/backup/
 mkdir -p ~/.vim/bundle/

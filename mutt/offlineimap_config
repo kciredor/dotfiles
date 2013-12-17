@@ -1,0 +1,26 @@
+set folder          = "~/.maildir/wehandleit"
+set spoolfile       = "+inbox"
+set postponed       = "+drafts"
+set timeout         = 10
+set mail_check      = 5
+
+macro index O       "<shell-escape>offlineimap -o<enter>"                                                 "run offlineimap to sync all mail"
+macro index o       "<shell-escape>offlineimap -oqf INBOX<enter>"                                         "run offlineimap to sync inbox"
+
+folder-hook .       'macro index,pager d "<clear-flag>N<save-message>+trash<enter><sync-mailbox>"         "Trash message"'
+folder-hook .       'macro index,pager y "<delete-message><sync-mailbox>"                                 "Remove label"'
+folder-hook inbox   'macro index,pager y "<clear-flag>N<delete-message><sync-mailbox>"                    "Archive message"'
+folder-hook archive 'macro index,pager y "<save-message>+inbox<enter>"                                    "Move to inbox"'
+folder-hook trash   'macro index,pager y "<save-message>+inbox<enter>"                                    "Restore"'
+folder-hook trash   'macro index,pager d "<delete-message><sync-mailbox>"                                 "Perm delete"'
+folder-hook spam    'macro index,pager y "<save-message>+inbox<enter>"                                    "Not spam"'
+folder-hook flagged bind   index,pager y flag-message                                                     "Star message"'
+
+macro               index,pager !   "<clear-flag>N<save-message>+spam<enter>"                             "Report spam"
+macro               index,pager gi  "<change-folder>+inbox<enter>"                                        "Go to Inbox"
+macro               index,pager ga  "<change-folder>+archive<enter>"                                      "Go to Archive"
+macro               index,pager gs  "<change-folder>+sent<enter>"                                         "Go to Sent"
+macro               index,pager gt  "<change-folder>+trash<enter>"                                        "Go to Trash"
+macro               index       \Ce "<change-folder>+trash<enter><delete-pattern>~A<enter><sync-mailbox>" "Empty trash"
+
+mailboxes +inbox +archive +sent +flagged +drafts +spam +trash
