@@ -149,6 +149,7 @@ else
     set t_Co=256                                    " color terminal
     colorscheme molokai
     let g:molokai_original = 1
+    set background=dark
 endif
 
 " App specific
