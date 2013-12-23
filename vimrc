@@ -15,8 +15,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/mru.vim'
 " Git support
 Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
 " Status bar pimp
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 " Tabular aligning
 Bundle 'godlygeek/tabular'
 " Better yanking
@@ -49,8 +50,6 @@ Bundle 'majutsushi/tagbar'
 Bundle 'klen/python-mode'
 " PHP-Cs-Fixer
 Bundle 'stephpy/vim-php-cs-fixer'
-" Buffer tab system
-Bundle 'vim-scripts/buftabs'
 " Close buffer leaving window alone
 Bundle 'rbgrouleff/bclose.vim'
 
@@ -212,8 +211,12 @@ let g:syntastic_error_symbol='!'
 let g:syntastic_warning_symbol='?'
 highlight SyntasticErrorLine guibg=#5c0b09
 
-" powerline
-let g:Powerline_symbols = 'unicode'
+" airline
+let g:airline_theme="luna"
+let g:airline_powerline_fonts=0
+" airline tabs
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " tagbar
 nmap <silent> <leader>t :TagbarOpen fj<CR>
