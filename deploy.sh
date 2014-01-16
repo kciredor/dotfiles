@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# TODO: clean, deploy, deploy-bash, deploy-zsh, deploy-mutt-imap, deploy-mutt-offlineimap
+
 echo "\n\n**** Removing current config files"
 
 rm ~/.gitconfig

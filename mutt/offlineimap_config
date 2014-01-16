@@ -7,6 +7,7 @@ set mail_check      = 5
 macro index O       "<shell-escape>offlineimap -o<enter>"                                                 "run offlineimap to sync all mail"
 macro index o       "<shell-escape>offlineimap -oqf INBOX<enter>"                                         "run offlineimap to sync inbox"
 
+# try clear-flag O ? delete not working ?
 folder-hook .       'macro index,pager d "<clear-flag>N<save-message>+trash<enter><sync-mailbox>"         "Trash message"'
 folder-hook .       'macro index,pager y "<delete-message><sync-mailbox>"                                 "Remove label"'
 folder-hook inbox   'macro index,pager y "<clear-flag>N<delete-message><sync-mailbox>"                    "Archive message"'

@@ -1,8 +1,8 @@
 These are the config files I use daily.
 
-Just clone the git repo somewhere and run the deploy script.
-(This will delete existing configs)
+Use git clone --recursive and run the deploy script.
+(This will delete existing configs.)
 
-Then install the vim bundles using Vundle
+Then install the vim bundles using Vundle's :BundleInstall.
 
 Roderick Schaefer
