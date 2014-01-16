@@ -47,11 +47,13 @@ Bundle 'majutsushi/tagbar'
 " PHP Completion
 "Bundle 'EvanDotPro/phpcomplete.vim'
 " Python support
-Bundle 'klen/python-mode'
+"Bundle 'klen/python-mode'
 " PHP-Cs-Fixer
 Bundle 'stephpy/vim-php-cs-fixer'
 " Close buffer leaving window alone
 Bundle 'rbgrouleff/bclose.vim'
+" Google calendar ;)
+"Bundle 'itchyny/calendar.vim'
 
 " General config
 set encoding=utf-8                                  " 1/2 encoding
@@ -246,9 +248,13 @@ nmap <leader><tab>> :Tab /=><cr>
 vmap <leader><tab>> :Tab /=><cr>
 
 " python-mode
-let g:pymode_folding=0
-let g:pymode_syntax_slow_sync=0
-let g:pymode_rope_guess_project=0
-let g:pymode_paths=['~/src']
-let g:pymode_lint=0
-let g:pymode_lint_config = "$HOME/.pylintrc"
+" let g:pymode_folding=0
+" let g:pymode_syntax_slow_sync=0
+" let g:pymode_rope_guess_project=0
+" let g:pymode_paths=['~/src']
+" let g:pymode_lint=0
+" let g:pymode_lint_config = "$HOME/.pylintrc"
+
+" google calendar
+"let g:calendar_google_calendar = 1
+"let g:calendar_google_task = 1
