@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# TODO: clean, deploy, deploy-bash, deploy-zsh, deploy-mutt-imap, deploy-mutt-offlineimap
+# TODO: clean, deploy, deploy-bash, deploy-zsh, deploy-mutt-imap, deploy-mutt-offlineimap; add gpg
 
 echo "\n\n**** Removing current config files"
 
