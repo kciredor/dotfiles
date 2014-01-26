@@ -1,6 +1,9 @@
 [submodule "zprezto"]
 	path = zprezto
-	url = https://github.com/kciredor/prezto
+	url = git@github.com:sorin-ionescu/prezto.git
 [submodule "mutt/mutt-colors-solarized"]
 	path = mutt/mutt-colors-solarized
-	url = https://github.com/altercation/mutt-colors-solarized.git
+	url = git@github.com:altercation/mutt-colors-solarized.git
+[submodule "vundle"]
+	path = vundle
+	url = git@github.com:gmarik/vundle.git
