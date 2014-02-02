@@ -1,6 +1,8 @@
 # ssh keychain
-keychain --agents ssh -q ~/.ssh/id_rsa
-. ~/.keychain/$HOSTNAME-sh
+if hash keychain 2>/dev/null; then
+    keychain --agents ssh -q ~/.ssh/id_rsa
+    . ~/.keychain/$HOSTNAME-sh
+fi
 
 # basics
 export EDITOR='vim'
