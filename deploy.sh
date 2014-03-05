@@ -4,9 +4,10 @@ dotfiles_zsh=(zpreztorc zlogin zlogout zprofile zshenv zshrc)
 dotfiles_bash=(inputrc bashrc)
 dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc gnupg/gpg-agentconf gnupg/gpgconf)
 dotfiles_muttofflineimap=(offlineimap offlineimaprc msmtprc)
+dotfiles_x=(Xmodmap, Xdefaults, xsessionrc, config/awesome/rc.lua)
 dotfiles_mac=(slate)
 dotfiles_other=(vimrc gitconfig gitignore)
-dotfiles_cleanup=(profile zprezto ${dotfiles_zsh[*]} ${dotfiles_bash[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
+dotfiles_cleanup=(profile zprezto ${dotfiles_zsh[*]} ${dotfiles_bash[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 
 echo -e "\nkciredor's dotfiles deploy\n\n** Have you cloned dotfiles recursively? If not: git submodule update --init --recursive before you deploy **\n"
 
@@ -71,6 +72,17 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     else
         ln -s ~/.mutt/imap_config ~/.mutt/specific_config
     fi
+fi
+
+echo -e "\n"
+read -p "Install X specifics [y/n] " -n 1 -r
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo -e "\n-- Install X dotfiles\n"
+
+    for item in ${dotfiles_x[*]}; do
+        ln -s `pwd`/$item ~/.$item
+    done
 fi
 
 echo -e "\n"
