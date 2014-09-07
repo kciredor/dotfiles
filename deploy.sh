@@ -5,7 +5,7 @@ dotfiles_bash=(inputrc bashrc)
 dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc gnupg/gpg-agentconf gnupg/gpgconf)
 dotfiles_muttofflineimap=(offlineimap offlineimaprc msmtprc)
 dotfiles_x=(Xmodmap, Xdefaults, xsessionrc, config/awesome/rc.lua)
-dotfiles_mac=(slate)
+dotfiles_mac=(slate, slatelaunchers)
 dotfiles_other=(vimrc gitconfig gitignore)
 dotfiles_cleanup=(profile zprezto ${dotfiles_zsh[*]} ${dotfiles_bash[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 

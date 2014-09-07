@@ -1,8 +1,9 @@
 [user]
     name = Roderick Schaefer
-    email = roderick@wehandle.it
+    email = roderick@bigdata-startups.com
 [core]
     excludesfile = ~/.gitignore
+    editor = /usr/local/bin/vim
 [push]
     default = tracking
 [color]

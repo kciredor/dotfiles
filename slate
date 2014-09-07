@@ -28,7 +28,9 @@ bind e:${hyper}                       hint AOEUIDHTNSYXFBPKGMCW
 bind o:${hyper}                       throw next
 bind f:${hyper}                       ${full}
 bind backslash:${hyper}               relaunch
-bind return:${hyper}                  shell /Applications/iTerm.app/Contents/MacOS/iTerm
+bind return:${hyper}                  shell ~/.slatelaunchers/terminal
+bind c:${hyper}                       shell ~/.slatelaunchers/chrome
+bind m:${hyper}                       shell ~/.slatelaunchers/mail
 bind left:${hyper}                    ${lefthalf}
 bind right:${hyper}                   ${righthalf}
 bind up:${hyper}                      ${tophalf}
