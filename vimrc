@@ -84,12 +84,8 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 noremap <silent> <Leader>s :.,/}/sort<CR>:nohl<CR>
 
 " Extension based tab stops (home)
-autocmd FileType html :setlocal expandtab!
-autocmd FileType css :setlocal expandtab!
-autocmd FileType sass :setlocal expandtab!
-autocmd FileType less :setlocal expandtab!
-autocmd FileType jsp :setlocal expandtab!
-" autocmd FileType coffee :setlocal sw=2 ts=2
+autocmd BufRead,BufNewFile *.html,*.css,*.less,*.sass,*.jsp setlocal expandtab!
+autocmd BufRead,BufNewFile *.coffee setlocal sw=2 ts=2
 
 " Key mapping
 " leader
