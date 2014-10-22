@@ -1,9 +1,9 @@
 import os
 
-def whiUser():
-    return 'roderick@wehandle.it'
+def dfUser():
+    return 'roderick@bigdata-startups.com'
 
-def whiPass():
-    password = os.popen('security find-generic-password -w -s mutt-WHI -a "roderick@wehandle.it"')
+def dfPass():
+    password = os.popen('~/.offlineimap/pass.sh')
 
     return password.readline().strip()

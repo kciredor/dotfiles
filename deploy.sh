@@ -2,9 +2,9 @@
 
 dotfiles_zsh=(zpreztorc zlogin zlogout zprofile zshenv zshrc)
 dotfiles_bash=(inputrc bashrc)
-dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc gnupg/gpg-agentconf gnupg/gpgconf)
+dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc gnupg/gpg-agent.conf gnupg/gpg.conf)
 dotfiles_muttofflineimap=(offlineimap offlineimaprc msmtprc)
-dotfiles_x=(Xmodmap, Xdefaults, xsessionrc, config/awesome/rc.lua)
+dotfiles_x=(Xmodmap Xdefaults Xresources xinitrc config/awesome/battery.lua config/awesome/rc.lua)
 dotfiles_mac=(slate, slatelaunchers)
 dotfiles_other=(vimrc gitconfig gitignore)
 dotfiles_cleanup=(profile zprezto ${dotfiles_zsh[*]} ${dotfiles_bash[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
@@ -79,6 +79,8 @@ read -p "Install X specifics [y/n] " -n 1 -r
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e "\n-- Install X dotfiles\n"
+
+    mkdir -p `pwd`/.config/awesome/
 
     for item in ${dotfiles_x[*]}; do
         ln -s `pwd`/$item ~/.$item

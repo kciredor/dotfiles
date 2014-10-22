@@ -1,7 +1,0 @@
-#!/bin/sh
-xrandr --output VBOX0 --mode 1920x1200 --right-of VBOX1
-xset r rate 170 70
-#xset fp+ /usr/share/fonts/local &
-#setxkbmap dvorak -option caps:swapescape
-xmodmap ~/.Xmodmap
-#exec awesome

@@ -1,42 +1,47 @@
 [general]
 ui = ttyui
 fsync = false
-accounts = WeHandleIt
+accounts = Datafloq
 pythonfile = ~/.offlineimap/support.py
 
-[Account WeHandleIt]
-localrepository = WeHandleIt-Local
-remoterepository = WeHandleIt-Remote
+[Account Datafloq]
+localrepository = Datafloq-Local
+remoterepository = Datafloq-Remote
 autorefresh = 5
+status_backend = sqlite
 
-[Repository WeHandleIt-Local]
+[Repository Datafloq-Local]
 type = Maildir
-localfolders = ~/.maildir/wehandleit
-nametrans = lambda folder: {'inbox':   'INBOX',
-                            'drafts':  '[Gmail]/Concepten',
-                            'sent':    '[Gmail]/Verzonden berichten',
-                            'flagged': '[Gmail]/Met ster',
-                            'spam':    '[Gmail]/Spam',
-                            'trash':   '[Gmail]/Prullenbak',
-                            'archive': '[Gmail]/Alle berichten',
+localfolders = ~/.maildir/datafloq
+nametrans = lambda folder: {'inbox':    'INBOX',
+                            'drafts':   '[Gmail]/Drafts',
+                            'sent':     '[Gmail]/Sent Mail',
+                            'later':    'Later',
+                            'mon_jira': 'mon/Jira',
+                            'flagged':  '[Gmail]/Starred',
+                            'spam':     '[Gmail]/Spam',
+                            'trash':    '[Gmail]/Trash',
+                            'archive':  '[Gmail]/All Mail',
                            }.get(folder, folder)
 
-[Repository WeHandleIt-Remote]
+[Repository Datafloq-Remote]
 type = Gmail
-cert_fingerprint = 89091347184d41768bfc0da9fad94bfe882dd358
-remoteusereval = whiUser()
-remotepasseval = whiPass()
+cert_fingerprint = 5b6ebc897d19317405adb03190cf432a1badcd40
+remoteusereval = dfUser()
+remotepasseval = dfPass()
 realdelete = yes
 maxconnections = 3
 keepconnectionopen = yes
 keepalive = 60
-idlefolders = ['INBOX', '[Gmail]/Verzonden berichten']
-folderfilter = lambda folder: not re.search('(^[Gmail]/Belangrijk$|Mailbox)', folder)
-nametrans = lambda folder: {'INBOX':                       'inbox',
-                            '[Gmail]/Concepten':           'drafts',
-                            '[Gmail]/Verzonden berichten': 'sent',
-                            '[Gmail]/Met ster':            'flagged',
-                            '[Gmail]/Spam':                'spam',
-                            '[Gmail]/Prullenbak':          'trash',
-                            '[Gmail]/Alle berichten':      'archive',
+idlefolders = ['INBOX', '[Gmail]/Sent Mail']
+folderfilter = lambda folder: not re.search('(^[Gmail]/Important$|^mon$)', folder)
+nametrans = lambda folder: {'INBOX':             'inbox',
+                            '[Gmail]/Drafts':    'drafts',
+                            '[Gmail]/Sent Mail': 'sent',
+                            'Later':             'later',
+                            'mon/Jira':          'mon_jira',
+                            '[Gmail]/Starred':   'flagged',
+                            '[Gmail]/Spam':      'spam',
+                            '[Gmail]/Trash':     'trash',
+                            '[Gmail]/All Mail':  'archive',
                            }.get(folder, folder)

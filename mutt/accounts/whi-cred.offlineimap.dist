@@ -1,9 +1,0 @@
-set sendmail      = "/usr/local/bin/msmtp"
-set use_from      = yes
-set realname      = "Roderick Schaefer"
-set from          = roderick@wehandle.it
-set envelope_from = yes
-set signature     = "~/.mutt/accounts/whi-sig"
-
-unmy_hdr X-Someheader
-my_hdr X-WeHandleIt: Development, Beheer, Security and SEO

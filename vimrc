@@ -85,7 +85,7 @@ noremap <silent> <Leader>s :.,/}/sort<CR>:nohl<CR>
 
 " Extension based tab stops (home)
 autocmd BufRead,BufNewFile *.html,*.css,*.less,*.sass,*.jsp setlocal expandtab!
-autocmd BufRead,BufNewFile *.coffee setlocal sw=2 ts=2
+autocmd BufRead,BufNewFile *.coffee *.pp setlocal sw=2 ts=2
 
 " Key mapping
 " leader

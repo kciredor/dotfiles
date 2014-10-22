@@ -2,7 +2,7 @@
 source ~/.mutt/specific_config
 
 # Accounts
-source ~/.mutt/accounts/whi-cred
+source ~/.mutt/accounts/df-cred
 
 # PGP
 source ~/.mutt/crypto

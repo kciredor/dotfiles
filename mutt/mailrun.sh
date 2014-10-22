@@ -6,4 +6,4 @@ if ps $pid &>/dev/null; then
     kill -9 $pid
 fi
 
-/usr/local/bin/offlineimap -o -u quiet &
+/usr/bin/offlineimap -o -u quiet &

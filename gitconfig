@@ -3,7 +3,7 @@
     email = roderick@bigdata-startups.com
 [core]
     excludesfile = ~/.gitignore
-    editor = /usr/local/bin/vim
+    editor = /usr/bin/vim
 [push]
     default = tracking
 [color]
