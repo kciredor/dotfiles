@@ -9,6 +9,7 @@ localrepository = Datafloq-Local
 remoterepository = Datafloq-Remote
 autorefresh = 5
 status_backend = sqlite
+postsynchook = notmuch new
 
 [Repository Datafloq-Local]
 type = Maildir
@@ -16,7 +17,6 @@ localfolders = ~/.maildir/datafloq
 nametrans = lambda folder: {'inbox':    'INBOX',
                             'drafts':   '[Gmail]/Drafts',
                             'sent':     '[Gmail]/Sent Mail',
-                            'later':    'Later',
                             'mon_jira': 'mon/Jira',
                             'flagged':  '[Gmail]/Starred',
                             'spam':     '[Gmail]/Spam',
@@ -26,7 +26,7 @@ nametrans = lambda folder: {'inbox':    'INBOX',
 
 [Repository Datafloq-Remote]
 type = Gmail
-cert_fingerprint = 5b6ebc897d19317405adb03190cf432a1badcd40
+cert_fingerprint = 85dd311c4a1dbcda6fb53e46004386861844ed2e
 remoteusereval = dfUser()
 remotepasseval = dfPass()
 realdelete = yes
@@ -38,7 +38,6 @@ folderfilter = lambda folder: not re.search('(^[Gmail]/Important$|^mon$)', folde
 nametrans = lambda folder: {'INBOX':             'inbox',
                             '[Gmail]/Drafts':    'drafts',
                             '[Gmail]/Sent Mail': 'sent',
-                            'Later':             'later',
                             'mon/Jira':          'mon_jira',
                             '[Gmail]/Starred':   'flagged',
                             '[Gmail]/Spam':      'spam',

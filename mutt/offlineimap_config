@@ -21,8 +21,7 @@ macro               index,pager !   "<clear-flag>N<save-message>+spam<enter>"   
 macro               index,pager gi  "<change-folder>+inbox<enter>"                                        "Go to Inbox"
 macro               index,pager ga  "<change-folder>+archive<enter>"                                      "Go to Archive"
 macro               index,pager gs  "<change-folder>+sent<enter>"                                         "Go to Sent"
-macro               index,pager gl  "<change-folder>+later<enter>"                                        "Go to Later"
 macro               index,pager gt  "<change-folder>+trash<enter>"                                        "Go to Trash"
 macro               index       \Ce "<change-folder>+trash<enter><delete-pattern>~A<enter><sync-mailbox>" "Empty trash"
 
-mailboxes +inbox +archive +sent +later +flagged +drafts +spam +trash
+mailboxes +inbox +archive +sent +flagged +drafts +spam +trash +mon_jira
