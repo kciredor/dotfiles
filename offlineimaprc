@@ -26,7 +26,7 @@ nametrans = lambda folder: {'inbox':    'INBOX',
 
 [Repository Datafloq-Remote]
 type = Gmail
-cert_fingerprint = 85dd311c4a1dbcda6fb53e46004386861844ed2e
+cert_fingerprint = fb679e12a6ff179e00a454da8441cc1b6c3d261f
 remoteusereval = dfUser()
 remotepasseval = dfPass()
 realdelete = yes
