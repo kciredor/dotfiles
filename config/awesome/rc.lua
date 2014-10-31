@@ -222,7 +222,8 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "F11", function() awful.util.spawn_with_shell("sudo systemctl suspend") end),
+    awful.key({ modkey,           }, "F10", function() awful.util.spawn_with_shell("sudo systemctl suspend") end),
+    awful.key({ modkey,           }, "F11", function() awful.util.spawn_with_shell("sudo systemctl hibernate") end),
     awful.key({ modkey,           }, "F12", function() awful.util.spawn("slimlock") end),
 --    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "h",   awful.tag.viewprev       ),
