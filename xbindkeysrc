@@ -1,0 +1,7 @@
+"~/.dotfiles/helpers/brightness.sh -"
+    m:0x0 + c:232
+    XF86MonBrightnessDown
+
+"~/.dotfiles/helpers/brightness.sh +"
+    m:0x0 + c:233
+    XF86MonBrightnessUp

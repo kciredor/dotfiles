@@ -8,4 +8,6 @@ xset r rate 170 70 # Fast keyboard repeat.
 
 setxkbmap dvorak -option caps:swapescape
 xmodmap ~/.Xmodmap
+xbindkeys
+
 exec awesome
