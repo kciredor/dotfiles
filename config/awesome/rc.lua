@@ -44,8 +44,8 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 -- Retina: font 18
-terminal = "xterm -fa 'Monospace' -fs 10"
--- terminal = "urxvt -fn 9x15,terminus"
+-- terminal = "xterm -fa 'Monospace' -fs 10"
+terminal = "urxvt -fn 9x15,terminus"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -245,10 +245,11 @@ globalkeys = awful.util.table.join(
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
+    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx(-1)     end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
 --    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "s", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey, "Shift"   }, "s", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey,           }, "s", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ modkey,           }, "Tab",
         function ()
