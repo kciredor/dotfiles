@@ -5,3 +5,15 @@
 "~/.dotfiles/helpers/brightness.sh +"
     m:0x0 + c:233
     XF86MonBrightnessUp
+
+"/usr/bin/amixer set Master toggle"
+    m:0x0 + c:121
+    XF86AudioMute
+
+"/usr/bin/amixer set Master 1-"
+    m:0x0 + c:122
+    XF86AudioLowerVolume
+
+"/usr/bin/amixer set Master 1+"
+    m:0x0 + c:123
+    XF86AudioRaiseVolume

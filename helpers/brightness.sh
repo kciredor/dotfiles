@@ -22,13 +22,13 @@ brightness=$(head -n 1 $fbrightness)
 maxbrightness=$(head -n 1 $fmaxbrightness)
 
 if [ "+" = $1 ]; then
-    brightness=$((brightness+5))
+    brightness=$((brightness+15))
 
     if [ brightness >= maxbrightness ]; then
         brightness = maxbrightness
     fi
 else
-    brightness=$((brightness-5))
+    brightness=$((brightness-15))
 
     if [ brightness <= 0 ]; then
         brightness = 0
