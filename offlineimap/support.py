@@ -1,7 +1,7 @@
 import os
 
 def dfUser():
-    return 'roderick@bigdata-startups.com'
+    return 'roderick@datafloq.com'
 
 def dfPass():
     password = os.popen('~/.offlineimap/pass.sh')

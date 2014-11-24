@@ -1,6 +1,6 @@
 [user]
     name = Roderick Schaefer
-    email = roderick@bigdata-startups.com
+    email = roderick@datafloq.com
 [core]
     excludesfile = ~/.gitignore
     editor = /usr/bin/vim

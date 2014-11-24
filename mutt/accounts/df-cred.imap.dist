@@ -1,7 +1,7 @@
-set my_df_user=roderick@bigdata-startups.com
+set my_df_user=roderick@datafloq.com
 set my_df_pass="`~/.offlineimap/pass.sh`"
 
-set from      = roderick@bigdata-startups.com
+set from      = roderick@datafloq.com
 set realname  = "Roderick Schaefer"
 set signature = "~/.mutt/accounts/df-sig"
 set imap_user = $my_df_user
