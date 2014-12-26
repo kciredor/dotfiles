@@ -47,7 +47,7 @@ set termencoding=utf-8
 set autoindent                                      " keeps the indent of a previous line when starting a new one
 set sta                                             " enables smarttab: makes autoindent expand tab to shiftwidth nr of spaces
 set sw=4 ts=4                                       " shift width, tab stop
-set colorcolumn=81                                  " try to stick to 80 chars width (python)
+let &colorcolumn = "80,".join(range(101,999),",")   " try to stay below 80 chars, max 100 (python)
 set expandtab                                       " makes a tab a series of spaces
 syntax on                                           " syntax coloring
 set nu                                              " enable linenumbers
