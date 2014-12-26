@@ -8,6 +8,7 @@ pythonfile = ~/.offlineimap/support.py
 localrepository = Datafloq-Local
 remoterepository = Datafloq-Remote
 autorefresh = 5
+quick = 10
 status_backend = sqlite
 postsynchook = notmuch new
 
@@ -26,7 +27,7 @@ nametrans = lambda folder: {'inbox':    'INBOX',
 
 [Repository Datafloq-Remote]
 type = Gmail
-cert_fingerprint = 9d5e4c35f59fcb4edd3fa4d47a453bbc1cf2aff1
+sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
 remoteusereval = dfUser()
 remotepasseval = dfPass()
 realdelete = yes

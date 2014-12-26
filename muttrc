@@ -79,7 +79,7 @@ macro index,pager   b       "<enter-command>toggle sidebar_visible<enter>"     "
 macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 
 # Attachment path prefix
-macro attach s     <save-entry><bol>~/Downloads/<eol>                          "Save attachment to Downloads folder"
+macro attach s     <save-entry><bol>~/down/<eol>                          "Save attachment to Downloads folder"
 
 # Theme: https://github.com/altercation/mutt-colors-solarized
 source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc

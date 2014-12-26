@@ -1,5 +1,5 @@
-xrandr --output DP-1 --mode 1920x1080 --left-of eDP-1
-xrandr --output DP-2 --mode 1280x1024 --left-of DP-1
+xrandr --output DP-1 --mode 1920x1080 --right-of eDP-1
+xrandr --output DP-2 --mode 1280x1024 --right-of DP-1
 
 xset s off         # Don't activate screensaver.
 xset -dpms         # Disable Energy Star features.

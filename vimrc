@@ -22,53 +22,40 @@ Bundle 'bling/vim-airline'
 Bundle 'godlygeek/tabular'
 " Better yanking
 Bundle 'vim-scripts/YankRing.vim'
-" Code snippets
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate'
-" Code completion
-"Bundle 'kana/vim-smartinput'
-"Bundle 'Townk/vim-autoclose'
-"Bundle 'tpope/vim-surround'
 " Syntax checking
 Bundle 'scrooloose/syntastic'
 Bundle 'groenewege/vim-less'
 " Twig / Jinja templating syntax
 Bundle 'estin/htmljinja'
+" Python support
+Bundle 'ervandew/supertab'
+Bundle 'davidhalter/jedi-vim'
 " Javascript support
 Bundle 'pangloss/vim-javascript'
-" Scala support
-Bundle 'derekwyatt/vim-scala'
-" Coffeescript support
-Bundle 'kchmck/vim-coffee-script'
 " Source listing
 Bundle 'majutsushi/tagbar'
-" PHP Completion
-"Bundle 'EvanDotPro/phpcomplete.vim'
-" Python support
-"Bundle 'klen/python-mode'
-" PHP-Cs-Fixer
-Bundle 'stephpy/vim-php-cs-fixer'
 " Close buffer leaving window alone
 Bundle 'rbgrouleff/bclose.vim'
-" Google calendar ;)
-"Bundle 'itchyny/calendar.vim'
+" Todo, fixme listing
+Bundle 'vim-scripts/TaskList.vim'
 
 " General config
-set encoding=utf-8                                  " 1/2 encoding
-scriptencoding utf-8                                " 2/2 encoding
-filetype plugin on                                  " filetype specific plugin loading
-filetype indent on                                  " filetype specific indent
+filetype plugin indent on                           " filetype specific plugin/indent loading
+scriptencoding utf-8                                " force utf-8
+set encoding=utf-8
+set termencoding=utf-8
 set autoindent                                      " keeps the indent of a previous line when starting a new one
 set sta                                             " enables smarttab: makes autoindent expand tab to shiftwidth nr of spaces
 set sw=4 ts=4                                       " shift width, tab stop
+set colorcolumn=81                                  " try to stick to 80 chars width (python)
 set expandtab                                       " makes a tab a series of spaces
 syntax on                                           " syntax coloring
 set nu                                              " enable linenumbers
 set ruler                                           " display the current cursor position in the lower right corner
 set history=1000                                    " command history
 set wildmenu                                        " command completion menu
+set wildmode=longest:full,full
+set completeopt=longest,menuone,preview             " proper omnicompletion
 set title                                           " set window title
 set laststatus=2                                    " always show statusbar
 set scrolloff=3                                     " nr of lines on the edge to scroll
@@ -76,6 +63,13 @@ set showcmd                                         " show commands during typin
 set pastetoggle=<F10>                               " enable paste
 set hidden                                          " buffer switching without saving
 set vb t_vb=                                        " disable beep / flash
+set ttyfast                                         " faster refresh etc.
+set showmatch                                       " show matching brace
+set matchtime=1
+set shortmess+=I                                    " disable vim opening screen.
+if executable("/usr/bin/zsh")
+    set shell=/usr/bin/zsh
+endif
 
 " Editor
 " strip trailing whitespace
@@ -89,7 +83,7 @@ autocmd BufRead,BufNewFile *.coffee *.pp setlocal sw=2 ts=2
 
 " Key mapping
 " leader
-let mapleader=","
+let mapleader = ","
 " map move keys
 nmap <silent> <C-n> :tabprev<CR>
 nmap <silent> <C-.> :tabnext<CR>
@@ -112,9 +106,14 @@ noremap ' `
 noremap ` '
 " f3 clears search marking
 nnoremap <F3> :set hlsearch!<CR>
-" f7 / f8 paste / nopaste
-nnoremap <F7> :set paste<CR>
-nnoremap <F8> :set nopaste<CR>
+" disable ex mode
+map Q <nop>
+" toggle line numbers.
+nmap <F11> :set number!<CR>
+" disable help key
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 
 " Backup dir
 set directory=~/.vim/backup//
@@ -138,14 +137,10 @@ nmap :ss :set spell<CR>
 nmap :uss :set nospell<CR>
 
 " Color schemes
-if $TERM == 'linux'
-    colorscheme delek
-else
-    set t_Co=256                                    " color terminal
-    colorscheme molokai
-    let g:molokai_original = 1
-    set background=dark
-endif
+set t_Co=256                                        " color terminal
+colorscheme molokai
+let g:molokai_original = 1
+set background=dark
 
 " App specific
 
@@ -179,7 +174,6 @@ let g:ctrlp_custom_ignore = {
 \ 'dir':  '\v[\/](\.git|\.hg|\.svn|app/cache|vendor)$',
 \ 'file': '.pyc',
 \ }
-
 let g:ctrlp_prompt_mappings = {
   \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
   \ }
@@ -189,27 +183,17 @@ nmap <silent> <Leader>r :MRU<CR>
 let MRU_Window_Height = 12
 let g:pymode_lint_hold = 0
 
-" snipMate: reload all snippets
-"nmap <Leader>r :call ReloadAllSnippets()<CR>
-
-" php-cs-fixer
-nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()
-nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()
-let g:php_cs_fixer_path = get(g:, 'php_cs_fixer_path', '/usr/local/bin/php-cs-fixer.phar')
-let g:php_cs_fixer_enable_default_mapping = 0
-
 " syntastic
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_checker_args = '--rcfile=~/.pylintrc'
-let g:syntastic_check_on_open=0
-let g:syntastic_enable_signs=1
-let g:syntastic_error_symbol='!'
-let g:syntastic_warning_symbol='?'
-highlight SyntasticErrorLine guibg=#5c0b09
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = '!'
+let g:syntastic_warning_symbol = '?'
+highlight SyntasticErrorLine guibg = #5c0b09
 
 " airline
-let g:airline_theme="luna"
-let g:airline_powerline_fonts=0
+let g:airline_theme = "luna"
+let g:airline_powerline_fonts = 0
 " airline tabs
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -220,7 +204,7 @@ nmap <silent> <leader>T :TagbarClose<CR>
 
 " jinja
 if has('autocmd')
-  au BufRead,BufNewFile *.twig        setlocal filetype=htmljinja
+  au BufRead,BufNewFile *.twig setlocal filetype=htmljinja
 endif
 
 " yankring
@@ -240,14 +224,25 @@ vmap <leader><tab>: :Tab /:\zs<cr>
 nmap <leader><tab>> :Tab /=><cr>
 vmap <leader><tab>> :Tab /=><cr>
 
-" python-mode
-" let g:pymode_folding=0
-" let g:pymode_syntax_slow_sync=0
-" let g:pymode_rope_guess_project=0
-" let g:pymode_paths=['~/src']
-" let g:pymode_lint=0
-" let g:pymode_lint_config = "$HOME/.pylintrc"
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
 
-" google calendar
-"let g:calendar_google_calendar = 1
-"let g:calendar_google_task = 1
+" jedi-vim
+let g:jedi#goto_assignments_command = "<leader>G"
+let g:jedi#goto_definitions_command = "<leader>D"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>N"
+let g:jedi#rename_command = "<leader>R"
+
+" tasklist
+nmap <leader>T <Plug>TaskList
+
+" virtualenv / django completion
+let django_settings_file = system('find . -maxdepth 2 -name settings.py')
+if !empty(django_settings_file)
+  execute 'python import os, sys'
+  execute 'python sys.path.append("v/lib/python2.7/site-packages")'
+  let outarray = split(django_settings_file, '[\/]\+')
+  let django_module = outarray[-2] . '.' . 'settings'
+  execute 'python os.environ.setdefault("DJANGO_SETTINGS_MODULE", "' . django_module . '")'
+endif
