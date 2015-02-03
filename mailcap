@@ -1,7 +1,10 @@
 text/html; elinks -dump %s ; copiousoutput
-document/pdf; ~/.mutt/view_attachment.sh %s -
-application/octet-stream; ~/.mutt/view_attachment.sh %s -
-mime_lookup application/octet-stream
-video/*; ~/.mutt/view_attachment.sh %s -
-image/*; ~/.mutt/view_attachment.sh %s -
-application/*; ~/.mutt/view_attachment.sh %s -
+application/pdf; xpdf %s -
+video/*; vlc %s -
+image/*; feh -. %s -
+application/msword; libreoffice %s -
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice %s -
+application/vnd.ms-excel; libreoffice %s -
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; libreoffice %s -
+application/vnd.ms-powerpoint; libreoffice %s -
+application/vnd.openxmlformats-officedocument.presentationml.presentation; libreoffice %s -

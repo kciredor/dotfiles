@@ -32,6 +32,8 @@ Bundle 'ervandew/supertab'
 Bundle 'davidhalter/jedi-vim'
 " Javascript support
 Bundle 'pangloss/vim-javascript'
+" Ruby support (MSF)
+Bundle 'vim-ruby/vim-ruby'
 " Source listing
 Bundle 'majutsushi/tagbar'
 " Close buffer leaving window alone
@@ -47,7 +49,7 @@ set termencoding=utf-8
 set autoindent                                      " keeps the indent of a previous line when starting a new one
 set sta                                             " enables smarttab: makes autoindent expand tab to shiftwidth nr of spaces
 set sw=4 ts=4                                       " shift width, tab stop
-let &colorcolumn = "80,".join(range(101,999),",")   " try to stay below 80 chars, max 100 (python)
+set colorcolumn=80                                  " try to stay below 80 chars, regardless of filetype
 set expandtab                                       " makes a tab a series of spaces
 syntax on                                           " syntax coloring
 set nu                                              " enable linenumbers
@@ -80,6 +82,7 @@ noremap <silent> <Leader>s :.,/}/sort<CR>:nohl<CR>
 " Extension based tab stops (home)
 autocmd BufRead,BufNewFile *.html,*.css,*.less,*.sass,*.jsp setlocal expandtab!
 autocmd BufRead,BufNewFile *.coffee *.pp setlocal sw=2 ts=2
+autocmd BufRead,BufNewFile *.py let &colorcolumn = "80,".join(range(101,999),",") " try to stay below 80 chars, max 100 (python)
 
 " Key mapping
 " leader

@@ -1,9 +1,9 @@
 import os
 
-def dfUser():
-    return 'roderick@datafloq.com'
+def whiUser():
+    return 'roderick@wehandle.it'
 
-def dfPass():
+def whiPass():
     password = os.popen('~/.offlineimap/pass.sh')
 
     return password.readline().strip()

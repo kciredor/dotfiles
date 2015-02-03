@@ -11,7 +11,7 @@
 # configured here named ".notmuch".
 #
 [database]
-path=/home/kciredor/.maildir/datafloq/archive
+path=/home/kciredor/.maildir/wehandleit/archive
 
 # User configuration
 #
@@ -30,8 +30,7 @@ path=/home/kciredor/.maildir/datafloq/archive
 #
 [user]
 name=Roderick Schaefer
-primary_email=roderick@datafloq.com
-other_email=roderick@bigdata-startups.com;roderick@wehandle.it;
+primary_email=roderick@wehandle.it
 
 # Configuration for "notmuch new"
 #

@@ -1,0 +1,11 @@
+set my_whi_user = roderick@wehandle.it
+set my_whi_pass = "`~/.offlineimap/pass.sh`"
+
+set from        = roderick@wehandle.it
+set realname    = "Roderick Schaefer"
+set signature   = "~/.mutt/accounts/whi-sig"
+set imap_user   = $my_whi_user
+set imap_pass   = $my_whi_pass
+set smtp_url    ="smtp://$my_whi_user@smtp.gmail.com:587" smtp_pass="$my_whi_pass"
+
+my_hdr X-WeHandleIt: Development, Operations, Security
