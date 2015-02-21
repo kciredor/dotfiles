@@ -30,6 +30,8 @@ Bundle 'estin/htmljinja'
 " Python support
 Bundle 'ervandew/supertab'
 Bundle 'davidhalter/jedi-vim'
+" Go support.
+Bundle 'fatih/vim-go'
 " Javascript support
 Bundle 'pangloss/vim-javascript'
 " Ruby support (MSF)
@@ -239,6 +241,12 @@ let g:jedi#rename_command = "<leader>R"
 
 " tasklist
 nmap <leader>T <Plug>TaskList
+
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
 
 " virtualenv / django completion
 let django_settings_file = system('find . -maxdepth 2 -name settings.py')
