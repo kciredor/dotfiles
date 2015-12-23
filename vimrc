@@ -83,7 +83,7 @@ noremap <silent> <Leader>s :.,/}/sort<CR>:nohl<CR>
 
 " Extension based tab stops (home)
 autocmd BufRead,BufNewFile *.html,*.css,*.less,*.sass,*.jsp setlocal expandtab!
-autocmd BufRead,BufNewFile *.coffee *.pp setlocal sw=2 ts=2
+autocmd BufRead,BufNewFile *.coffee *.pp *.yml *.yaml setlocal sw=2 ts=2
 autocmd BufRead,BufNewFile *.py let &colorcolumn = "80,".join(range(101,999),",") " try to stay below 80 chars, max 100 (python)
 
 " Key mapping

@@ -3,6 +3,7 @@ ui = ttyui
 fsync = false
 accounts = WeHandleIt
 pythonfile = ~/.offlineimap/support.py
+socktimeout = 90
 
 [Account WeHandleIt]
 localrepository = WeHandleIt-Local
@@ -33,7 +34,7 @@ maxconnections = 3
 keepconnectionopen = yes
 keepalive = 60
 idlefolders = ['INBOX', '[Gmail]/Sent Mail']
-folderfilter = lambda folder: folder not in ['[Gmail]/Important']
+folderfilter = lambda folder: not re.search('(Important|Mailbox)', folder)
 nametrans = lambda folder: {'INBOX':             'inbox',
                             '[Gmail]/Drafts':    'drafts',
                             '[Gmail]/Sent Mail': 'sent',

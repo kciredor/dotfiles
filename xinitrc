@@ -11,4 +11,7 @@ setxkbmap dvorak -option caps:swapescape
 xmodmap ~/.Xmodmap
 xbindkeys
 
+autocutsel -fork &
+autocutsel -selection PRIMARY -fork &
+
 exec awesome

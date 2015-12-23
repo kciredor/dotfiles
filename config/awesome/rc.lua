@@ -46,6 +46,7 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 -- Retina: font 18
 -- terminal = "xterm -fa 'Monospace' -fs 10"
 terminal = "urxvt -fn 9x15,terminus"
+-- terminal = "xfce4-terminal"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 

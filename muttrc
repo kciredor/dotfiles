@@ -20,6 +20,9 @@ unset record                                                                   #
 set include                                                                    # include original message in reply
 set sort              = 'reverse-threads'
 set sort_aux          = 'last-date-received'
+set strict_threads    = "no"                                                   # thread only by in-reply-to and references, not subject
+unset collapse_unread
+folder-hook . "exec collapse-all"
 set auto_tag                                                                   # do not require tag prefix when having tagged messages
 set sig_dashes        = no
 set sig_on_top
@@ -27,11 +30,13 @@ set fast_reply                                                                 #
 set reply_to                                                                   # use this header
 set pager_index_lines = 15
 set to_chars          = ' +>-<L'
+set sleep_time        = 0
 unset beep
 unset resolve                                                                  # do not move cursor to next message
 set menu_scroll                                                                # do not clear screen with large menus
 set tilde                                                                      # vim tilde behaviour
 unset markers                                                                  # hide + prefix in pager
+unset mark_old                                                                 # do not mark messages as old
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
@@ -69,14 +74,16 @@ set sidebar_width   = 25
 set sidebar_visible = yes
 set sidebar_delim   = '|'
 set sidebar_sort    = yes
+#set sidebar_format  = '%B %S (%N)'
 color sidebar_new   yellow default
 bind  index,pager   <down>  sidebar-next
 bind  index,pager   <up>    sidebar-prev
 bind  index,pager   <right> sidebar-open
 macro index,pager   b       "<enter-command>toggle sidebar_visible<enter>"     "Toggle sidebar"
 
-# Urlview
+# Urlview/ HTML
 macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro attach H     "<pipe-entry>rm -f ~/.mutt/cache/mail.html && cat > ~/.mutt/cache/mail.html && chrome ~/.mutt/cache/mail.html<enter>" 'Open in browser'
 
 # Attachment path prefix
 macro attach s     <save-entry><bol>~/down/<eol>                          "Save attachment to Downloads folder"
