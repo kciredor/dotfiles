@@ -11,6 +11,8 @@ setxkbmap dvorak -option caps:swapescape
 xmodmap ~/.Xmodmap
 xbindkeys
 
+sudo tee /sys/class/leds/smc::kbd_backlight/brightness <<< 200
+
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
 

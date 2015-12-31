@@ -319,7 +319,25 @@ clientkeys = awful.util.table.join(
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical
-        end)
+        end),
+    awful.key({ modkey, "Shift"   }, ",",
+      function (c)
+          local curidx = awful.tag.getidx()
+          if curidx == 1 then
+              awful.client.movetotag(tags[client.focus.screen][9])
+          else
+              awful.client.movetotag(tags[client.focus.screen][curidx - 1])
+          end
+      end),
+    awful.key({ modkey, "Shift"   }, ".",
+      function (c)
+          local curidx = awful.tag.getidx()
+          if curidx == 9 then
+              awful.client.movetotag(tags[client.focus.screen][1])
+          else
+              awful.client.movetotag(tags[client.focus.screen][curidx + 1])
+          end
+      end)
 )
 
 -- Bind all key numbers to tags.
