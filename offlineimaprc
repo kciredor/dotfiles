@@ -27,6 +27,7 @@ nametrans = lambda folder: {'inbox':    'INBOX',
 [Repository WeHandleIt-Remote]
 type = Gmail
 sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+auth_mechanisms = LOGIN
 remoteusereval = whiUser()
 remotepasseval = whiPass()
 realdelete = yes
