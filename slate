@@ -31,6 +31,7 @@ bind backslash:${hyper}               relaunch
 bind return:${hyper}                  shell ~/.slatelaunchers/terminal
 bind c:${hyper}                       shell ~/.slatelaunchers/chrome
 bind m:${hyper}                       shell ~/.slatelaunchers/mail
+bind space:${hyper}                   shell ~/.slatelaunchers/lockscreen
 bind left:${hyper}                    ${lefthalf}
 bind right:${hyper}                   ${righthalf}
 bind up:${hyper}                      ${tophalf}

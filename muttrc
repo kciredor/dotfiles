@@ -83,7 +83,8 @@ macro index,pager   b       "<enter-command>toggle sidebar_visible<enter>"     "
 
 # Urlview/ HTML
 macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
-macro attach H     "<pipe-entry>rm -f ~/.mutt/cache/mail.html && cat > ~/.mutt/cache/mail.html && chrome ~/.mutt/cache/mail.html<enter>" 'Open in browser'
+# macro attach H     "<pipe-entry>rm -f ~/.mutt/cache/mail.html && cat > ~/.mutt/cache/mail.html && chrome ~/.mutt/cache/mail.html<enter>" 'Open in browser'
+macro attach H     "<pipe-entry>rm -f ~/.mutt/cache/mail.html && cat > ~/.mutt/cache/mail.html && open ~/.mutt/cache/mail.html<enter>" 'Open in browser'
 
 # Attachment path prefix
 macro attach s     <save-entry><bol>~/down/<eol>                          "Save attachment to Downloads folder"
