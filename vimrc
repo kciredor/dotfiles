@@ -17,7 +17,8 @@ Bundle 'vim-scripts/mru.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 " Status bar pimp
-Bundle 'bling/vim-airline'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 " Tabular aligning
 Bundle 'godlygeek/tabular'
 " Better yanking
@@ -70,9 +71,10 @@ set vb t_vb=                                        " disable beep / flash
 set ttyfast                                         " faster refresh etc.
 set showmatch                                       " show matching brace
 set matchtime=1
-set shortmess+=I                                    " disable vim opening screen.
-if executable("/usr/bin/zsh")
-    set shell=/usr/bin/zsh
+set shortmess+=I                                    " disable vim opening screen
+set clipboard=unnamed                               " use system clipboard
+if executable("/usr/local/bin/zsh")
+    set shell=/usr/local/bin/zsh
 endif
 
 " Editor
@@ -234,7 +236,7 @@ let g:SuperTabDefaultCompletionType = "context"
 
 " jedi-vim
 let g:jedi#goto_assignments_command = "<leader>G"
-let g:jedi#goto_definitions_command = "<leader>D"
+let g:jedi#goto_definitions_command = "<leader>E"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>N"
 let g:jedi#rename_command = "<leader>R"
