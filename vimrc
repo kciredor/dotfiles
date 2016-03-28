@@ -30,7 +30,8 @@ Bundle 'groenewege/vim-less'
 Bundle 'estin/htmljinja'
 " Python support
 Bundle 'ervandew/supertab'
-Bundle 'davidhalter/jedi-vim'
+" FIXME
+" Bundle 'davidhalter/jedi-vim'
 " Go support.
 Bundle 'fatih/vim-go'
 " Javascript support
