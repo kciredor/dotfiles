@@ -21,5 +21,5 @@ set crypt_replyencrypt=yes
 set crypt_replysignencrypted=yes
 set crypt_verify_sig=yes
 
-# set pgp_mime_signature_filename="signature.asc"
-# set pgp_mime_signature_description="Digital signature"
+set pgp_mime_signature_filename="signature.asc"
+set pgp_mime_signature_description="Digital signature"
