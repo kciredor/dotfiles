@@ -1,22 +1,37 @@
-"~/.dotfiles/helpers/brightness.sh -"
-    m:0x0 + c:232
-    XF86MonBrightnessDown
-
-"~/.dotfiles/helpers/brightness.sh +"
-    m:0x0 + c:233
-    XF86MonBrightnessUp
-
-# "/usr/bin/amixer set Master toggle"
-"pactl set-sink-mute 1 toggle"
-    m:0x0 + c:121
+# Audio.
+"amixer -c 0 set Master toggle"
     XF86AudioMute
 
-# "/usr/bin/amixer set Master 1-"
-"pactl set-sink-mute 1 false ; pactl set-sink-volume 1 -1%"
-    m:0x0 + c:122
+"amixer -c 0 set Master 5-"
     XF86AudioLowerVolume
 
-# "/usr/bin/amixer set Master 1+"
-"pactl set-sink-mute 1 false ; pactl set-sink-volume 1 +1%"
-    m:0x0 + c:123
+"amixer -c 0 set Master 5+"
     XF86AudioRaiseVolume
+
+
+# Brightness.
+"xbacklight -dec 5"
+    XF86MonBrightnessDown
+
+"xbacklight -inc 5"
+    XF86MonBrightnessUp
+
+
+# Spotify.
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+    XF86AudioPlay
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
+    XF86AudioStop
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+    XF86AudioPrev
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Nextj
+    XF86AudioNext
+
+
+# TODO: toggle resolution
+# TODO: search (run chrome -> google.com)
+# TODO: keyboard backlight toggle
+# TODO: wifi toggle
