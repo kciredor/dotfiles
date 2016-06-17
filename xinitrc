@@ -11,4 +11,6 @@ xbindkeys
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
 
+nm-applet &
+
 exec awesome

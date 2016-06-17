@@ -34,7 +34,7 @@ realdelete = yes
 maxconnections = 3
 keepconnectionopen = yes
 keepalive = 60
-idlefolders = ['INBOX', '[Gmail]/Sent Mail']
+idlefolders = ['INBOX']
 folderfilter = lambda folder: not re.search('(Important|Mailbox)', folder)
 nametrans = lambda folder: {'INBOX':             'inbox',
                             '[Gmail]/Drafts':    'drafts',

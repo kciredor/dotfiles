@@ -1,3 +1,5 @@
+-- HiDPI: increase font size in /usr/share/awesome/themes/default/theme.lua from 8 to 16
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -43,10 +45,7 @@ end
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
--- Retina: font 18
--- terminal = "xterm -fa 'Monospace' -fs 10"
-terminal = "urxvt -fn 9x15,terminus"
--- terminal = "xfce4-terminal"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -491,7 +490,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Battery
-batterywidget_timer = timer({timeout = 1})
+batterywidget_timer = timer({timeout = 2})
 batterywidget_timer:connect_signal("timeout", function()
     batterywidget:set_text(batteryInfo("BAT0"))
 end)

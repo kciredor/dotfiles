@@ -1,5 +1,5 @@
 # Audio.
-"amixer -c 0 set Master toggle"
+"amixer -c 0 set Master toggle && (amixer -c 0 get Master | grep '\[on\]' && notify-send 'Volume' 'ON') || notify-send 'Volume' 'OFF'"
     XF86AudioMute
 
 "amixer -c 0 set Master 5-"
@@ -27,7 +27,7 @@
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
     XF86AudioPrev
 
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Nextj
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
     XF86AudioNext
 
 
