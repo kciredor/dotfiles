@@ -1,11 +1,11 @@
 # Audio.
-"amixer -c 0 set Master toggle && (amixer -c 0 get Master | grep '\[on\]' && notify-send 'Volume' 'ON') || notify-send 'Volume' 'OFF'"
+"amixer set Master toggle && amixer set -c 0 Headphone unmute 100% && (amixer get Master | grep '\[on\]' && notify-send 'Volume' 'ON') || notify-send 'Volume' 'OFF'"
     XF86AudioMute
 
-"amixer -c 0 set Master 5-"
+"amixer set -c 0 Master 5-"
     XF86AudioLowerVolume
 
-"amixer -c 0 set Master 5+"
+"amixer set Master unmute && amixer set -c 0 Headphone unmute 100% && amixer set -c 0 Master 5+"
     XF86AudioRaiseVolume
 
 
@@ -33,5 +33,5 @@
 
 # TODO: toggle resolution
 # TODO: search (run chrome -> google.com)
-# TODO: keyboard backlight toggle
 # TODO: wifi toggle
+# TODO: keyboard backlight toggle -> kernel 4.6, started working by itself
