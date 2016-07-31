@@ -12,5 +12,6 @@ autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
 
 nm-applet &
+hp-systray &
 
 exec awesome

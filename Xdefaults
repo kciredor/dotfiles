@@ -37,6 +37,7 @@ URxvt*inheritPixmap:      true
 URxvt*tintColor:          white
 URxvt*shading:            5
 URxvt*font:               xft:DejaVu Sans Mono:size=10
+URxvt*cursorBlink:        false
 
 xterm*background:         black
 xterm*foreground:         white

@@ -46,6 +46,7 @@ beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
+-- terminal = "xterm -fa 'Monospace' -fs 11"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -94,8 +95,8 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
+-- { "manual", terminal .. " -e man awesome" },
+-- { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
@@ -222,8 +223,8 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "F10", function() awful.util.spawn_with_shell("sudo systemctl suspend") end),
-    awful.key({ modkey,           }, "F11", function() awful.util.spawn_with_shell("sudo systemctl hibernate") end),
+    awful.key({ modkey,           }, "F10", function() awful.util.spawn_with_shell("sudo systemctl hibernate") end),
+    awful.key({ modkey,           }, "F11", function() awful.util.spawn_with_shell("sudo systemctl suspend") end),
     awful.key({ modkey,           }, "F12", function() awful.util.spawn("slimlock") end),
 --    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "h",   awful.tag.viewprev       ),
@@ -413,6 +414,11 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
+
+    -- Virtualbox fullscreen.
+    -- { rule = { class = "VirtualBox" },
+    --   except = { name = "Oracle VM VirtualBox Manager" },
+    --     properties = { floating = true } },
 }
 -- }}}
 

@@ -4,9 +4,9 @@ dotfiles_zsh=(zpreztorc zlogin zlogout zprofile zshenv zshrc)
 dotfiles_bash=(inputrc bashrc)
 dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc urlview gnupg/gpg-agent.conf gnupg/gpg.conf)
 dotfiles_muttofflineimap=(offlineimap offlineimaprc msmtprc notmuch-config)
-dotfiles_x=(Xdefaults xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
-dotfiles_mac=(tmux.conf slate slatelaunchers)
-dotfiles_other=(vimrc gitconfig gitignore)
+dotfiles_x=(Xdefaults Xmodmap xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
+dotfiles_mac=(slate slatelaunchers)
+dotfiles_other=(vimrc gitconfig gitignore tmux.conf)
 dotfiles_cleanup=(profile zprezto ${dotfiles_zsh[*]} ${dotfiles_bash[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 
 echo -e "\nkciredor's dotfiles deploy\n\n** Have you cloned dotfiles recursively? If not: git submodule update --init --recursive before you deploy **\n"

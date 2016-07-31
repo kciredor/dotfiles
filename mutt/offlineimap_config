@@ -22,7 +22,9 @@ folder-hook flagged 'macro index,pager Y "<flag-message><save-message>+inbox<ent
 macro               index,pager !   "<clear-flag>N<save-message>+spam<enter>"                                     "Report spam"
 macro               index,pager gi  "<change-folder>+inbox<enter>"                                                "Go to Inbox"
 macro               index,pager ga  "<change-folder>+archive<enter>"                                              "Go to Archive"
+macro               index,pager gd  "<change-folder>+drafts<enter>"                                               "Go to Drafts"
 macro               index,pager gs  "<change-folder>+sent<enter>"                                                 "Go to Sent"
+macro               index,pager gf  "<change-folder>+flagged<enter>"                                              "Go to Flagged"
 macro               index,pager gt  "<change-folder>+trash<enter>"                                                "Go to Trash"
 macro               index       \Ce "<change-folder>+trash<enter><delete-pattern>~A<enter><sync-mailbox>"         "Empty trash"
 
