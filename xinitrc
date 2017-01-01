@@ -4,14 +4,12 @@ xset s noexpose    # Disallow window exposure.
 xset s noblank     # Don't blank the video device.
 xset r rate 170 70 # Fast keyboard repeat.
 
-setxkbmap dvorak -option caps:swapescape
-xmodmap ~/.Xmodmap
-xbindkeys
+xbindkeys &
+nm-applet &
+hp-systray &
+pasystray &
 
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
-
-nm-applet &
-hp-systray &
 
 exec awesome

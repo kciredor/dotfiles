@@ -1,10 +1,9 @@
-Xft.dpi: 192
 Xft.antialias:            true
 Xft.hinting:              true
 Xft.rgba:                 rgb
 Xft.hintstyle:            hintfull
 
-URxvt*termName:           screen-256color
+URxvt*termName:           xterm-256color
 URxvt*scrollBar:          false
 URxvt*scrollTtyOutput:    false
 URxvt*scrollWithBuffer:   true
@@ -36,7 +35,7 @@ URxvt*cursorBlink:        true
 URxvt*inheritPixmap:      true
 URxvt*tintColor:          white
 URxvt*shading:            5
-URxvt*font:               xft:DejaVu Sans Mono:size=10
+URxvt*font:               xft:DejaVu Sans Mono:size=8
 URxvt*cursorBlink:        false
 
 xterm*background:         black

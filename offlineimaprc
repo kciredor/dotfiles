@@ -13,7 +13,7 @@ quick = 10
 postsynchook = notmuch new
 
 [Repository WeHandleIt-Local]
-type = Maildir
+type = GmailMaildir
 localfolders = ~/.maildir/wehandleit
 nametrans = lambda folder: {'inbox':    'INBOX',
                             'drafts':   '[Gmail]/Drafts',

@@ -9,9 +9,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Colorscheme
 Bundle 'tomasr/molokai'
+Bundle 'josuegaleas/jay'
+Bundle 'bitterjug/vim-colors-bitterjug'
+Bundle 'albertocg/contrastneed-theme'
+Bundle 'philpl/vim-adventurous'
 " File lookup
 Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'vim-scripts/mru.vim'
 " Git support
 Bundle 'tpope/vim-fugitive'
@@ -30,6 +34,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'estin/htmljinja'
 " Python support
 Bundle 'ervandew/supertab'
+Bundle 'fisadev/vim-isort'
 " FIXME
 " Bundle 'davidhalter/jedi-vim'
 " Go support.
@@ -146,9 +151,7 @@ nmap :uss :set nospell<CR>
 
 " Color schemes
 set t_Co=256                                        " color terminal
-colorscheme molokai
-let g:molokai_original = 1
-set background=dark
+colorscheme jay
 
 " App specific
 
@@ -193,6 +196,7 @@ let g:pymode_lint_hold = 0
 
 " syntastic
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_go_checkers = ['go']
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = '!'
@@ -200,7 +204,7 @@ let g:syntastic_warning_symbol = '?'
 highlight SyntasticErrorLine guibg = #5c0b09
 
 " airline
-let g:airline_theme = "luna"
+let g:airline_theme = "lucius"
 let g:airline_powerline_fonts = 0
 " airline tabs
 let g:airline#extensions#tabline#enabled = 1
