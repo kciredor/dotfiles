@@ -6,7 +6,6 @@ umask 027
 
 export EDITOR=vim
 export GOPATH=~/dev/go
-export GPG_TTY=$(tty)
 export KEYTIMEOUT=1
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -34,6 +33,7 @@ antigen theme kciredor/dotfiles themes/kciredor
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 
+antigen bundle ssh-agent
 antigen bundle gpg-agent
 antigen bundle tmux
 antigen bundle tmuxinator
