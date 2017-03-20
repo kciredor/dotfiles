@@ -58,7 +58,9 @@ if [[ `uname` == 'Darwin' ]]; then
     antigen bundle osx
 fi
 
-# TODO: antigen bundle archlinux
+if [[ -f /etc/arch-release ]]; then
+    antigen bundle archlinux
+fi
 
 antigen apply
 
