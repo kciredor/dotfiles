@@ -1,13 +1,13 @@
 #!/bin/bash
 
-dotfiles_zsh=(zpreztorc zlogin zlogout zprofile zshenv zshrc)
+dotfiles_zsh=(zshrc antigen.zsh)
 dotfiles_bash=(inputrc bashrc)
 dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc urlview gnupg/gpg-agent.conf gnupg/gpg.conf)
 dotfiles_muttofflineimap=(offlineimap offlineimaprc msmtprc notmuch-config)
 dotfiles_x=(Xdefaults Xmodmap xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
 dotfiles_mac=(slate slatelaunchers)
 dotfiles_other=(vimrc gitconfig gitignore tmux.conf)
-dotfiles_cleanup=(profile zprezto ${dotfiles_zsh[*]} ${dotfiles_bash[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
+dotfiles_cleanup=(profile ${dotfiles_zsh[*]} ${dotfiles_bash[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 
 echo -e "\nkciredor's dotfiles deploy\n\n** Have you cloned dotfiles recursively? If not: git submodule update --init --recursive before you deploy **\n"
 
@@ -27,10 +27,8 @@ read -p "Use zsh? (otherwise installs bash dotfiles) [y/n] " -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e "\n-- Installing zsh\n"
 
-    ln -s `pwd`/zprezto ~/.zprezto
-
     for item in ${dotfiles_zsh[*]}; do
-        ln -s ~/.zprezto/runcoms/$item ~/.$item
+        ln -s `pwd`/$item ~/.$item
     done
 else
     echo -e "\n-- Installing bash\n"

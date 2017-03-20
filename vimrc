@@ -79,8 +79,8 @@ set showmatch                                       " show matching brace
 set matchtime=1
 set shortmess+=I                                    " disable vim opening screen
 " set clipboard=unnamed                               " use system clipboard
-if executable("/usr/bin/zsh")
-    set shell=/usr/bin/zsh
+if executable("zsh")
+    set shell=zsh
 endif
 
 " Editor
