@@ -20,7 +20,7 @@ if [[ `uname` == 'Darwin' ]]; then
     export TERM=xterm-256color
 fi
 
-export PATH="$HOME/dev/go/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # Antigen plugins.
 [ -f ~/.antigen.zsh ] || (echo "Fetching antigen.zsh..." && curl -o ~/.antigen.zsh -s https://raw.githubusercontent.com/zsh-users/antigen/develop/bin/antigen.zsh)
@@ -33,21 +33,16 @@ antigen theme kciredor/dotfiles themes/kciredor
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 
-antigen bundle ssh-agent
-antigen bundle gpg-agent
-antigen bundle tmux
-antigen bundle tmuxinator
-antigen bundle history
 antigen bundle vi-mode
+antigen bundle history
 antigen bundle autojump
+antigen bundle tmux
 
 antigen bundle git
 antigen bundle docker
 antigen bundle aws
 antigen bundle golang
-antigen bundle pip
 antigen bundle python
-antigen bundle virtualenv
 
 antigen bundle nmap
 
@@ -56,10 +51,15 @@ if [[ `uname` == 'Darwin' ]]; then
     antigen bundle brew-cask
     antigen bundle gem
     antigen bundle osx
+
+    antigen bundle ssh-agent
 fi
 
 if [[ -f /etc/arch-release ]]; then
     antigen bundle archlinux
+
+    antigen bundle ssh-agent
+    antigen bundle gpg-agent
 fi
 
 antigen apply
