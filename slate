@@ -40,3 +40,9 @@ bind left:alt,shift                   nudge -100 +0
 bind right:alt,shift                  nudge +100 +0
 bind up:alt,shift                     nudge +0 -100
 bind down:alt,shift                   nudge +0 +100
+
+bind c:cmd,shift                      focus 'Google Chrome'
+bind i:cmd,shift                      focus 'iTerm'
+bind f:cmd,shift                      focus 'Franz'
+bind o:cmd,shift                      focus 'Microsoft Outlook'
+bind s:cmd,shift                      focus 'Spotify'
