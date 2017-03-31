@@ -37,6 +37,7 @@ antigen bundle vi-mode
 antigen bundle history
 antigen bundle autojump
 antigen bundle tmux
+antigen bundle thefuck
 
 antigen bundle git
 antigen bundle docker
