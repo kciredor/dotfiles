@@ -23,7 +23,7 @@ fi
 export PATH="$GOPATH/bin:$PATH"
 
 # Antigen plugins.
-[ -f ~/.antigen.zsh ] || (echo "Fetching antigen.zsh..." && curl -o ~/.antigen.zsh -s https://raw.githubusercontent.com/zsh-users/antigen/develop/bin/antigen.zsh)
+[ -f ~/.antigen.zsh ] || (echo "Fetching antigen.zsh..." && curl -o ~/.antigen.zsh -s https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh)
 
 source ~/.antigen.zsh
 
