@@ -78,7 +78,7 @@ function show_battery_warning()
     naughty.notify{
     icon = "/home/pashik/.config/awesome/nichosi.png",
     icon_size=100,
-    text = "Huston, we have a problem",
+    text = "Need power",
     title = "Battery is dying",
     timeout = 5, hover_timeout = 0.5,
     position = "bottom_right",

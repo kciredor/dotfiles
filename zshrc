@@ -59,11 +59,16 @@ fi
 if [[ -f /etc/arch-release ]]; then
     antigen bundle archlinux
 
-    antigen bundle ssh-agent
     antigen bundle gpg-agent
+    unset SSH_AGENT_PID
+    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+    gpg-connect-agent updatestartuptty /bye >/dev/null
 fi
 
 antigen apply
 
-# Device specifics.
 [ -f ~/.custom_alias ] && source ~/.custom_alias
+
+if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
+  exec startx
+fi

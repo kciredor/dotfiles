@@ -9,9 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Colorscheme
 Bundle 'tomasr/molokai'
-Bundle 'josuegaleas/jay'
 Bundle 'bitterjug/vim-colors-bitterjug'
-Bundle 'albertocg/contrastneed-theme'
 Bundle 'philpl/vim-adventurous'
 " File lookup
 Bundle 'scrooloose/nerdtree'
@@ -49,6 +47,8 @@ Bundle 'majutsushi/tagbar'
 Bundle 'rbgrouleff/bclose.vim'
 " Todo, fixme listing
 Bundle 'vim-scripts/TaskList.vim'
+" SSL checks.
+Plugin 'chr4/sslsecure.vim'
 
 " General config
 filetype plugin indent on                           " filetype specific plugin/indent loading
@@ -151,7 +151,7 @@ nmap :uss :set nospell<CR>
 
 " Color schemes
 set t_Co=256                                        " color terminal
-colorscheme jay
+colorscheme adventurous
 
 " App specific
 
@@ -264,3 +264,6 @@ if !empty(django_settings_file)
   let django_module = outarray[-2] . '.' . 'settings'
   execute 'python os.environ.setdefault("DJANGO_SETTINGS_MODULE", "' . django_module . '")'
 endif
+
+" sudo
+cmap w!! w !sudo tee % > /dev/null

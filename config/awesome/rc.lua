@@ -43,8 +43,8 @@ end
 beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
--- terminal = "xterm"
-terminal = "urxvt -e /usr/bin/tmux"
+terminal = "urxvt"
+-- terminal = "urxvt -e /usr/bin/tmux"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -57,13 +57,13 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.fair,
     awful.layout.suit.floating,
+    -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit.tile,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
-    -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     -- awful.layout.suit.max,
@@ -236,6 +236,10 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    awful.key({ modkey,           }, "F9", function() awful.util.spawn("scrot") end),
+    -- awful.key({ modkey,           }, "F10", function() awful.util.spawn_with_shell("sudo systemctl hibernate") end),
+    awful.key({ modkey,           }, "F11", function() awful.util.spawn_with_shell("sudo systemctl suspend") end),
+    awful.key({ modkey,           }, "F12", function() awful.util.spawn("slimlock") end),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -588,6 +592,6 @@ client.connect_signal("mouse::enter", function(c)
     end
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("focus", function(c) c.border_color = "#aa0000" end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}

@@ -1,6 +1,7 @@
 [user]
     name = Roderick Schaefer
     email = roderick@wehandle.it
+	signingkey = 23A4BB78
 [core]
     excludesfile = ~/.gitignore
     editor = /usr/bin/vim
@@ -21,3 +22,5 @@
     autosetuprebase = always
 [alias]
     cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+[commit]
+	gpgsign = true
