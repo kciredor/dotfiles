@@ -240,8 +240,8 @@ globalkeys = awful.util.table.join(
     -- awful.key({ modkey,           }, "F10", function() awful.util.spawn_with_shell("sudo systemctl hibernate") end),
     awful.key({ modkey,           }, "F11", function() awful.util.spawn_with_shell("sudo systemctl suspend") end),
     awful.key({ modkey,           }, "F12", function() awful.util.spawn("slimlock") end),
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome"}),
+    -- awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    --           {description="show help", group="awesome"}),
     -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
     awful.key({ modkey,           }, "h",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -350,7 +350,8 @@ globalkeys = awful.util.table.join(
         function ()
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
-        end)
+        end),
+    awful.key({ modkey,           }, "s", function () awful.screen.focus_relative( 1) end)
 )
 
 clientkeys = awful.util.table.join(
@@ -479,7 +480,7 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
+      properties = { border_width = 2, --beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,

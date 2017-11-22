@@ -1,165 +1,159 @@
-" Vundle setup
-set nocompatible                                    " viMproved
-filetype off                                        " required by Vundle
+" Vundle setup.
+set nocompatible                                    " viMproved.
+filetype off                                        " Required by Vundle.
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Vundle bundles: original repos on github
+" Vundle bundles: original repos on github.
 Bundle 'gmarik/vundle'
-" Colorscheme
-Bundle 'tomasr/molokai'
-Bundle 'bitterjug/vim-colors-bitterjug'
+" Colorscheme.
 Bundle 'philpl/vim-adventurous'
-" File lookup
+" Status bar.
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
+" File lookup.
 Bundle 'scrooloose/nerdtree'
 Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'vim-scripts/mru.vim'
-" Git support
+" Improved yanking.
+Bundle 'vim-scripts/YankRing.vim'
+" Improves buffer closure.
+Bundle 'rbgrouleff/bclose.vim'
+" Tabular alignment.
+Bundle 'godlygeek/tabular'
+" Git support.
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
-" Status bar pimp
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
-" Tabular aligning
-Bundle 'godlygeek/tabular'
-" Better yanking
-Bundle 'vim-scripts/YankRing.vim'
-" Syntax checking
+" Generic code support.
 Bundle 'scrooloose/syntastic'
-Bundle 'groenewege/vim-less'
-" Twig / Jinja templating syntax
-Bundle 'estin/htmljinja'
-" Python support
 Bundle 'ervandew/supertab'
-Bundle 'fisadev/vim-isort'
-" FIXME
-" Bundle 'davidhalter/jedi-vim'
-" Go support.
-Bundle 'fatih/vim-go'
-" Javascript support
-Bundle 'pangloss/vim-javascript'
-" Ruby support (MSF)
-Bundle 'vim-ruby/vim-ruby'
-" Source listing
 Bundle 'majutsushi/tagbar'
-" Close buffer leaving window alone
-Bundle 'rbgrouleff/bclose.vim'
-" Todo, fixme listing
 Bundle 'vim-scripts/TaskList.vim'
-" SSL checks.
+" Specific code support.
+Bundle 'fatih/vim-go'
 Plugin 'chr4/sslsecure.vim'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'fisadev/vim-isort'
+Bundle 'estin/htmljinja'
+Bundle 'pangloss/vim-javascript'
+Bundle 'groenewege/vim-less'
+Bundle 'vim-ruby/vim-ruby'
 
-" General config
-filetype plugin indent on                           " filetype specific plugin/indent loading
-scriptencoding utf-8                                " force utf-8
+" General config.
+filetype plugin indent on                           " Filetype specific plugin/indent loading.
+scriptencoding utf-8                                " Force utf-8.
 set encoding=utf-8
 set termencoding=utf-8
-set autoindent                                      " keeps the indent of a previous line when starting a new one
-set sta                                             " enables smarttab: makes autoindent expand tab to shiftwidth nr of spaces
-set sw=4 ts=4                                       " shift width, tab stop
-set colorcolumn=80                                  " try to stay below 80 chars, regardless of filetype
-set expandtab                                       " makes a tab a series of spaces
-syntax on                                           " syntax coloring
-set nu                                              " enable linenumbers
-set ruler                                           " display the current cursor position in the lower right corner
-set history=1000                                    " command history
-set wildmenu                                        " command completion menu
+set autoindent                                      " Keeps the indent of a previous line when starting a new one.
+set sta                                             " Enables smarttab: makes autoindent expand tab to shiftwidth nr of spaces.
+set sw=4 ts=4                                       " Shift width, tab stop.
+set colorcolumn=80                                  " Try to stay below 80 chars, regardless of filetype.
+set expandtab                                       " Makes a tab a series of spaces.
+syntax on                                           " Syntax coloring.
+set nu                                              " Enable linenumbers.
+set ruler                                           " Display the current cursor position in the lower right corner.
+set history=1000                                    " Command history.
+set wildmenu                                        " Command completion menu.
 set wildmode=longest:full,full
-set completeopt=longest,menuone,preview             " proper omnicompletion
-set title                                           " set window title
-set laststatus=2                                    " always show statusbar
-set scrolloff=3                                     " nr of lines on the edge to scroll
-set showcmd                                         " show commands during typing
-set pastetoggle=<F10>                               " enable paste
-set hidden                                          " buffer switching without saving
-set vb t_vb=                                        " disable beep / flash
-set ttyfast                                         " faster refresh etc.
-set showmatch                                       " show matching brace
+set completeopt=longest,menuone,preview             " Proper omnicompletion.
+set title                                           " Set window title.
+set laststatus=2                                    " Always show statusbar.
+set scrolloff=3                                     " Nr of lines on the edge to scroll.
+set showcmd                                         " Show commands during typing.
+set pastetoggle=<F10>                               " Enable paste.
+set hidden                                          " Buffer switching without saving.
+set vb t_vb=                                        " Disable beep / flash.
+set ttyfast                                         " Faster refresh etc.
+set showmatch                                       " Show matching brace.
 set matchtime=1
-set shortmess+=I                                    " disable vim opening screen
-" set clipboard=unnamed                               " use system clipboard
+set shortmess+=I                                    " Disable vim opening screen.
 if executable("zsh")
     set shell=zsh
 endif
 
-" Editor
-" strip trailing whitespace
+" Editor.
+" - Strip trailing whitespace.
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-" sort css upto }
+" - Sort css upto }.
 noremap <silent> <Leader>s :.,/}/sort<CR>:nohl<CR>
 
-" Extension based tab stops (home)
+" Extension based tab stops (home).
 autocmd BufRead,BufNewFile *.html,*.css,*.less,*.sass,*.jsp setlocal expandtab!
 autocmd BufRead,BufNewFile *.coffee *.pp *.yml *.yaml setlocal sw=2 ts=2
 autocmd BufRead,BufNewFile *.py let &colorcolumn = "80,".join(range(101,999),",") " try to stay below 80 chars, max 100 (python)
 
 " Key mapping
-" leader
+" - Leader.
 let mapleader = ","
-" map move keys
+" - Map move keys.
 nmap <silent> <C-n> :tabprev<CR>
 nmap <silent> <C-.> :tabnext<CR>
 nmap <silent> <C-h> :bprev<CR>
 nmap <silent> <C-l> :bnext<CR>
-" make Y effect to end of line instead of whole line
+" - Make Y effect to end of line instead of whole line.
 nmap Y y$
-" return to visual mode after indenting
+" - Return to visual mode after indenting.
 xmap < <gv
 xmap > >gv
-" backspace behavior
+" - Backspace behavior.
 set backspace=indent,eol,start
-" window mapping
+" - Window mapping.
 nmap <Left> <C-w>h
 nmap <Down> <C-w>j
 nmap <Up> <C-w>k
 nmap <Right> <C-w>l
-" swap ' and `
+" - Swap ' and `.
 noremap ' `
 noremap ` '
-" f3 clears search marking
+" - F3 clears search marking.
 nnoremap <F3> :set hlsearch!<CR>
-" disable ex mode
+" - Disable ex mode.
 map Q <nop>
-" toggle line numbers.
+" - Toggle line numbers.
 nmap <F11> :set number!<CR>
-" disable help key
+" - Disable help key.
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Backup dir
+" Backup dir.
 set directory=~/.vim/backup//
 set backupdir=~/.vim/backup//
 
-" Characters to use in list mode
+" Characters to use in list mode.
 set listchars=tab:│\ ,trail:·
-set list                                            " print all characters
+set list                                            " Print all characters.
 
-" Search
+" Search.
 set incsearch
 set ignorecase
 set smartcase
-set hls                                             " highlight all pattern matches
+set hls                                             " Highlight all pattern matches.
 nmap <silent> <Leader>n :nohl<CR>
-set gdefault                                        " global match by default
+set gdefault                                        " Global match by default.
 
-" Spellcheck
+" Spellcheck.
 set spelllang=en,nl
 nmap :ss :set spell<CR>
 nmap :uss :set nospell<CR>
 
-" Color schemes
-set t_Co=256                                        " color terminal
+" Color scheme.
+set t_Co=256                                        " Color terminal.
 colorscheme adventurous
 
-" App specific
+" sudo write file.
+cmap w!! w !sudo tee % > /dev/null
 
-" NERDTree
+" Plugin: airline.
+let g:airline_theme = "lucius"
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" Plugin: NERDTree.
 nmap <silent> <Leader>h :call TreeOpenFocus()<CR>
 nmap <silent> <Leader>H :NERDTreeToggle<CR>
-nmap <silent> <Leader>d :Bclose<CR>
-nmap <silent> <Leader>D :Bclose!<CR>
 function! TreeOpenFocus()
     let currentwin = winnr()
     let wnr = bufwinnr("NERD_tree_1")
@@ -175,7 +169,7 @@ function! TreeOpenFocus()
 endfunction
 let g:NERDTreeWinPos = "right"
 
-" ctrlp
+" Plugin: ctrlp.
 nmap <silent> <Leader>o :CtrlP<CR>
 nmap <silent> <Leader>s :CtrlPBuffer<CR>
 let g:ctrlp_clear_cache_on_exit = 0
@@ -189,44 +183,20 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
   \ }
 
-" mru
+" Plugin: MRU.
 nmap <silent> <Leader>r :MRU<CR>
 let MRU_Window_Height = 12
 let g:pymode_lint_hold = 0
 
-" syntastic
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_go_checkers = ['go']
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = '!'
-let g:syntastic_warning_symbol = '?'
-highlight SyntasticErrorLine guibg = #5c0b09
-
-" airline
-let g:airline_theme = "lucius"
-let g:airline_powerline_fonts = 0
-" airline tabs
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-
-" tagbar
-nmap <silent> <leader>t :TagbarOpen fj<CR>
-nmap <silent> <leader>T :TagbarClose<CR>
-
-" jinja
-if has('autocmd')
-  au BufRead,BufNewFile *.twig setlocal filetype=htmljinja
-endif
-
-" yankring
+" Plugin: Yankring.
 let g:yankring_history_file = '.yankring_history'
 nmap <leader>y :YRShow<cr>
 
-" buftabs
-let g:buftabs_only_basename = 1
+" Plugin: BClose.
+nmap <silent> <Leader>d :Bclose<CR>
+nmap <silent> <Leader>D :Bclose!<CR>
 
-" tabular
+" Plugin: Tabular.
 nmap <leader><tab><tab> :Tab /
 vmap <leader><tab> :Tab /
 nmap <leader><tab>= :Tab /=<cr>
@@ -236,34 +206,39 @@ vmap <leader><tab>: :Tab /:\zs<cr>
 nmap <leader><tab>> :Tab /=><cr>
 vmap <leader><tab>> :Tab /=><cr>
 
-" supertab
+" Plugin: Syntastic.
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_go_checkers = ['go']
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = '!'
+let g:syntastic_warning_symbol = '?'
+highlight SyntasticErrorLine guibg = #5c0b09
+
+" Plugin: Supertab.
 let g:SuperTabDefaultCompletionType = "context"
 
-" jedi-vim
+" Plugin: Tagbar.
+nmap <silent> <leader>t :TagbarOpen fj<CR>
+nmap <silent> <leader>T :TagbarClose<CR>
+
+" Plugin: TaskList.
+nmap <leader>T <Plug>TaskList
+
+" Plugin: vim-go.
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+
+" Plugin: jedi-vim.
 let g:jedi#goto_assignments_command = "<leader>G"
 let g:jedi#goto_definitions_command = "<leader>E"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>N"
 let g:jedi#rename_command = "<leader>R"
 
-" tasklist
-nmap <leader>T <Plug>TaskList
-
-" vim-go
-let g:go_fmt_command = "goimports"
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-
-" virtualenv / django completion
-let django_settings_file = system('find . -maxdepth 2 -name settings.py')
-if !empty(django_settings_file)
-  execute 'python import os, sys'
-  execute 'python sys.path.append("v/lib/python2.7/site-packages")'
-  let outarray = split(django_settings_file, '[\/]\+')
-  let django_module = outarray[-2] . '.' . 'settings'
-  execute 'python os.environ.setdefault("DJANGO_SETTINGS_MODULE", "' . django_module . '")'
+" Plugin: htmljinja.
+if has('autocmd')
+  au BufRead,BufNewFile *.twig setlocal filetype=htmljinja
 endif
-
-" sudo
-cmap w!! w !sudo tee % > /dev/null
