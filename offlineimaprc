@@ -22,6 +22,8 @@ nametrans = lambda folder: {'inbox':    'INBOX',
                             'spam':     '[Gmail]/Spam',
                             'trash':    '[Gmail]/Trash',
                             'archive':  '[Gmail]/All Mail',
+                            'mon':      'Monitoring',
+                            'research': 'Research',
                            }.get(folder, folder)
 
 [Repository WeHandleIt-Remote]
@@ -43,4 +45,6 @@ nametrans = lambda folder: {'INBOX':             'inbox',
                             '[Gmail]/Spam':      'spam',
                             '[Gmail]/Trash':     'trash',
                             '[Gmail]/All Mail':  'archive',
+                            'Monitoring':        'mon',
+                            'Research':          'research',
                            }.get(folder, folder)

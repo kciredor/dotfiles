@@ -28,4 +28,4 @@ macro               index,pager gf  "<change-folder>+flagged<enter>"            
 macro               index,pager gt  "<change-folder>+trash<enter>"                                                "Go to Trash"
 macro               index       \Ce "<change-folder>+trash<enter><delete-pattern>~A<enter><sync-mailbox>"         "Empty trash"
 
-mailboxes +inbox +archive +sent +flagged +drafts +spam +trash
+mailboxes +inbox +archive +sent +flagged +drafts +research +mon +spam +trash
