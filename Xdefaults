@@ -18,7 +18,7 @@ URxvt*borderWidth:        0
 URxvt*pointerBlank:       true
 URxvt*internalBorder:     5
 
-URxvt.perl-ext-common:    default,clipboard,matcher,keyboard-select
+URxvt.perl-ext-common:    default,clipboard,matcher,keyboard-select,selection-to-clipboard
 URxvt.keysym.M-u:         perl:url-select:select_next
 URxvt.url-launcher:       /usr/local/bin/chrome
 URxvt.underlineURLs:      True
@@ -35,7 +35,7 @@ URxvt*cursorBlink:        true
 URxvt*inheritPixmap:      true
 URxvt*tintColor:          white
 URxvt*shading:            5
-URxvt*font:               xft:DejaVu Sans Mono:size=10
+URxvt*font:               9x15
 URxvt*cursorBlink:        false
 
 xterm*background:         black

@@ -240,7 +240,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "F9", function() awful.util.spawn("scrot") end),
     -- awful.key({ modkey,           }, "F10", function() awful.util.spawn_with_shell("sudo systemctl hibernate") end),
     awful.key({ modkey,           }, "F11", function() awful.util.spawn_with_shell("sudo systemctl suspend") end),
-    awful.key({ modkey,           }, "F12", function() awful.util.spawn("slimlock") end),
+    awful.key({ modkey,           }, "F12", function() awful.util.spawn("sxlock") end),
     -- awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
     --           {description="show help", group="awesome"}),
     -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,

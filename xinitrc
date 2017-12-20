@@ -6,10 +6,6 @@ xset r rate 170 70 # Fast keyboard repeat.
 
 xbindkeys &
 nm-applet &
-hp-systray &
 pasystray &
-
-autocutsel -fork &
-autocutsel -selection PRIMARY -fork &
 
 exec awesome

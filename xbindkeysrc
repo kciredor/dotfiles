@@ -7,25 +7,3 @@
 
 "pactl set-sink-mute @DEFAULT_SINK@ false ; pactl set-sink-volume @DEFAULT_SINK@ +1%"
     XF86AudioRaiseVolume
-
-
-# Brightness.
-"xbacklight -dec 5"
-    XF86MonBrightnessDown
-
-"xbacklight -inc 5"
-    XF86MonBrightnessUp
-
-
-# Spotify.
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-    XF86AudioPlay
-
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
-    XF86AudioStop
-
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-    XF86AudioPrev
-
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-    XF86AudioNext

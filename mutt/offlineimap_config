@@ -19,6 +19,9 @@ folder-hook spam    'macro index,pager y "<save-message>+inbox<enter>"          
 folder-hook flagged 'macro index,pager y "<flag-message><save-message>+archive<enter><sync-mailbox>"              "Unstar message"'
 folder-hook flagged 'macro index,pager Y "<flag-message><save-message>+inbox<enter><sync-mailbox>"                "Unstar and Inbox"'
 
+bind index g noop
+bind pager g noop
+
 macro               index,pager !   "<clear-flag>N<save-message>+spam<enter>"                                     "Report spam"
 macro               index,pager gi  "<change-folder>+inbox<enter>"                                                "Go to Inbox"
 macro               index,pager ga  "<change-folder>+archive<enter>"                                              "Go to Archive"

@@ -70,16 +70,15 @@ macro index  gA      "<pipe-message>goobook add<return>"                        
 macro pager  gA      "<pipe-message>goobook add<return>"                        "Add sender to google contacts"
 
 # Sidebar
-set sidebar_width   = 25
-set sidebar_visible = yes
-set sidebar_delim   = '|'
-set sidebar_sort    = yes
-# set sidebar_format  = '%B %* %?N?%N/?%4S'
-color sidebar_new   yellow default
-bind  index,pager   <down>  sidebar-next
-bind  index,pager   <up>    sidebar-prev
-bind  index,pager   <right> sidebar-open
-macro index,pager   b       "<enter-command>toggle sidebar_visible<enter>"     "Toggle sidebar"
+set sidebar_width    = 25
+set sidebar_visible  = yes
+set sidebar_format   = '%B %* %?N?%N/?%6S'
+set mail_check_stats = yes
+color sidebar_new    yellow default
+bind  index,pager    <down>  sidebar-next
+bind  index,pager    <up>    sidebar-prev
+bind  index,pager    <right> sidebar-open
+macro index,pager    b       "<enter-command>toggle sidebar_visible<enter>"     "Toggle sidebar"
 
 # Urlview/ HTML
 macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
