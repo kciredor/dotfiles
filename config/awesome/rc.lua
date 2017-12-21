@@ -11,6 +11,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Battery
+beautiful.tooltip_fg = "#ffffff"
 local battery = require("battery")
 
 -- {{{ Error handling
