@@ -89,7 +89,7 @@ macro attach H     "<pipe-entry>rm -f ~/.mutt/cache/mail.html && cat > ~/.mutt/c
 macro attach s     <save-entry><bol>~/down/<eol>                          "Save attachment to Downloads folder"
 
 # Theme: https://github.com/altercation/mutt-colors-solarized
-source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc
 
 # Free text search.
 macro index \\ "<vfolder-from-query>" "Notmuch free text search"

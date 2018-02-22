@@ -20,7 +20,7 @@ if [[ `uname` == 'Darwin' ]]; then
     export TERM=xterm-256color
 fi
 
-export PATH="$GOPATH/bin:$HOME/.gem/bin:$PATH"
+export PATH="$GOPATH/bin:$HOME/.gem/ruby/2.5.0/bin:$PATH"
 
 # Antigen plugins.
 [ -f ~/.antigen.zsh ] || (echo "Fetching antigen.zsh..." && curl -o ~/.antigen.zsh -s https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh)
@@ -44,6 +44,7 @@ antigen bundle docker
 antigen bundle aws
 antigen bundle golang
 antigen bundle python
+antigen bundle node
 
 antigen bundle nmap
 
