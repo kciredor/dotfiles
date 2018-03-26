@@ -45,8 +45,8 @@ end
 beautiful.init(awful.util.get_themes_dir() .. "zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
--- terminal = "urxvt"
-terminal = "urxvt -e /usr/bin/tmux"
+terminal = "urxvt"
+-- terminal = "urxvt -e /usr/bin/tmux"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 

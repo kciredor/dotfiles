@@ -29,6 +29,8 @@ source ~/.antigen.zsh
 
 antigen bundle robbyrussell/oh-my-zsh lib/
 antigen theme kciredor/dotfiles themes/kciredor
+# antigen theme agkozak/agkozak-zsh-theme
+# antigen theme yous/lime
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
@@ -71,5 +73,5 @@ antigen apply
 [ -f ~/.custom_alias ] && source ~/.custom_alias
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec startx
+    exec startx
 fi
