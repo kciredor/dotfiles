@@ -41,8 +41,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
---beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
-beautiful.init(awful.util.get_themes_dir() .. "zenburn/theme.lua")
+beautiful.init(awful.util.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -238,6 +237,10 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+    awful.key({ modkey,           }, "F1", function() awful.util.spawn_with_shell("undock.sh") end),
+    awful.key({ modkey,           }, "F2", function() awful.util.spawn_with_shell("dock.sh") end),
+    awful.key({ modkey,           }, "F3", function() awful.util.spawn_with_shell("dockwork.sh") end),
+    awful.key({ modkey,           }, "F4", function() awful.util.spawn_with_shell("netrestart.sh") end),
     awful.key({ modkey,           }, "F9", function() awful.util.spawn("scrot") end),
     awful.key({ modkey,           }, "F10", function() awful.util.spawn_with_shell("sudo systemctl hibernate") end),
     awful.key({ modkey,           }, "F11", function() awful.util.spawn_with_shell("sudo systemctl suspend") end),
@@ -489,7 +492,8 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+                     placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                     size_hints_honor = false
      }
     },
 
@@ -595,6 +599,6 @@ client.connect_signal("mouse::enter", function(c)
     end
 end)
 
-client.connect_signal("focus", function(c) c.border_color = "#aa0000" end)
+client.connect_signal("focus", function(c) c.border_color = "#77aacc" end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}

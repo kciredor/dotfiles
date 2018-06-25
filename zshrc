@@ -20,7 +20,7 @@ if [[ `uname` == 'Darwin' ]]; then
     export TERM=xterm-256color
 fi
 
-export PATH="$GOPATH/bin:$HOME/.gem/ruby/2.5.0/bin:$PATH"
+export PATH="$HOME/bin:$GOPATH/bin:$PATH"
 
 # Antigen plugins.
 [ -f ~/.antigen.zsh ] || (echo "Fetching antigen.zsh..." && curl -o ~/.antigen.zsh -s https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh)
@@ -47,13 +47,13 @@ antigen bundle aws
 antigen bundle golang
 antigen bundle python
 antigen bundle node
+antigen bundle gem
 
 antigen bundle nmap
 
 if [[ `uname` == 'Darwin' ]]; then
     antigen bundle brew
     antigen bundle brew-cask
-    antigen bundle gem
     antigen bundle osx
 
     antigen bundle ssh-agent
@@ -70,8 +70,14 @@ fi
 
 antigen apply
 
-[ -f ~/.custom_alias ] && source ~/.custom_alias
+# System specifics.
+[ -f ~/.customrc ] && source ~/.customrc
 
+# Ruby last.
+export PATH="$PATH:$HOME/.rvm/bin"
+source "$HOME/.rvm/scripts/rvm"
+
+# Start X.
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
     exec startx
 fi

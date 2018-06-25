@@ -20,7 +20,7 @@ URxvt*internalBorder:     5
 
 URxvt.perl-ext-common:    default,clipboard,matcher,keyboard-select,selection-to-clipboard
 URxvt.keysym.M-u:         perl:url-select:select_next
-URxvt.url-launcher:       /usr/local/bin/chrome
+URxvt.url-launcher:       /usr/bin/google-chrome-stable
 URxvt.underlineURLs:      True
 URxvt.matcher.button:     1
 URxvt.keysym.M-Escape:    perl:keyboard-select:activate
@@ -31,7 +31,6 @@ URxvt.keysym.M-C-v:       perl:clipboard:paste_escaped
 URxvt*background:         #000000
 URxvt*foreground:         #ffffff
 URxvt*cursorColor:        #ffffff
-URxvt*cursorBlink:        true
 URxvt*inheritPixmap:      true
 URxvt*tintColor:          white
 URxvt*shading:            5

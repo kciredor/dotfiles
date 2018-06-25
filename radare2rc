@@ -1,0 +1,5 @@
+e anal.bb.maxsize = 32768
+e bin.maxstrbuf   = 16M
+
+# r2pm -i r2retdec (yaourt -Sa retdec-git; /usr/bin/retdec-decompiler.sh > ~/.r2retdec).
+$dec=#!pipe node /home/kciredor/.local/share/radare2/r2pm/git/r2retdec/r2retdec.js

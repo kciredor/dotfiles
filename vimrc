@@ -207,8 +207,9 @@ nmap <leader><tab>> :Tab /=><cr>
 vmap <leader><tab>> :Tab /=><cr>
 
 " Plugin: Syntastic.
+let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter', 'gofmt']
+let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_go_checkers = ['go']
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_error_symbol = '!'
