@@ -6,7 +6,7 @@ dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc urlview gnupg/gpg-agent.conf
 dotfiles_muttofflineimap=(offlineimap offlineimaprc msmtprc notmuch-config)
 dotfiles_x=(Xdefaults Xmodmap xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
 dotfiles_mac=(slate slatelaunchers)
-dotfiles_other=(vimrc gitconfig gitignore tmux.conf radare2rc)
+dotfiles_other=(vimrc gitconfig gitignore tmux.conf radare2rc gdbinit)
 dotfiles_cleanup=(profile ${dotfiles_zsh[*]} ${dotfiles_bash[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 
 echo -e "\nkciredor's dotfiles deploy\n\n** Have you cloned dotfiles recursively? If not: git submodule update --init --recursive before you deploy **\n"
@@ -60,7 +60,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo -e "\n-- Installing offlineimap setup for mutt\n"
 
-        mkdir ~/.maildir && chmod 700 ~/.maildir
+        mkdir -p ~/.maildir && chmod 700 ~/.maildir
 
         for item in ${dotfiles_muttofflineimap[*]}; do
             ln -s `pwd`/$item ~/.$item

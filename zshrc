@@ -11,8 +11,6 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-alias cl='clear'
-
 # macOS specifics.
 if [[ `uname` == 'Darwin' ]]; then
     export COPYFILE_DISABLE=1
@@ -43,6 +41,7 @@ antigen bundle thefuck
 
 antigen bundle git
 antigen bundle docker
+antigen bundle jonmosco/kube-ps1
 antigen bundle aws
 antigen bundle golang
 antigen bundle python
@@ -70,12 +69,15 @@ fi
 
 antigen apply
 
+# Aliases.
+alias mux='tmuxinator'
+
 # System specifics.
 [ -f ~/.customrc ] && source ~/.customrc
 
 # Ruby last.
-export PATH="$PATH:$HOME/.rvm/bin"
-source "$HOME/.rvm/scripts/rvm"
+# export PATH="$PATH:$HOME/.rvm/bin"
+# source "$HOME/.rvm/scripts/rvm"
 
 # Start X.
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then

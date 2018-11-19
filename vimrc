@@ -78,10 +78,12 @@ nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 " - Sort css upto }.
 noremap <silent> <Leader>s :.,/}/sort<CR>:nohl<CR>
 
-" Extension based tab stops (home).
-autocmd BufRead,BufNewFile *.html,*.css,*.less,*.sass,*.jsp setlocal expandtab!
-autocmd BufRead,BufNewFile *.coffee *.pp *.yml *.yaml setlocal sw=2 ts=2
-autocmd BufRead,BufNewFile *.py let &colorcolumn = "80,".join(range(101,999),",") " try to stay below 80 chars, max 100 (python)
+" File based settings like tab stops.
+autocmd Filetype python      let &colorcolumn = "80,".join(range(101,999),",")
+autocmd Filetype html        setlocal expandtab!
+autocmd Filetype css         setlocal sw=2 ts=2
+autocmd Filetype javascript  setlocal sw=2 ts=2
+autocmd Filetype yaml        setlocal sw=2 ts=2
 
 " Key mapping
 " - Leader.
@@ -238,6 +240,7 @@ let g:jedi#goto_definitions_command = "<leader>E"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>N"
 let g:jedi#rename_command = "<leader>R"
+let g:jedi#goto_command = "<leader>D"               " Fixes conflict with bclose.
 
 " Plugin: htmljinja.
 if has('autocmd')
