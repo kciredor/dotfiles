@@ -88,8 +88,4 @@ for item in ${dotfiles_other[*]}; do
     ln -s `pwd`/$item ~/.$item
 done
 
-mkdir -p ~/.vim/backup/
-mkdir -p ~/.vim/bundle/
-mkdir -p ~/.config/nvim/
-
 echo -e "\n\nDONE\n"
