@@ -4,7 +4,7 @@
 	signingkey = 23A4BB78
 [core]
     excludesfile = ~/.gitignore
-    editor = /usr/bin/vim
+    editor = /usr/local/bin/nvim
 [push]
     default = tracking
 [color]

@@ -17,6 +17,8 @@ folder-hook "Gmail./Trash"    'macro index,pager d "<delete-message>"           
 folder-hook "Gmail./Spam"     'macro index,pager y "<save-message>=INBOX<enter>"                                          "Not spam"'
 folder-hook "Gmail./Starred"  bind  index,pager y  flag-message                                                           "Star message"
 
+bind index g noop
+bind pager g noop
 macro index,pager !           "<clear-flag>N<save-message>=[Gmail]/Spam<enter>"                                           "Report spam"
 macro index,pager gi          "<change-folder>=INBOX<enter>"                                                              "Go to Inbox"
 macro index,pager ga          "<change-folder>=[Gmail]/All<quote-char> Mail<enter>"                                       "Go to Archive"

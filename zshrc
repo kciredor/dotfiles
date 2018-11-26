@@ -4,18 +4,18 @@
 
 umask 027
 
-export EDITOR=vim
-export GOPATH=~/dev/go
+export ZSH=~/.antigen/bundles/robbyrussell/oh-my-zsh
 export KEYTIMEOUT=1
+export EDITOR=vim
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export GOPATH=~/dev/go
 
 # macOS specifics.
 if [[ `uname` == 'Darwin' ]]; then
     export COPYFILE_DISABLE=1
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
-    export TERM=xterm-256color
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:/usr/local/bin:$PATH"
 fi
 
 export PATH="$HOME/bin:$GOPATH/bin:$PATH"
@@ -27,8 +27,6 @@ source ~/.antigen.zsh
 
 antigen bundle robbyrussell/oh-my-zsh lib/
 antigen theme kciredor/dotfiles themes/kciredor
-# antigen theme agkozak/agkozak-zsh-theme
-# antigen theme yous/lime
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
@@ -37,6 +35,7 @@ antigen bundle vi-mode
 antigen bundle history
 antigen bundle autojump
 antigen bundle tmux
+antigen bundle gpg-agent
 antigen bundle thefuck
 
 antigen bundle git
@@ -46,7 +45,6 @@ antigen bundle aws
 antigen bundle golang
 antigen bundle python
 antigen bundle node
-antigen bundle gem
 
 antigen bundle nmap
 
@@ -55,29 +53,27 @@ if [[ `uname` == 'Darwin' ]]; then
     antigen bundle brew-cask
     antigen bundle osx
 
-    antigen bundle ssh-agent
+    export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 fi
 
 if [[ -f /etc/arch-release ]]; then
     antigen bundle archlinux
 
-    antigen bundle gpg-agent
-    unset SSH_AGENT_PID
     export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-    gpg-connect-agent updatestartuptty /bye >/dev/null
 fi
+
+gpg-connect-agent updatestartuptty /bye >/dev/null
 
 antigen apply
 
 # Aliases.
+alias ls='ls --color=auto'
+alias vim='nvim'
+alias mutt='neomutt'
 alias mux='tmuxinator'
 
 # System specifics.
 [ -f ~/.customrc ] && source ~/.customrc
-
-# Ruby last.
-# export PATH="$PATH:$HOME/.rvm/bin"
-# source "$HOME/.rvm/scripts/rvm"
 
 # Start X.
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then

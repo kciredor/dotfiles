@@ -1,9 +1,0 @@
-[submodule "mutt/mutt-colors-solarized"]
-	path = mutt/mutt-colors-solarized
-	url = git@github.com:altercation/mutt-colors-solarized.git
-[submodule "vundle"]
-	path = vundle
-	url = git@github.com:gmarik/vundle.git
-[submodule "kube-ps1"]
-	path = kube-ps1
-	url = https://github.com/jonmosco/kube-ps1.git

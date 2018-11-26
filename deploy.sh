@@ -1,15 +1,14 @@
 #!/bin/bash
 
 dotfiles_zsh=(zshrc antigen.zsh)
-dotfiles_bash=(inputrc bashrc)
 dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc urlview gnupg/gpg-agent.conf gnupg/gpg.conf)
 dotfiles_muttofflineimap=(offlineimap offlineimaprc msmtprc notmuch-config)
 dotfiles_x=(Xdefaults Xmodmap xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
-dotfiles_mac=(slate slatelaunchers)
-dotfiles_other=(vimrc gitconfig gitignore tmux.conf radare2rc gdbinit)
-dotfiles_cleanup=(profile ${dotfiles_zsh[*]} ${dotfiles_bash[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
+dotfiles_mac=(chunkwmrc skhdrc)
+dotfiles_other=(vimrc config/nvim/init.vim gitconfig gitignore tmux.conf radare2rc gdbinit)
+dotfiles_cleanup=(profile inputrc bashrc bash_history ${dotfiles_zsh[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 
-echo -e "\nkciredor's dotfiles deploy\n\n** Have you cloned dotfiles recursively? If not: git submodule update --init --recursive before you deploy **\n"
+echo -e "\nkciredor's dotfiles deploy\n\n"
 
 read -p "Remove currently supported dotfiles from homefolder? [y/n] " -n 1 -r
 
@@ -21,26 +20,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e "\n\n-- Removed: ${dotfiles_cleanup[*]}"
 fi
 
-echo -e "\n"
-read -p "Use zsh? (otherwise installs bash dotfiles) [y/n] " -n 1 -r
+echo -e "\n-- Installing zsh\n"
 
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo -e "\n-- Installing zsh\n"
+for item in ${dotfiles_zsh[*]}; do
+    ln -s `pwd`/$item ~/.$item
+done
 
-    for item in ${dotfiles_zsh[*]}; do
-        ln -s `pwd`/$item ~/.$item
-    done
-else
-    echo -e "\n-- Installing bash\n"
-
-    for item in ${dotfiles_bash[*]}; do
-        ln -s `pwd`/$item ~/.$item
-    done
-
-    ln -s ~/.bashrc ~/.profile
-fi
-
-echo -e "\n"
 read -p "Install mail setup (includes mutt) [y/n] " -n 1 -r
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -54,8 +39,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
     rm -rf ~/.mutt/specific_config
 
-    echo -e "\n"
-    read -p "Use mutt with offlineimap? [y/n] " -n 1 -r
+    read -p "Use mutt with offlineimap? (Linux preferred, not macOS) [y/n] " -n 1 -r
 
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo -e "\n-- Installing offlineimap setup for mutt\n"
@@ -96,7 +80,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     done
 fi
 
-echo -e "\n\n-- Installing remaining dotfiles"
+echo -e "-- Installing remaining dotfiles"
+
+mkdir -p ~/.config/nvim
 
 for item in ${dotfiles_other[*]}; do
     ln -s `pwd`/$item ~/.$item
@@ -104,6 +90,6 @@ done
 
 mkdir -p ~/.vim/backup/
 mkdir -p ~/.vim/bundle/
-ln -s `pwd`/vundle ~/.vim/bundle/vundle
+mkdir -p ~/.config/nvim/
 
-echo -e "\n\n**** Done (now install bundles from within vim using :BundleInstall)\n\n"
+echo -e "\n\nDONE\n"

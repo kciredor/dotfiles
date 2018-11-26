@@ -1,5 +1,5 @@
 set my_whi_user = roderick@wehandle.it
-set my_whi_pass = "`~/.offlineimap/pass.sh`"
+set my_whi_pass = "`~/.mutt/pass.sh`"
 
 set from        = roderick@wehandle.it
 set realname    = "Roderick Schaefer"

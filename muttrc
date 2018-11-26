@@ -1,3 +1,6 @@
+# Themes.
+source ~/.mutt/monokai
+
 # Specific config (symlinked configfile)
 source ~/.mutt/specific_config
 
@@ -86,10 +89,7 @@ macro pager  \Cu   <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 macro attach H     "<pipe-entry>rm -f ~/.mutt/cache/mail.html && cat > ~/.mutt/cache/mail.html && open ~/.mutt/cache/mail.html<enter>" 'Open in browser'
 
 # Attachment path prefix
-macro attach s     <save-entry><bol>~/down/<eol>                          "Save attachment to Downloads folder"
-
-# Theme: https://github.com/altercation/mutt-colors-solarized
-source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc
+macro attach s     <save-entry><bol>~/Downloads/<eol>                          "Save attachment to Downloads folder"
 
 # Free text search.
 macro index \\ "<vfolder-from-query>" "Notmuch free text search"
