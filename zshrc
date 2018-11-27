@@ -1,81 +1,48 @@
-#
-# ZSH INIT.
-#
-
+# Basics.
 umask 027
 
-export ZSH=~/.antigen/bundles/robbyrussell/oh-my-zsh
 export KEYTIMEOUT=1
-export EDITOR=vim
+export EDITOR=nvim
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export GOPATH=~/dev/go
+export PATH="$HOME/bin:$GOPATH/bin:$PATH"
+export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 
 # macOS specifics.
 if [[ `uname` == 'Darwin' ]]; then
     export COPYFILE_DISABLE=1
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:/usr/local/bin:$PATH"
-fi
-
-export PATH="$HOME/bin:$GOPATH/bin:$PATH"
-
-# Antigen plugins.
-[ -f ~/.antigen.zsh ] || (echo "Fetching antigen.zsh..." && curl -o ~/.antigen.zsh -s https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh)
-
-source ~/.antigen.zsh
-
-antigen bundle robbyrussell/oh-my-zsh lib/
-antigen theme kciredor/dotfiles themes/kciredor
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-
-antigen bundle vi-mode
-antigen bundle history
-antigen bundle autojump
-antigen bundle tmux
-antigen bundle gpg-agent
-antigen bundle thefuck
-
-antigen bundle git
-antigen bundle docker
-antigen bundle jonmosco/kube-ps1
-antigen bundle aws
-antigen bundle golang
-antigen bundle python
-antigen bundle node
-
-antigen bundle nmap
-
-if [[ `uname` == 'Darwin' ]]; then
-    antigen bundle brew
-    antigen bundle brew-cask
-    antigen bundle osx
-
     export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 fi
 
-if [[ -f /etc/arch-release ]]; then
-    antigen bundle archlinux
-
-    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+# antibody plugins.
+if ! which antibody >/dev/null 2>&1; then
+    curl -sL git.io/antibody | sh -s
 fi
+
+DISABLE_AUTO_UPDATE=true
+ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
+
+autoload -Uz compinit
+compinit -i
+
+if [ ! -f ~/.zsh_plugins.sh ]; then
+    antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
+fi
+
+source ~/.zsh_plugins.sh
+
+# Aliases.
+alias ls='ls --color=auto'  # Fixes coreutils ls after zsh plugins run.
+alias dockerclean='docker kill $(docker ps -q) ; docker rm $(docker ps -a -q) ; docker rmi -f $(docker images -q -f dangling=true) ; docker rmi -f $(docker images -q)'
+
+# Wrap up.
+[ -f ~/.customrc ] && source ~/.customrc
 
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
-antigen apply
-
-# Aliases.
-alias ls='ls --color=auto'
-alias vim='nvim'
-alias mutt='neomutt'
-alias mux='tmuxinator'
-
-# System specifics.
-[ -f ~/.customrc ] && source ~/.customrc
-
-# Start X.
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
     exec startx
 fi

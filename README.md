@@ -1,4 +1,4 @@
 kciredor's dotfiles.
 ====================
 
-Use git clone --recursive and run deploy.sh.
+These are the dotfiles I use daily. Simply git clone and run deploy.sh.

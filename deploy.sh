@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dotfiles_zsh=(zshrc antigen.zsh)
+dotfiles_zsh=(zshrc zsh_plugins.txt)
 dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc urlview gnupg/gpg-agent.conf gnupg/gpg.conf)
 dotfiles_muttofflineimap=(offlineimap offlineimaprc msmtprc notmuch-config)
 dotfiles_x=(Xdefaults Xmodmap xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
