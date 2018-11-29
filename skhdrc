@@ -1,5 +1,5 @@
 alt - return : open -na /Applications/iTerm.app
 alt - t : chunkc tiling::window --focus next
 shift + alt - t : chunkc tiling::window --swap east
-alt - s : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop); chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
+alt - o : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop); chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
 alt - f : chunkc tiling::window --toggle fullscreen

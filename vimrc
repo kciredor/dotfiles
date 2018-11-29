@@ -6,6 +6,7 @@ set hidden                 " switch buffers without saving.
 set scrolloff=3            " edge scroll.
 set ignorecase             " search without case.
 set smartcase              " even smarter search.
+set gdefault               " global matching.
 set sw=4 ts=4              " shift width, tab stop.
 set expandtab              " tabs are spaces..
 set list listchars=tab:>-  " ..unless they are not.
@@ -88,6 +89,9 @@ endif
 " Coding plugins.
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarOpen' }
+nmap <silent> <leader>t :TagbarOpen fj<CR>
+nmap <silent> <leader>T :TagbarClose<CR>
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 let g:go_fmt_command = "goimports"
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
