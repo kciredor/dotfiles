@@ -41,7 +41,7 @@ alias dockerclean='docker kill $(docker ps -q) ; docker rm $(docker ps -a -q) ; 
 # Wrap up.
 [ -f ~/.customrc ] && source ~/.customrc
 
-gpg-connect-agent updatestartuptty /bye >/dev/null
+gpg-connect-agent /bye >/dev/null
 
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
     exec startx
