@@ -22,13 +22,12 @@ nametrans = lambda folder: {'inbox':    'INBOX',
                             'spam':     '[Gmail]/Spam',
                             'trash':    '[Gmail]/Trash',
                             'archive':  '[Gmail]/All Mail',
-                            'mon':      'Monitoring',
-                            'research': 'Research',
+                            'later':    'Later',
                            }.get(folder, folder)
 
 [Repository WeHandleIt-Remote]
 type = Gmail
-sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile  = /usr/local/etc/openssl/cert.pem
 # XXX: https://github.com/OfflineIMAP/offlineimap/issues/573
 ssl_version = tls1_2
 auth_mechanisms = LOGIN
@@ -47,6 +46,5 @@ nametrans = lambda folder: {'INBOX':             'inbox',
                             '[Gmail]/Spam':      'spam',
                             '[Gmail]/Trash':     'trash',
                             '[Gmail]/All Mail':  'archive',
-                            'Monitoring':        'mon',
-                            'Research':          'research',
+                            'Later':             'later',
                            }.get(folder, folder)

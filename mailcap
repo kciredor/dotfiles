@@ -1,10 +1,17 @@
+; macOS.
 text/html; elinks -dump %s ; copiousoutput
-application/pdf; xpdf %s -
-video/*; vlc %s -
-image/*; feh -. %s -
-application/msword; libreoffice %s -
-application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice %s -
-application/vnd.ms-excel; libreoffice %s -
-application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; libreoffice %s -
-application/vnd.ms-powerpoint; libreoffice %s -
-application/vnd.openxmlformats-officedocument.presentationml.presentation; libreoffice %s -
+application/pdf; open %s -
+video/*; open %s -
+image/*; open %s -
+
+; Linux.
+; text/html; elinks -dump %s ; copiousoutput
+; application/pdf; xpdf %s -
+; video/*; vlc %s -
+; image/*; feh -. %s -
+; application/msword; libreoffice %s -
+; application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice %s -
+; application/vnd.ms-excel; libreoffice %s -
+; application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; libreoffice %s -
+; application/vnd.ms-powerpoint; libreoffice %s -
+; application/vnd.openxmlformats-officedocument.presentationml.presentation; libreoffice %s -
