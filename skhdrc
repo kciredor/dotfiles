@@ -1,5 +1,19 @@
-alt - return : open -na /Applications/iTerm.app
+# Basics.
 alt - t : chunkc tiling::window --focus next
 shift + alt - t : chunkc tiling::window --swap east
-alt - o : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop); chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
 alt - f : chunkc tiling::window --toggle fullscreen
+
+alt - return : open -na /Applications/iTerm.app
+
+# Send Window to Desktop.
+alt - o : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop); chunkc tiling::desktop --focus $(chunkc get _last_active_desktop)
+
+shift + alt - a : chunkc tiling::window --send-to-desktop prev
+shift + alt - o : chunkc tiling::window --send-to-desktop next
+shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
+shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
+shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
+shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
+shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
+shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
+shift + alt - 7 : chunkc tiling::window --send-to-desktop 7

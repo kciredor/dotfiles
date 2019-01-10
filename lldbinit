@@ -1,0 +1,9 @@
+command script import ~/sec/re/tools/venv/lib/python2.7/site-packages/voltron/entry.py
+
+# macOS install voltron (lldb requires system python + cannot touch system python packages).
+# - root: umask 022; /usr/bin/python -m ensurepip; /usr/bin/python -m pip install --upgrade pip; /usr/bin/python -m pip install virtualenv
+# - user: installing pip from macOS python may break /usr/local/bin/pip* -> brew reinstall python@2; brew reinstall python
+#         /usr/bin/python -m virtualenv venv
+#         voltron/bin/pip install git+https://github.com/snare/voltron.git@master
+#         alias lldb='PATH=~/path/venv/bin /usr/bin/lldb'
+#         alias voltron='~/path/venv/bin/voltron'

@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export GOPATH=~/dev/go
-export PATH="$HOME/bin:$GOPATH/bin:$PATH"
+export PATH="$HOME/bin:$GOPATH/bin:/usr/local/opt/ruby/bin:$PATH"
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 
 # macOS specifics.
@@ -15,6 +15,12 @@ if [[ `uname` == 'Darwin' ]]; then
     export COPYFILE_DISABLE=1
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:/usr/local/bin:$PATH"
     export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
+
+    alias locate='mdfind'
+    alias mux='/usr/local/lib/ruby/gems/2.6.0/bin/tmuxinator'
+    alias lldb='PATH=~/sec/re/tools/venv/bin /usr/bin/lldb'
+    alias gdb='PATH=~/sec/re/tools/venv/bin /usr/local/bin/gdb'
+    alias voltron='~/sec/re/tools/venv/bin/voltron'
 fi
 
 # antibody plugins.
@@ -35,7 +41,7 @@ fi
 source ~/.zsh_plugins.sh
 
 # Aliases.
-alias ls='ls --color=auto'  # Fixes coreutils ls after zsh plugins run.
+alias ls='ls --color=auto'  # Fixes coreutils ls after sourcing zsh plugins.
 alias dockerclean='docker kill $(docker ps -q) ; docker rm $(docker ps -a -q) ; docker rmi -f $(docker images -q -f dangling=true) ; docker rmi -f $(docker images -q)'
 
 # Wrap up.

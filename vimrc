@@ -10,6 +10,7 @@ set gdefault               " global matching.
 set sw=4 ts=4              " shift width, tab stop.
 set expandtab              " tabs are spaces..
 set list listchars=tab:>-  " ..unless they are not.
+set clipboard=unnamed      " use system clipboard.
 
 
 " Keys.
