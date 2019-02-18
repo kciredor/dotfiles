@@ -10,7 +10,6 @@ set gdefault               " global matching.
 set sw=4 ts=4              " shift width, tab stop.
 set expandtab              " tabs are spaces..
 set list listchars=tab:>-  " ..unless they are not.
-set clipboard=unnamed      " use system clipboard.
 
 
 " Keys.
@@ -23,6 +22,7 @@ nmap <Down>  <C-w>j
 nmap <Up>    <C-w>k
 nmap <Right> <C-w>l
 
+nnoremap Q <Nop>
 nnoremap <F3>  :set hlsearch!<CR>
 nnoremap <F10> :set paste!<CR>
 
@@ -74,9 +74,15 @@ endif
 nmap <leader>o :FZF<cr>
 
 " Buffer management plugins.
-Plug 'vim-scripts/YankRing.vim', { 'on':  'YRShow' }
-let g:yankring_history_dir = '~/.vim'
-nmap <leader>y :YRShow<cr>
+Plug 'bfredl/nvim-miniyank'
+let g:miniyank_filename = $HOME."/.vim/.miniyank.mpack"
+let g:miniyank_maxitems = 100
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
+map <leader>p <Plug>(miniyank-startput)
+map <leader>P <Plug>(miniyank-startPut)
+map <leader>y <Plug>(miniyank-cycle)
+map <leader>Y <Plug>(miniyank-cycleback)
 
 " Completion plugins.
 if has('nvim')
