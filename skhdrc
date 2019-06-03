@@ -1,4 +1,7 @@
 # Basics.
+alt - return : open -na /Applications/iTerm.app
+
+# Mode 'bsp' (tiling).
 alt - t : chunkc tiling::window --focus next
 shift + alt - t : chunkc tiling::window --swap east
 alt - f : chunkc tiling::window --toggle fullscreen

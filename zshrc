@@ -7,13 +7,13 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export GOPATH=~/dev/go
-export PATH="$HOME/bin:$GOPATH/bin:/usr/local/opt/ruby/bin:$PATH"
+export PATH="$HOME/bin:$GOPATH/bin:$HOME/.cargo/bin:/usr/local/opt/ruby/bin:$PATH"
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 
 # macOS specifics.
 if [[ `uname` == 'Darwin' ]]; then
     export COPYFILE_DISABLE=1
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-indent/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/bin:$PATH"
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-indent/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/sbin:/usr/local/bin:$PATH"
     export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 
     alias locate='mdfind -name'

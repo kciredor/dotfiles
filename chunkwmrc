@@ -29,7 +29,7 @@ chunkc core::log_level warn
 #
 
 # chunkc core::plugin_dir ~/.chunkwm_plugins
-chunkc core::plugin_dir /usr/local/Cellar/chunkwm/0.4.7/share/chunkwm/plugins
+chunkc core::plugin_dir /usr/local/Cellar/chunkwm/0.4.9/share/chunkwm/plugins
 
 #
 # NOTE: if enabled, chunkwm will monitor the specified plugin_dir
@@ -73,7 +73,8 @@ chunkc set desktop_padding_step_size     10.0
 chunkc set desktop_gap_step_size         5.0
 
 chunkc set bsp_spawn_left                1
-chunkc set bsp_optimal_ratio             1.618
+# chunkc set bsp_optimal_ratio             1.618
+chunkc set bsp_optimal_ratio             1.518
 chunkc set bsp_split_mode                optimal
 chunkc set bsp_split_ratio               0.5
 
@@ -140,3 +141,7 @@ chunkc core::load ffm.so
 
 chunkc tiling::rule --owner Finder --name Copy --state float &
 chunkc tiling::rule --owner \"App Store\" --state float &
+chunkc tiling::rule --owner \"VMware Fusion\" --state float &
+chunkc tiling::rule --owner \"Ghidra\" --state float &
+chunkc tiling::rule --owner \"VLC\" --state float &
+chunkc tiling::rule --owner \"Outlook\" --state float &

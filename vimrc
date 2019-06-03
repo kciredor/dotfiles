@@ -101,6 +101,8 @@ nmap <silent> <leader>t :TagbarOpen fj<CR>
 nmap <silent> <leader>T :TagbarClose<CR>
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 let g:go_fmt_command = "goimports"
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+let g:rustfmt_autosave = 1
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 " TODO: Plug 'neomake/neomake' - replaces Syntastic. Golang inline error checking, Python flake8.
 
