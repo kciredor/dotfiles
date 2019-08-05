@@ -29,7 +29,7 @@ chunkc core::log_level warn
 #
 
 # chunkc core::plugin_dir ~/.chunkwm_plugins
-chunkc core::plugin_dir /usr/local/Cellar/chunkwm/0.4.9/share/chunkwm/plugins
+chunkc core::plugin_dir /usr/local/Cellar/chunkwm/0.4.10/share/chunkwm/plugins
 
 #
 # NOTE: if enabled, chunkwm will monitor the specified plugin_dir
@@ -51,11 +51,11 @@ chunkc set custom_bar_offset_right       0
 
 chunkc set global_desktop_mode           bsp
 # chunkc set global_desktop_mode           float
-chunkc set global_desktop_offset_top     10
-chunkc set global_desktop_offset_bottom  10
-chunkc set global_desktop_offset_left    10
-chunkc set global_desktop_offset_right   10
-chunkc set global_desktop_offset_gap     5
+chunkc set global_desktop_offset_top     2
+chunkc set global_desktop_offset_bottom  2
+chunkc set global_desktop_offset_left    2
+chunkc set global_desktop_offset_right   2
+chunkc set global_desktop_offset_gap     2
 
 #
 # NOTE: syntax for desktop-specific settings

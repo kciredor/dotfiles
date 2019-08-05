@@ -1,0 +1,58 @@
+IMAPAccount gmail
+Host imap.gmail.com
+User roderick@wehandle.it
+AuthMechs LOGIN
+PassCmd ~/.mutt/pass.sh
+SSLType IMAPS
+CertificateFile /usr/local/etc/openssl/cert.pem
+PipelineDepth 50
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Path ~/.maildir/gmail/
+Inbox ~/.maildir/gmail/inbox
+
+Create Slave
+Expunge Both
+SyncState *
+
+Channel sync-gmail-default
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns * ![Gmail]* !archive !sent !flagged !drafts !spam !trash
+
+Channel sync-gmail-archive
+Master :gmail-remote:"[Gmail]/All Mail"
+Slave :gmail-local:archive
+
+Channel sync-gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+Slave :gmail-local:sent
+
+Channel sync-gmail-flagged
+Master :gmail-remote:"[Gmail]/Starred"
+Slave :gmail-local:flagged
+
+Channel sync-gmail-drafts
+Master :gmail-remote:"[Gmail]/Drafts"
+Slave :gmail-local:drafts
+
+Channel sync-gmail-spam
+Master :gmail-remote:"[Gmail]/Spam"
+Slave :gmail-local:spam
+
+Channel sync-gmail-trash
+Master :gmail-remote:"[Gmail]/Trash"
+Slave :gmail-local:trash
+
+Group gmail
+Channel sync-gmail-default
+Channel sync-gmail-archive
+Channel sync-gmail-sent
+Channel sync-gmail-flagged
+Channel sync-gmail-drafts
+Channel sync-gmail-spam
+Channel sync-gmail-trash

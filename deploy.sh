@@ -1,12 +1,12 @@
 #!/bin/bash
 
 dotfiles_zsh=(zshrc zsh_plugins.txt)
-dotfiles_mutt=(goobookrc muttrc mutt mailcap mailrc urlview gnupg/gpg-agent.conf gnupg/gpg.conf)
-dotfiles_muttofflineimap=(offlineimap offlineimaprc msmtprc notmuch-config)
+dotfiles_mutt=(muttrc mutt mailcap mailrc goobookrc urlview)
+dotfiles_muttoffline=(mbsyncrc msmtprc notmuch-config)
 dotfiles_x=(Xdefaults Xmodmap xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
 dotfiles_mac=(chunkwmrc skhdrc)
-dotfiles_other=(vimrc config/nvim/init.vim gitconfig gitignore tmux.conf radare2rc gdbinit lldbinit)
-dotfiles_cleanup=(profile inputrc bashrc bash_history ${dotfiles_zsh[*]} ${dotfiles_mutt[*]} ${dotfiles_muttofflineimap[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
+dotfiles_other=(vimrc config/nvim/init.vim gitconfig gitignore tmux.conf gnupg/gpg-agent.conf gnupg/gpg.conf radare2rc gdbinit lldbinit)
+dotfiles_cleanup=(profile inputrc bashrc bash_history ${dotfiles_zsh[*]} ${dotfiles_mutt[*]} ${dotfiles_muttoffline[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 
 echo -e "\nkciredor's dotfiles deploy\n\n"
 
@@ -37,22 +37,22 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         ln -s `pwd`/$item ~/.$item
     done
 
-    rm -rf ~/.mutt/specific_config
+    rm -rf ~/.mutt/config
 
-    read -p "Use mutt with offlineimap? (Linux preferred, not macOS) [y/n] " -n 1 -r
+    read -p "Use mutt offline? (Linux preferred, not macOS) [y/n] " -n 1 -r
 
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        echo -e "\n-- Installing offlineimap setup for mutt\n"
+        echo -e "\n-- Installing offline setup for mutt\n"
 
         mkdir -p ~/.maildir && chmod 700 ~/.maildir
 
-        for item in ${dotfiles_muttofflineimap[*]}; do
+        for item in ${dotfiles_muttoffline[*]}; do
             ln -s `pwd`/$item ~/.$item
         done
 
-        ln -s ~/.mutt/offlineimap_config ~/.mutt/specific_config
+        ln -s ~/.mutt/offline_config ~/.mutt/config
     else
-        ln -s ~/.mutt/imap_config ~/.mutt/specific_config
+        ln -s ~/.mutt/online_config ~/.mutt/config
     fi
 fi
 

@@ -2,10 +2,10 @@
 source ~/.mutt/monokai
 
 # Specific config (symlinked configfile)
-source ~/.mutt/specific_config
+source ~/.mutt/config
 
 # Accounts
-source ~/.mutt/accounts/whi-cred
+source ~/.mutt/accounts/gmail-cred
 
 # PGP
 source ~/.mutt/crypto

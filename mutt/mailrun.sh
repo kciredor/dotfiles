@@ -1,9 +1,16 @@
 #!/bin/bash
-read -r pid < ~/.offlineimap/pid
 
-if ps $pid &>/dev/null; then
-    echo "offlineimap ($pid): another instance running." >&2
-    kill -9 $pid
+MBSYNC=$(pgrep mbsync)
+NOTMUCH=$(pgrep notmuch)
+
+if [ -n "$MBSYNC" -o -n "$NOTMUCH" ]; then
+  echo "Already running a mail sync. Exiting..."
+
+  exit 0
 fi
 
-/usr/bin/offlineimap -o -u quiet &
+set -xe
+
+mbsync -Va
+
+notmuch new 2>&1 | grep -v "Ignoring non-mail file"

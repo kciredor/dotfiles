@@ -1,0 +1,12 @@
+set my_gmail_user  = roderick@wehandle.it
+set my_gmail_pass  = "`~/.mutt/pass.sh`"
+
+set from           = roderick@wehandle.it
+set realname       = "Roderick Schaefer"
+set signature      = "~/.mutt/accounts/gmail-sig"
+
+set imap_user      = $my_gmail_user
+set imap_pass      = $my_gmail_pass
+set smtp_url       = "smtp://$my_gmail_user@smtp.gmail.com:587" smtp_pass="$my_gmail_pass"
+
+my_hdr X-WeHandleIt: Development, Operations, Security
