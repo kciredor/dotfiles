@@ -15,7 +15,7 @@ Subfolders Verbatim
 Path ~/.maildir/gmail/
 Inbox ~/.maildir/gmail/inbox
 
-Create Slave
+Create Both
 Expunge Both
 SyncState *
 

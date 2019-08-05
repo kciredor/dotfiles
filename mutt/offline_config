@@ -6,29 +6,36 @@ set mail_check          = 5
 set imap_peek           = no
 set smtp_authenticators = "login"
 
-mailboxes +inbox +archive +sent +flagged +drafts +spam +trash +Bambini +Huis +Opzeggingen
+mailboxes +inbox +archive +sent +drafts +spam +trash +Kindle +Later
 
 bind index g noop
 bind pager g noop
 
-macro index o        "<shell-escape>~/.mutt/mailrun.sh<enter>"                                                      "Sync email with remote"
+macro                       index o           "<shell-escape>~/.mutt/mailrun.sh<enter>"                                 "Sync email with remote"
 
-folder-hook .        'macro index,pager d "<clear-flag>N<save-message>+trash<enter><sync-mailbox>"                  "Trash message"'
-folder-hook .        'macro index,pager y "<delete-message><sync-mailbox>"                                          "Remove label"'
-folder-hook inbox    'macro index,pager y "<clear-flag>N<delete-message><sync-mailbox>"                             "Archive message"'
-folder-hook inbox    'macro index,pager Y "<flag-message><clear-flag>N<save-message>+flagged<enter><sync-mailbox>"  "Star and Archive"'
-folder-hook archive  'macro index,pager y "<save-message>+inbox<enter>"                                             "Move to inbox"'
-folder-hook trash    'macro index,pager y "<save-message>+inbox<enter>"                                             "Restore"'
-folder-hook trash    'macro index,pager d "<delete-message><sync-mailbox>"                                          "Perm delete"'
-folder-hook spam     'macro index,pager y "<save-message>+inbox<enter>"                                             "Not spam"'
-folder-hook flagged  'macro index,pager y "<flag-message><save-message>+archive<enter><sync-mailbox>"               "Unstar message"'
-folder-hook flagged  'macro index,pager Y "<flag-message><save-message>+inbox<enter><sync-mailbox>"                 "Unstar and Inbox"'
+macro                       index,pager gi    "<change-folder>+inbox<enter>"                                            "Go to Inbox"
+macro                       index,pager ga    "<change-folder>+archive<enter>"                                          "Go to Archive"
+macro                       index,pager gd    "<change-folder>+drafts<enter>"                                           "Go to Drafts"
+macro                       index,pager gs    "<change-folder>+sent<enter>"                                             "Go to Sent"
+macro                       index,pager gf    "<change-folder>+flagged<enter>"                                          "Go to Flagged"
+macro                       index,pager gt    "<change-folder>+trash<enter>"                                            "Go to Trash"
 
-macro                index,pager !   "<clear-flag>N<save-message>+spam<enter>"                                      "Report spam"
-macro                index,pager gi  "<change-folder>+inbox<enter>"                                                 "Go to Inbox"
-macro                index,pager ga  "<change-folder>+archive<enter>"                                               "Go to Archive"
-macro                index,pager gd  "<change-folder>+drafts<enter>"                                                "Go to Drafts"
-macro                index,pager gs  "<change-folder>+sent<enter>"                                                  "Go to Sent"
-macro                index,pager gf  "<change-folder>+flagged<enter>"                                               "Go to Flagged"
-macro                index,pager gt  "<change-folder>+trash<enter>"                                                 "Go to Trash"
-macro                index       \Ce "<change-folder>+trash<enter><delete-pattern>~A<enter><sync-mailbox>"          "Empty trash"
+macro                       index,pager y     "<delete-message><sync-mailbox>"                                          "Remove label"'
+macro                       index,pager !     "<clear-flag>N<save-message>+spam<enter>"                                 "Report spam"
+macro                       index,pager d "   <clear-flag>N<save-message>+trash<enter><sync-mailbox>"                   "Trash message"'
+macro                       index       \Ce   "<change-folder>+trash<enter><delete-pattern>~A<enter><sync-mailbox>"     "Empty trash"
+
+folder-hook inbox    'macro index,pager y     "<clear-flag>N<delete-message><sync-mailbox>"                             "Archive message"'
+folder-hook archive  'macro index,pager y     "<save-message>+inbox<enter>"                                             "Move to Inbox"'
+folder-hook spam     'macro index,pager y     "<save-message>+inbox<enter>"                                             "Not spam"'
+folder-hook spam     'macro index,pager d     "<delete-message><sync-mailbox>"                                          "Perm delete spam"'
+folder-hook trash    'macro index,pager y     "<save-message>+inbox<enter>"                                             "Restore"'
+folder-hook trash    'macro index,pager d     "<delete-message><sync-mailbox>"                                          "Perm delete"'
+
+# TODO: move message to folder
+# macro                       index,pager s     "<save-message>?<enter>"                                                  "Move message"
+
+# TODO: starred.
+# folder-hook inbox    'macro index,pager Y     "<flag-message><clear-flag>N<save-message>+flagged<enter><sync-mailbox>"  "Star and Archive"'
+# folder-hook flagged  'macro index,pager y     "<flag-message><save-message>+archive<enter><sync-mailbox>"               "Unstar message"'
+# folder-hook flagged  'macro index,pager Y     "<flag-message><save-message>+inbox<enter><sync-mailbox>"                 "Unstar and Inbox"'
