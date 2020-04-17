@@ -27,6 +27,9 @@ nnoremap Q <Nop>
 nnoremap <F3>  :set hlsearch!<CR>
 nnoremap <F10> :set paste!<CR>
 
+xmap < <gv
+xmap > >gv
+
 cmap w!! w !sudo tee % > /dev/null
 
 
