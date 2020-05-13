@@ -1,12 +1,13 @@
 #!/bin/bash
 
 dotfiles_zsh=(zshrc zsh_plugins.txt)
+dotfiles_fish=(config/fish/config.fish config/fish/fishfile)
 dotfiles_mutt=(muttrc mutt mailcap mailrc goobookrc urlview)
 dotfiles_muttoffline=(mbsyncrc msmtprc notmuch-config)
 dotfiles_x=(Xdefaults Xmodmap xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
 dotfiles_mac=(chunkwmrc skhdrc)
 dotfiles_other=(vimrc config/nvim/init.vim gitconfig gitignore tmux.conf gnupg/gpg-agent.conf gnupg/gpg.conf radare2rc gdbinit lldbinit)
-dotfiles_cleanup=(profile inputrc bashrc bash_history ${dotfiles_zsh[*]} ${dotfiles_mutt[*]} ${dotfiles_muttoffline[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
+dotfiles_cleanup=(profile inputrc bashrc bash_history ${dotfiles_zsh[*]} ${dotfiles_fish[*]} ${dotfiles_mutt[*]} ${dotfiles_muttoffline[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 
 echo -e "\nkciredor's dotfiles deploy\n\n"
 
@@ -20,11 +21,25 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo -e "\n\n-- Removed: ${dotfiles_cleanup[*]}"
 fi
 
-echo -e "\n-- Installing zsh\n"
+read -p "Use zsh [y/n] " -n 1 -r
 
-for item in ${dotfiles_zsh[*]}; do
-    ln -s `pwd`/$item ~/.$item
-done
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo -e "\n-- Installing zsh\n"
+
+    for item in ${dotfiles_zsh[*]}; do
+        ln -s `pwd`/$item ~/.$item
+    done
+fi
+
+read -p "Use fish [y/n] " -n 1 -r
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo -e "\n-- Installing fish\n"
+
+    for item in ${dotfiles_fish[*]}; do
+        ln -s `pwd`/$item ~/.$item
+    done
+fi
 
 read -p "Install mail setup (includes mutt) [y/n] " -n 1 -r
 
