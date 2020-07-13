@@ -5,7 +5,7 @@ dotfiles_fish=(config/fish/config.fish config/fish/fishfile)
 dotfiles_mutt=(muttrc mutt mailcap mailrc goobookrc urlview)
 dotfiles_muttoffline=(mbsyncrc msmtprc notmuch-config)
 dotfiles_x=(Xdefaults Xmodmap xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
-dotfiles_mac=(chunkwmrc skhdrc)
+dotfiles_mac=(yabairc skhdrc)
 dotfiles_other=(vimrc config/nvim/init.vim gitconfig gitignore tmux.conf gnupg/gpg-agent.conf gnupg/gpg.conf radare2rc gdbinit lldbinit)
 dotfiles_cleanup=(profile inputrc bashrc bash_history ${dotfiles_zsh[*]} ${dotfiles_fish[*]} ${dotfiles_mutt[*]} ${dotfiles_muttoffline[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 
@@ -31,6 +31,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     done
 fi
 
+echo
 read -p "Use fish [y/n] " -n 1 -r
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -54,7 +55,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 
     rm -rf ~/.mutt/config
 
-    read -p "Use mutt offline? (Linux preferred, not macOS) [y/n] " -n 1 -r
+    read -p "Use mutt offline? (macOS preferred because of specific config vs Linux) [y/n] " -n 1 -r
 
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo -e "\n-- Installing offline setup for mutt\n"
@@ -71,7 +72,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     fi
 fi
 
-echo -e "\n"
+echo
 read -p "Install X specifics [y/n] " -n 1 -r
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -84,7 +85,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     done
 fi
 
-echo -e "\n"
+echo
 read -p "Install Mac OS specifics [y/n] " -n 1 -r
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -95,6 +96,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     done
 fi
 
+echo
 echo -e "-- Installing remaining dotfiles"
 
 mkdir -p ~/.config/nvim

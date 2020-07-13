@@ -1,6 +1,10 @@
 # Terminal.
 alt - return : open -na /Applications/iTerm.app
 
+# Tiling vs float.
+alt - space : yabai -m config layout bsp
+shift + alt - space : yabai -m config layout float
+
 # Switch between windows on current space.
 alt - t : yabai -m window --focus next || yabai -m window --focus first
 

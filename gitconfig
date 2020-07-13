@@ -1,7 +1,7 @@
 [user]
     name = Roderick Schaefer
     email = roderick@wehandle.it
-	signingkey = 0x9ECCEBE3D5B38DA6
+    signingkey = 0x9ECCEBE3D5B38DA6
 [core]
     excludesfile = ~/.gitignore
     editor = /usr/local/bin/nvim
@@ -23,4 +23,4 @@
 [alias]
     cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
 [commit]
-	gpgsign = true
+    gpgsign = true

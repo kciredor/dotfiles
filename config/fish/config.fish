@@ -11,14 +11,14 @@ set -xg LANG en_US.UTF-8
 set -xg LANGUAGE en_US.UTF-8
 set -xg LC_ALL en_US.UTF-8
 
-set -xg PATH "$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$GOPATH/bin:$HOME/.cargo/bin:/usr/local/opt/ruby/bin:$HOME/sec/ios/tools/build/bin:$PATH"
-set -xg PYTHONPATH "$PYTHONPATH:/opt/binaryninja/python"
 set -xg GOPATH ~/dev/go
+set -xg PYTHONPATH "$PYTHONPATH:/opt/binaryninja/python"
+set -xg PATH "$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$GOPATH/bin:$HOME/.cargo/bin:/usr/local/opt/ruby/bin:$HOME/sec/ios/tools/build/bin:$PATH"
 
 if test (uname) = Darwin
     set -xg COPYFILE_DISABLE 1
 
-    set -xg PATH "/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-indent/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+    set -xg PATH "/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-indent/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/python@3.8/libexec/bin:$PATH"
     set -xg PYTHONPATH "$PYTHONPATH:/Applications/Binary Ninja.app/Contents/Resources/python"
 end
 
