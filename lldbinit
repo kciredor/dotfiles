@@ -1,4 +1,4 @@
-command script import ~/sec/re/tools/venv/lib/python2.7/site-packages/voltron/entry.py
+# command script import ~/sec/re/tools/venv/lib/python2.7/site-packages/voltron/entry.py
 
 # macOS install voltron (lldb requires system python + cannot touch system python packages).
 # - root: umask 022; /usr/bin/python -m ensurepip; /usr/bin/python -m pip install --upgrade pip; /usr/bin/python -m pip install virtualenv

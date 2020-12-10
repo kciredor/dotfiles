@@ -1,7 +1,7 @@
 [user]
     name = Roderick Schaefer
     email = roderick@wehandle.it
-    signingkey = 0x9ECCEBE3D5B38DA6
+    signingkey = 0x31FDA5E3FE0CB640
 [core]
     excludesfile = ~/.gitignore
     editor = /usr/local/bin/nvim

@@ -1,7 +1,0 @@
-# e anal.bb.maxsize = 32768
-# e bin.maxstrbuf   = 16M
-
-# e prj.files       = true
-# e prj.git         = true
-
-e r2dec.asm       = true

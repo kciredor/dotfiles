@@ -18,7 +18,7 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 shift + alt - f : yabai -m window --toggle float
 
 # Throw window to next monitor and keep focus on window.
-alt-o : (yabai -m window --display next || yabai -m window --display first); (yabai -m display --focus next || yabai -m display --focus first)
+alt-o : yabai -m window --display recent && yabai -m display --focus recent
 
 # Switch focus between monitors.
 alt-s : yabai -m display --focus next || yabai -m display --focus first

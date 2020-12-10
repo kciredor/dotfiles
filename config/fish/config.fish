@@ -13,13 +13,14 @@ set -xg LC_ALL en_US.UTF-8
 
 set -xg GOPATH ~/dev/go
 set -xg PYTHONPATH "$PYTHONPATH:/opt/binaryninja/python"
-set -xg PATH "$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$GOPATH/bin:$HOME/.cargo/bin:/usr/local/opt/ruby/bin:$HOME/sec/ios/tools/build/bin:$PATH"
+set -xg PATH "$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:$GOPATH/bin:$HOME/.cargo/bin:/usr/local/opt/ruby/bin:$HOME/sec/research/ios/tools/build/bin:$PATH"
 
 if test (uname) = Darwin
     set -xg COPYFILE_DISABLE 1
 
     set -xg PATH "/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-indent/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/python@3.8/libexec/bin:$PATH"
     set -xg PYTHONPATH "$PYTHONPATH:/Applications/Binary Ninja.app/Contents/Resources/python"
+    set -xg HOMEBREW_CASK_OPTS "--no-quarantine"
 end
 
 # Aliases.
@@ -38,6 +39,12 @@ alias glgg='git log --graph'
 
 if test (uname) = Darwin
     alias clipcopy='pbcopy'
+
+    # function having case insensitivity uses $argv which expands multiple arguments to "arg1" "arg2" breaking mdfind.
+    # alias locate='mdfind -name' works with multiple arguments but is case sensitive.
+    function locate --wraps mdfind --description 'mimics linux locate -i on macOS'
+        mdfind -name '"'$argv'"c'
+    end
 else
     alias clipcopy='xclip'
 end

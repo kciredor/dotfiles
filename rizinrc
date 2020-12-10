@@ -1,0 +1,11 @@
+# TODO (incl. r2ghidra)
+# r2pm -i r2ghidra-dec -> fail -> vim .git/config replace merge: r2-4.5.1 -> retry
+# See: https://github.com/radareorg/r2ghidra/issues/170 / https://github.com/radareorg/r2ghidra/issues/145
+#
+# XXX
+# e anal.bb.maxsize = 32768
+# e bin.maxstrbuf   = 16M
+# e cfg.fortunes    = false
+# e prj.files       = true
+# e prj.git         = true
+# e r2dec.asm       = true
