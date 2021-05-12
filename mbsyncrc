@@ -1,3 +1,7 @@
+Create Both
+Expunge Both
+SyncState *
+
 IMAPAccount gmail
 Host imap.gmail.com
 User roderick@wehandle.it
@@ -15,38 +19,34 @@ Subfolders Verbatim
 Path ~/.maildir/gmail/
 Inbox ~/.maildir/gmail/inbox
 
-Create Both
-Expunge Both
-SyncState *
-
 Channel sync-gmail-default
-Master :gmail-remote:
-Slave :gmail-local:
+Far :gmail-remote:
+Near :gmail-local:
 Patterns * ![Gmail]* !archive !sent !flagged !drafts !spam !trash
 
 Channel sync-gmail-archive
-Master :gmail-remote:"[Gmail]/All Mail"
-Slave :gmail-local:archive
+Far :gmail-remote:"[Gmail]/All Mail"
+Near :gmail-local:archive
 
 Channel sync-gmail-sent
-Master :gmail-remote:"[Gmail]/Sent Mail"
-Slave :gmail-local:sent
+Far :gmail-remote:"[Gmail]/Sent Mail"
+Near :gmail-local:sent
 
 Channel sync-gmail-flagged
-Master :gmail-remote:"[Gmail]/Starred"
-Slave :gmail-local:flagged
+Far :gmail-remote:"[Gmail]/Starred"
+Near :gmail-local:flagged
 
 Channel sync-gmail-drafts
-Master :gmail-remote:"[Gmail]/Drafts"
-Slave :gmail-local:drafts
+Far :gmail-remote:"[Gmail]/Drafts"
+Near :gmail-local:drafts
 
 Channel sync-gmail-spam
-Master :gmail-remote:"[Gmail]/Spam"
-Slave :gmail-local:spam
+Far :gmail-remote:"[Gmail]/Spam"
+Near :gmail-local:spam
 
 Channel sync-gmail-trash
-Master :gmail-remote:"[Gmail]/Trash"
-Slave :gmail-local:trash
+Far :gmail-remote:"[Gmail]/Trash"
+Near :gmail-local:trash
 
 Group gmail
 Channel sync-gmail-default

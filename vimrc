@@ -92,8 +92,8 @@ map <leader>Y <Plug>(miniyank-cycleback)
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
-    Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
-    Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make', 'for': 'go' }
+    Plug 'deoplete-plugins/deoplete-jedi', { 'for': 'python' }
     Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'javascript' }
 endif
 

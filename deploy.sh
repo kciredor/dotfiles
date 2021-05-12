@@ -6,7 +6,7 @@ dotfiles_mutt=(muttrc mutt mailcap mailrc goobookrc urlview)
 dotfiles_muttoffline=(mbsyncrc msmtprc notmuch-config)
 dotfiles_x=(Xdefaults Xmodmap xinitrc xbindkeysrc config/awesome/battery.lua config/awesome/rc.lua)
 dotfiles_mac=(yabairc skhdrc)
-dotfiles_other=(vimrc config/nvim/init.vim gitconfig gitignore tmux.conf gnupg/gpg-agent.conf gnupg/gpg.conf radare2rc gdbinit lldbinit)
+dotfiles_other=(vimrc config/nvim/init.vim gitconfig gitignore tmux.conf gnupg/gpg-agent.conf gnupg/gpg.conf gnupg/scdaemon.conf radare2rc gdbinit lldbinit)
 dotfiles_cleanup=(profile inputrc bashrc bash_history ${dotfiles_zsh[*]} ${dotfiles_fish[*]} ${dotfiles_mutt[*]} ${dotfiles_muttoffline[*]} ${dotfiles_x[*]} ${dotfiles_mac[*]} ${dotfiles_other[*]})
 
 echo -e "\nkciredor's dotfiles deploy\n\n"

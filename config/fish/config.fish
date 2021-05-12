@@ -21,6 +21,9 @@ if test (uname) = Darwin
     set -xg PATH "/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-indent/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:/usr/local/opt/python@3.8/libexec/bin:$PATH"
     set -xg PYTHONPATH "$PYTHONPATH:/Applications/Binary Ninja.app/Contents/Resources/python"
     set -xg HOMEBREW_CASK_OPTS "--no-quarantine"
+
+    alias ida="'/Applications/IDA\ Pro\ 7.6/ida.app/Contents/MacOS/ida'"
+    alias ida64="'/Applications/IDA\ Pro\ 7.6/ida64.app/Contents/MacOS/ida64'"
 end
 
 # Aliases.
@@ -56,11 +59,12 @@ else
     set -xg SSH_AUTH_SOCK "/run/user/$UID/gnupg/S.gpg-agent.ssh"
 end
 
-if ! test (gpgconf --list-dirs | grep agent-socket | cut -d : -f 2)
-    gpg-agent --daemon
+if ! test (ps x | grep -v grep | grep gpg-agent)
+    bass (gpg-agent --daemon)
 end
 
-# TODO: current k8s cluster in RPROMPT.
+# XXX: Gcloud misbehaving.
+set -xg CLOUDSDK_PYTHON python2
 
 # System specifics.
 if test -e ~/.customrc

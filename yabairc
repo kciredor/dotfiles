@@ -49,5 +49,6 @@ yabai -m rule --add app='Reminders' manage=off
 yabai -m rule --add app='System Preferences' manage=off
 yabai -m rule --add app='Screen Sharing' manage=off
 yabai -m rule --add app='VMware Fusion' manage=off
+yabai -m rule --add app='Microsoft Remote Desktop' manage=off
 
 echo "yabai configuration loaded.."
